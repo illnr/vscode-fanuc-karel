@@ -1,0 +1,175 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Fanuc-Karel(.kl)",
+	"patterns": [
+		{
+			"include": "#directive"
+		},
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#types"
+		},
+		{
+			"include": "#support"
+		},
+		{
+			"include": "#comment"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#variables-constants"
+		},
+		{
+			"include": "#program-declaration"
+		},
+		{
+			"include": "#routine-declaration"
+		},
+		{
+			"include": "#begin"
+		},
+		{
+			"include": "#end"
+		}
+	],
+	"repository": {
+		"directive": {
+			"name": "punctuation.definition.tag.directive.fanuc-karel",
+			"match": "%[a-zA-Z]+"
+		},
+		"keywords": {
+			"patterns": [
+				{
+					"name": "keyword.control.clause.fanuc-karel",
+					"match": "\\b(EVAL|FROM|IN|WHEN|WITH)\\b"
+				},
+				{
+					"name": "keyword.control.conditional.fanuc-karel",
+					"match": "\\b(IF|THEN|ELSE|ENDIF|SELECT|ENDSELECT)\\b"
+				},
+				{
+					"name": "keyword.control.repeat.fanuc-karel",
+					"match": "\\b(WHILE|DO|ENDWHILE|FOR|ENDFOR)\\b"
+				},
+				{
+					"name": "keyword.operator.arithmetic.fanuc-karel",
+					"match": "\\b(\\+|\\-|\\*|\\/|DIV|MOD)\\b"
+				},
+				{
+					"name": "keyword.operator.relational.fanuc-karel",
+					"match": "\\b(<|<=|=|<>|>=|>)\\b"
+				},
+				{
+					"name": "keyword.operator.boolean.fanuc-karel keyword.control.boolean.fanuc-karel",
+					"match": "\\b(AND|OR|NOT)\\b"
+				},
+				{
+					"name": "keyword.operator.special.fanuc-karel",
+					"match": "\\b(>=<|:|#|@)\\b"
+				}
+			]
+		},
+		"types": {
+			"name": "entity.name.type.fanuc-karel",
+			"match": "\\b(ARRAY|BOOLEAN|BYTE|CONFIG|DISP_DAT_T|FILE|INTEGER|JOINTPOS|PATH|POSITION|QUEUE_TYPE|REAL|SHORT|STD_PTH_NODE|STRING|VECTOR|XYZWPR|XYZWPREXT)\\b"
+		},
+		"support": {
+			"patterns": [
+				{
+					"name": "support.other.action.fanuc-karel support.function.action.fanuc-karel",
+					"match": "\\b(NOABORT|NOMESSAGE|NOPAUSE|PAUSE|PULSE|RESUME|STOP|UNHOLD|UNPAUSE)\\b"
+				},
+				{
+					"name": "support.function.fanuc-karel",
+					"match": "\\b(ABS|ACOS|APPROACH|ARRAY_LEN|ASIN|ATAN2|ATTACH|BYNAME|BYTES_LEFT|CHR|COS|CURJPOS|CURPOS|CURR_PROG|EXP|FRAME|GET_FILE_POS|GET_JPOS_REG|GET_JPOS_TPE|GET_PORT_ATR|GET_POS_REG|GET_POS_TPE|GET_USEC_TIM|INDEX|IN_RANGE|INV|IO_STATUS|J_IN_RANGE|JOINT2POS|LN|MIRROR|MOTION_CTL|NODE_SIZE|ORD|ORIENT|PATH_LEN|POS|POS2JOINT|ROUND|SEMA_COUNT|SIN|SQRT|STR_LEN|SUB_STR|TAN|TRUNC|UNINIT)\\b"
+				},
+				{
+					"name": "support.other.procedure.fanuc-karel support.function.procedure.fanuc-karel",
+					"match": "\\b(ABORT_TASK|ACT_SCREEN|ACT_TBL|ADD_BYNAMEPC|ADD_DICT|ADD_INTPC|ADD_REALPC|ADD_STRINGPC|APPEND_NODE|APPEND_QUEUE|ATT_WINDOW_D|ATT_WINDOW_S|AVL_POS_NUM|BYTES_AHEAD|CALL_PROG|CALL_PROGLIN|CHECK_DICT|CHECK_EPOS|CHECK_NAME|CLEAR|CLEAR_SEMA|CLOSE_TEP|CLR_IO_STAT|CLR_PORT_SIM|CLR_POS_REG|CNC_DYN_DISB|CNC_DYN_DISE|CNC_DYN_DISI|CNC_DYN_DISP|CNC_DYN_DISR|CNC_DYN_DISS|CNCL_STP_MTN|CNV_CNF_STRG|CNV_CONF_STR|CNV_INT_STR|CNV_JPOS_REL|CNV_REAL_STR|CNV_REL_JPOS|CNV_STR_CONF|CNV_STR_INT|CNV_STR_REAL|CNV_STR_TIME|CNV_TIME_STR|COMPARE_FILE|CONT_TASK|COPY_FILE|COPY_PATH|COPY_QUEUE|COPY_TPE|CREATE_TPE|CREATE_VAR|DAQ_CHECKP|DAQ_REGPIPE|DAQ_START|DAQ_STOP|DAQ_UNREG|DAQ_WRITE|DEF_SCREEN|DEF_WINDOW|DELETE_FILE|DELETE_NODE|DELETE_QUEUE|DEL_INST_TPE|DET_WINDOW|DISCTRL_ALPH|DISCTRL_FORM|DISCTRL_LIST|DISCTRL_PLMN|DISCTRL_SBMN|DISCTRL_TBL|DISMOUNT_DEV|DOSFILE_INF|ERR_DATA|FILE_LIST|FORCE_SPMENU|FORMAT_DEV|GET_ATTR_PRG|GET_PORT_ASG|GET_PORT_CMT|GET_PORT_MOD|GET_PORT_SIM|GET_PORT_VAL|GET_POS_FRM|GET_POS_TYP|GET_PREG_CMT|GET_QUEUE|GET_REG|GET_REG_CMT|GET_SREG_CMT|GET_STR_REG|GET_TIME|GET_TPE_CMT|GET_TPE_PRM|GET_TSK_INFO|GET_USEC_SUB|GET_VAR|INI_DYN_DISB|INI_DYN_DISE|INI_DYN_DISI|INI_DYN_DISP|INI_DYN_DISR|INI_DYN_DISS|INIT_QUEUE|INIT_TBL|INSERT_NODE|INSERT_QUEUE|IO_MOD_TYPE|KCL|KCL_NO_WAIT|KCL_STATUS|LOAD|LOAD_STATUS|LOCK_GROUP|MODIFY_QUEUE|MOUNT_DEV|MOVE_FILE|MSG_CONNECT|MSG_DISO|MSG_PING|OPEN_TPE|PAUSE_TASK|PEND_SEMA|PIPE_CONFIG|POP_KEY_RD|POS_REG_TYPE|POST_ERR|POST_ERR_L|POST_SEMA|PRINT_FILE|PROG_BACKUP|PROG_CLEAR|PROG_RESTORE|PROG_LIST|PURGE_DEV|PUSH_KEY_RD|READ_DICT|READ_DICT_V|READ_KB|REMOVE_DICT|RENAME_FILE|RENAME_VAR|RENAME_VARS|RESET|RUN_TASK|SAVE|SAVE_DRAM|SELECT_TPE|SEND_DATAPC|SEND_EVENTPC|SET_ATTR_PRG|SET_CURSOR|SET_EPOS_REG|SET_EPOS_TPE|SET_FILE_ATR|SET_FILE_POS|SET_INT_REG|SET_JPOS_REG|SET_JPOS_TPE|SET_LANG|SET_PERCH|SET_PORT_ASG|SET_PORT_ATR|SET_PORT_CMT|SET_PORT_MOD|SET_PORT_SIM|SET_PORT_VAL|SET_POS_REG|SET_POS_TPE|SET_PREG_CMT|SET_REAL_REG|SET_REG|CMT|SET_SREG_CMT|SET_STR_REG|SET_TIME|SET_TPE_CMT|SET_TRNS_TPE|SET_TSK_ATTR|SET_TSK_NAME|SET_VAR|TRANSLATE|UNLOCK_GROUP|UNPOS|V_CAM_CALIB|V_GET_OFFSET|V_GET_PASSFL|V_GET_QUEUE|V_INIT_QUEUE|V_RALC_QUEUE|V_RUN_FIND|V_SET_REF|V_START_VTRK|V_STOP_VTRK|VAR_INFO|VAR_LIST|VOL_SPACE|VREG_FND_POS|VREG_OFFSET|WRITE_DICT|WRITE_DICT_V|XML_ADDTAG|XML_GETDATA|XML_REMTAG|XML_SCAN|XML_SETVAR)\\b"
+				},
+				{
+					"name": "support.other.statement.fanuc-karel support.function.statement.fanuc-karel",
+					"match": "\\b(ABORT|CONDITION|ENDCONDITION|CONTINUE|DELAY|ERROR|EVENT|FOR|ENDFOR|HOLD|READ|RELEASE|REPEAT|RETURN|SEMAPHORE|UNTIL|USING|ENDUSING|WRITE|CANCEL FILE|CLOSE FILE|CLOSE HAND|CONNECT TIMER|DISABLE CONDITION|DISCONNECT TIMER|ENABLE CONDITION|GO TO|OPEN FILE|OPEN HAND|PURGE CONDITION|RELAX HAND|WAIT FOR)\\b"
+				}
+			]
+		},
+		"comment": {
+			"name": "comment.line.double-dash.fanuc-karel",
+			"begin": "(--)",
+			"end": "(?=^)"
+		},
+		"strings": {
+			"name": "string.quoted.single.fanuc-karel",
+			"begin": "'",
+			"end": "'",
+			"patterns": [
+				{
+					"name": "constant.character.escape.fanuc-karel",
+					"match": "\\\\."
+				}
+			]
+		},
+		"routine-declaration": {
+			"name": "meta.routine.fanuc-karel",
+			"match": "\\b(ROUTINE)\\s+([_$[:alpha:]][_$[:alnum:]]*)\\s*",
+			"captures": {
+				"1": {
+					"name": "storage.type.routine.fanuc-karel"
+				},
+				"2:": {
+					"name": "entity.name.function.fanuc-karel"
+				}
+			}
+		},
+		"program-declaration": {
+			"name": "meta.program.fanuc-karel",
+			"match": "\\b(PROGRAM)\\s+([_$[:alpha:]][_$[:alnum:]]*)\\s*",
+			"captures": {
+				"1": {
+					"name": "storage.type.program.fanuc-karel"
+				},
+				"2:": {
+					"name": "entity.name.program.fanuc-karel"
+				}
+			}
+		},
+		"begin": {
+			"name": "meta.block.fanuc-karel",
+			"match": "\\b(BEGIN)\\s*",
+			"captures": {
+				"1": {
+					"name": "punctuation.definition.tag.fanuc-karel"
+				}
+			}
+		},
+		"end": {
+			"name": "meta.block.fanuc-karel",
+			"match": "\\b(END)\\s+([_$[:alpha:]][_$[:alnum:]]*)\\s*",
+			"captures": {
+				"1": {
+					"name": "punctuation.definition.tag.fanuc-karel"
+				},
+				"2": {
+					"name": "entity.name.function.fanuc-karel"
+				}
+			}
+		},
+		"variables-constants": {
+			"patterns" : [
+				{
+					"name": "variable.other.fanuc-karel",
+					"match": "CONST|STRUCT|TYPE|VAR"
+				},
+				{
+					"name": "variable.language.fanuc-karel",
+					"match": "\\b(this)\\b"
+				}
+			]
+		}
+	},
+	"scopeName": "source.kl"
+}

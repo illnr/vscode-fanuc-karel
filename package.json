@@ -1,0 +1,26 @@
+{
+    "name": "fanuc-karel-syntax",
+    "displayName": "Fanuc-Karel-Syntax",
+    "description": "Fanuc Karel (.kl) Syntax Support",
+    "version": "0.0.1",
+    "publisher": "fabi",
+    "engines": {
+        "vscode": "^1.21.0"
+    },
+    "categories": [
+        "Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "fanuc-karel",
+            "aliases": ["Fanuc-Karel(.kl)", "fanuc-karel"],
+            "extensions": [".kl"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "fanuc-karel",
+            "scopeName": "source.kl",
+            "path": "./syntaxes/fanuc-karel.tmLanguage.json"
+        }]
+    }
+}

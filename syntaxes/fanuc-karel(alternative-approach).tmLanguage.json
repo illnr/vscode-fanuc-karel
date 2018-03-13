@@ -1,0 +1,153 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Fanuc-Karel(.kl)",
+	"patterns": [
+		{
+			"include": "#everything-but-block"
+		},
+		{
+			"include": "#program-declaration"
+		},
+		{
+			"include": "#routine-declaration"
+		}
+	],
+	"repository": {
+		"everything-but-block": {
+			"patterns": [
+				{
+					"include": "#keywords"
+				},
+				{
+					"include": "#comment"
+				},
+				{
+					"include": "#strings"
+				},
+				{
+					"include": "#variables-constants"
+				}
+			]
+		},
+		"keywords": {
+			"patterns": [{
+				"name": "keyword.control.fanuc-karel",
+				"match": "\\b(IF|THEN|ENDIF|WHILE|DO|ENDWHILE|FOR|RETURN)\\b"
+			}]
+		},
+		"comment": {
+			"name": "comment.line.double-dash.fanuc-karel",
+			"begin": "(--)",
+			"end": "(?=^)"
+		},
+		"strings": {
+			"name": "string.quoted.single.fanuc-karel",
+			"begin": "'",
+			"end": "'",
+			"patterns": [
+				{
+					"name": "constant.character.escape.fanuc-karel",
+					"match": "\\\\."
+				}
+			]
+		},
+		"routine-declaration": {
+			"name": "meta.routine.fanuc-karel",
+			"begin": "\\b(ROUTINE)\\s+([_$[:alpha:]][_$[:alnum:]]*)\\s*",
+			"beginCaptures": {
+				"1": {
+					"name": "storage.type.routine.fanuc-karel"
+				},
+				"2:": {
+					"name": "entity.name.function.fanuc-karel"
+				}
+			},
+			"end": "(?<=END)\\s+([_$[:alpha:]][_$[:alnum:]]*)\\s*",
+			"endCaptures": {
+				"1:": {
+					"name": "entity.name.function.fanuc-karel"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#everything-but-block"
+				},
+				{
+					"include": "#begin-end-block"
+				}
+			]
+		},
+		"program-declaration": {
+			"name": "meta.program.fanuc-karel",
+			"begin": "\\b(PROGRAM)\\s+([_$[:alpha:]][_$[:alnum:]]*)\\s*",
+			"beginCaptures": {
+				"1": {
+					"name": "storage.type.program.fanuc-karel"
+				},
+				"2:": {
+					"name": "entity.name.program.fanuc-karel"
+				}
+			},
+			"end": "(?<=END)\\s+([_$[:alpha:]][_$[:alnum:]]*)\\s*",
+			"endCaptures": {
+				"1:": {
+					"name": "entity.name.program.fanuc-karel"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#everything-but-block"
+				},
+				{
+					"include": "#begin-end-block"
+				}
+			]
+		},
+		"begin-end-block": {
+			"name": "meta.block.fanuc-karel",
+			"begin": "\\b(BEGIN)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.definition.tag.fanuc-karel"
+				}
+			},
+			"end": "\\b(END)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.definition.tag.fanuc-karel"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#everything-but-block"
+				}
+			]
+		},
+		"variables-constants": {
+			"patterns" : [
+				{
+					"include": "#variable"
+				},
+				{
+					"include": "#variable-lang"
+				},
+				{
+					"include": "#constant"
+				}
+			]
+		},
+		"variable": {
+			"name": "variable.other.fanuc-karel",
+			"match": "\\b(VAR)\\b"
+		},
+		"variable-lang": {
+			"name": "variable.language.fanuc-karel",
+			"match": "\\b(this)\\b"
+		},
+		"constant": {
+			"name": "constant.other",
+			"match": "\\b(CONST)\\b"
+		}
+	},
+	"scopeName": "source.kl"
+}
