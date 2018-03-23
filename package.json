@@ -14,7 +14,7 @@
         "languages": [{
             "id": "fanuc-karel",
             "aliases": ["Fanuc-Karel(.kl)", "fanuc-karel"],
-            "extensions": [".kl"],
+            "extensions": [".kl", ".klh", ".klt"],
             "configuration": "./language-configuration.json"
         }],
         "grammars": [{

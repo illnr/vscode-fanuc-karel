@@ -53,7 +53,7 @@
 				},
 				{
 					"name": "keyword.control.repeat.fanuc-karel",
-					"match": "\\b(WHILE|DO|ENDWHILE|FOR|ENDFOR)\\b"
+					"match": "\\b(WHILE|DO|ENDWHILE|FOR|TO|ENDFOR)\\b"
 				},
 				{
 					"name": "keyword.operator.arithmetic.fanuc-karel",
@@ -162,7 +162,7 @@
 			"patterns" : [
 				{
 					"name": "variable.other.fanuc-karel",
-					"match": "CONST|STRUCT|TYPE|VAR"
+					"match": "\\b(CONST|STRUCT|TYPE|VAR)\\b"
 				},
 				{
 					"name": "variable.language.fanuc-karel",
