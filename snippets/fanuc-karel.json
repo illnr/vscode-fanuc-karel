@@ -42,5 +42,25 @@
           "ENDSELECT"
         ],
         "description": "SELECT Statement"
+    },
+
+    "While loop": {
+        "prefix": "WHILE",
+        "body": [
+          "WHILE ${1:element} DO",
+          "\t$0",
+          "ENDWHILE"
+        ],
+        "description": "While loop"
+    },
+
+    "Repeat loop": {
+        "prefix": "REPEAT",
+        "body": [
+          "REPEAT",
+          "\t$0",
+          "UNTIL(${1:element})"
+        ],
+        "description": "Repeat loop"
     }
 }
