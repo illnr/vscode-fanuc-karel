@@ -1,0 +1,33 @@
+{
+    "For_Loop": {
+        "prefix": "FOR",
+        "body": [
+          "FOR ${1:element} TO ${2:element} DO",
+          "\t$0",
+          "ENDFOR"
+        ],
+        "description": "For Loop"
+    },
+
+    "IF statement": {
+        "prefix": "IF",
+        "body": [
+          "IF ${1:element} = ${2:element} THEN",
+          "\t$0",
+          "ENDIF"
+        ],
+        "description": "IF Statement"
+    },
+
+    "IF ELSE statement": {
+        "prefix": "IFELSE",
+        "body": [
+          "IF ${1:element} = ${2:element} THEN",
+          "\t$0",
+          "ELSE",
+          "\t$0",
+          "ENDIF"
+        ],
+        "description": "IF ELSE Statement"
+    }
+}
