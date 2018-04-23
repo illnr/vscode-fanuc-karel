@@ -29,5 +29,18 @@
           "ENDIF"
         ],
         "description": "IF ELSE Statement"
+    },
+
+    "Select statement": {
+        "prefix": "SELECT",
+        "body": [
+          "SELECT ${1:element} OF",
+          "CASE(${2:element}):",
+          "\t$0",
+          "ELSE:",
+          "\t$0",
+          "ENDSELECT"
+        ],
+        "description": "SELECT Statement"
     }
 }
