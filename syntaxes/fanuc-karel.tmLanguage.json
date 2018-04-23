@@ -109,7 +109,6 @@
 			"patterns": [
 				{
 					"name": "constant.character.escape.fanuc-karel",
-					"match": "\\\\."
 				}
 			]
 		},
