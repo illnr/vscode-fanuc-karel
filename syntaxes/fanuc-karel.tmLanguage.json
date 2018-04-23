@@ -108,7 +108,7 @@
 			"end": "'",
 			"patterns": [
 				{
-					"name": "constant.character.escape.fanuc-karel",
+					"name": "constant.character.escape.fanuc-karel"
 				}
 			]
 		},
