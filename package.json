@@ -22,11 +22,9 @@
             "scopeName": "source.kl",
             "path": "./syntaxes/fanuc-karel.tmLanguage.json"
         }],
-        "snippets":[
-            {
+        "snippets":[{
                 "language": "fanuc-karel",
                 "path": "./snippets/fanuc-karel.json"
-            }
-        ]
+        }]
     }
 }
