@@ -12,7 +12,7 @@
     "IF statement": {
         "prefix": "IF",
         "body": [
-          "IF ${1:element} = ${2:element} THEN",
+          "IF ${1:condition} THEN",
           "\t$0",
           "ENDIF"
         ],
@@ -22,10 +22,10 @@
     "IF ELSE statement": {
         "prefix": "IFELSE",
         "body": [
-          "IF ${1:element} = ${2:element} THEN",
-          "\t$0",
+          "IF ${1:condition} THEN",
+          "\t$2",
           "ELSE",
-          "\t$0",
+          "\t$3",
           "ENDIF"
         ],
         "description": "IF ELSE Statement"
@@ -36,9 +36,9 @@
         "body": [
           "SELECT ${1:element} OF",
           "CASE(${2:element}):",
-          "\t$0",
+          "\t$3",
           "ELSE:",
-          "\t$0",
+          "\t$4",
           "ENDSELECT"
         ],
         "description": "SELECT Statement"
@@ -48,7 +48,7 @@
         "prefix": "WHILE",
         "body": [
           "WHILE ${1:element} DO",
-          "\t$0",
+          "\t$2",
           "ENDWHILE"
         ],
         "description": "While loop"
