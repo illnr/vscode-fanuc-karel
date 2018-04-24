@@ -1,0 +1,66 @@
+{
+    "For_Loop": {
+        "prefix": "FOR",
+        "body": [
+          "FOR ${1:element} TO ${2:element} DO",
+          "\t$0",
+          "ENDFOR"
+        ],
+        "description": "For Loop"
+    },
+
+    "IF statement": {
+        "prefix": "IF",
+        "body": [
+          "IF ${1:element} = ${2:element} THEN",
+          "\t$0",
+          "ENDIF"
+        ],
+        "description": "IF Statement"
+    },
+
+    "IF ELSE statement": {
+        "prefix": "IFELSE",
+        "body": [
+          "IF ${1:element} = ${2:element} THEN",
+          "\t$0",
+          "ELSE",
+          "\t$0",
+          "ENDIF"
+        ],
+        "description": "IF ELSE Statement"
+    },
+
+    "Select statement": {
+        "prefix": "SELECT",
+        "body": [
+          "SELECT ${1:element} OF",
+          "CASE(${2:element}):",
+          "\t$0",
+          "ELSE:",
+          "\t$0",
+          "ENDSELECT"
+        ],
+        "description": "SELECT Statement"
+    },
+
+    "While loop": {
+        "prefix": "WHILE",
+        "body": [
+          "WHILE ${1:element} DO",
+          "\t$0",
+          "ENDWHILE"
+        ],
+        "description": "While loop"
+    },
+
+    "Repeat loop": {
+        "prefix": "REPEAT",
+        "body": [
+          "REPEAT",
+          "\t$0",
+          "UNTIL(${1:element})"
+        ],
+        "description": "Repeat loop"
+    }
+}

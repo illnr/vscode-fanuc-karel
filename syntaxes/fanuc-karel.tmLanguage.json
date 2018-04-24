@@ -49,7 +49,7 @@
 				},
 				{
 					"name": "keyword.control.conditional.fanuc-karel",
-					"match": "\\b(IF|THEN|ELSE|ENDIF|SELECT|ENDSELECT)\\b"
+					"match": "\\b(IF|THEN|ELSE|ENDIF|SELECT|ENDSELECT|CASE|OF)\\b"
 				},
 				{
 					"name": "keyword.control.repeat.fanuc-karel",
@@ -108,8 +108,7 @@
 			"end": "'",
 			"patterns": [
 				{
-					"name": "constant.character.escape.fanuc-karel",
-					"match": "\\\\."
+					"name": "constant.character.escape.fanuc-karel"
 				}
 			]
 		},
