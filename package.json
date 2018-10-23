@@ -1,30 +1,39 @@
 {
-    "name": "fanuc-karel-syntax",
-    "displayName": "Fanuc-Karel-Syntax",
-    "description": "Fanuc Karel (.kl) Syntax Support",
-    "version": "0.0.1",
+    "name": "karel-syntax",
+    "displayName": "KAREL-Language-Support",
+    "description": "Fanuc KAREL Syntax Support",
+    "version": "1.0.0",
     "publisher": "fabi",
     "engines": {
-        "vscode": "^1.21.0"
+        "vscode": "^1.23.0"
     },
     "categories": [
-        "Languages"
+        "Programming Languages"
     ],
     "contributes": {
         "languages": [{
-            "id": "fanuc-karel",
-            "aliases": ["Fanuc-Karel(.kl)", "fanuc-karel"],
+            "id": "karel",
+            "aliases": ["Karel(.kl)", "karel"],
             "extensions": [".kl", ".klh", ".klt"],
             "configuration": "./language-configuration.json"
         }],
         "grammars": [{
-            "language": "fanuc-karel",
+            "language": "karel",
             "scopeName": "source.kl",
-            "path": "./syntaxes/fanuc-karel.tmLanguage.json"
+            "path": "./syntaxes/karel.tmLanguage.json"
         }],
         "snippets":[{
-                "language": "fanuc-karel",
-                "path": "./snippets/fanuc-karel.json"
-        }]
+                "language": "karel",
+                "path": "./snippets/karel.json"
+        }],
+        "themes": [
+            {
+                "label": "Karel_Theme",
+                "id": "karel",
+                "uiTheme": "vs-dark",
+                "path": "./themes/karel_theme-color-theme.json"
+            }
+        ]
+
     }
 }

@@ -1,0 +1,612 @@
+{
+    "For Loop": {
+        "prefix": "FOR",
+        "body": [
+            "FOR ${1:element} TO ${2:element} DO",
+            "\t$0",
+            "ENDFOR"
+        ],
+        "description": "For Loop"
+    },
+
+    "IF statement": {
+        "prefix": "IF",
+        "body": [
+            "IF ${1:condition} THEN",
+            "\t$0",
+            "ENDIF"
+        ],
+        "description": "IF Statement"
+    },
+
+    "IF ELSE statement": {
+        "prefix": "IFELSE",
+        "body": [
+            "IF ${1:condition} THEN",
+            "\t$2",
+            "ELSE",
+            "\t$3",
+            "ENDIF"
+        ],
+        "description": "IF ELSE Statement"
+    },
+
+    "Select statement": {
+        "prefix": "SELECT",
+        "body": [
+            "SELECT ${1:element} OF",
+            "\tCASE(${2:element}):",
+            "\t$3",
+            "\tELSE:",
+            "\t$4",
+            "ENDSELECT",
+            "$0"
+        ],
+        "description": "SELECT Statement"
+    },
+
+    "While loop": {
+        "prefix": "WHILE",
+        "body": [
+            "WHILE ${1:element} DO",
+            "\t$2",
+            "ENDWHILE"
+        ],
+        "description": "While loop"
+    },
+
+    "Repeat loop": {
+        "prefix": "REPEAT",
+        "body": [
+            "REPEAT",
+            "\t$0",
+            "UNTIL(${1:element})"
+        ],
+        "description": "Repeat until loop"
+    },
+
+    "Condition handlers": {
+        "prefix": "CONDITION",
+        "body": [
+            "CONDITION[${1:1}]:",
+            "\tWHEN ${2:DOUT[1]} DO",
+            "\t\t${0:FOO}",
+            "ENDCONDITION"
+        ],
+        "description": "Condition handlers"
+    },
+
+    "Enable Condition handlers": {
+        "prefix": "ENABLE",
+        "body": [
+            "ENABLE CONDITION[${1:1}]",
+            "$0"
+        ],
+        "description": "Enable Condition handlers"
+    },
+
+    "Disable Condition handlers": {
+        "prefix": "DISABLE",
+        "body": [
+            "DISABLE CONDITION[${1:1}]",
+            "$0"
+        ],
+        "description": "Disable Condition handlers"
+    },
+
+    "Purge Condition handlers": {
+        "prefix": "PURGE",
+        "body": [
+            "PURGE CONDITION[${1:1}]",
+            "$0"
+        ],
+        "description": "Purge Condition handlers"
+    },
+
+    "ROUTINE": {
+        "prefix": "ROUTINE",
+        "body": [
+            "ROUTINE ${1:MyRoutine}",
+            "----------------------------------------------------",
+            "-- Creation date: ${CURRENT_YEAR}.${CURRENT_MONTH}.${CURRENT_DATE}",
+		    "-- Created by: $3",
+		    "----------------------------------------------------",
+		    "-- Function: $4",
+		    "----------------------------------------------------",
+		    "-- Arguments: $5",
+		    "----------------------------------------------------",
+            "-- Return value: $6",
+		    "----------------------------------------------------",
+		    "-- Last modified: ${CURRENT_YEAR}.${CURRENT_MONTH}.${CURRENT_DATE}",
+		    "-- Last modified by: $3",
+            "----------------------------------------------------",
+            "CONST",
+            "TYPE",
+            "VAR",
+            "BEGIN",
+            "\t$0", 
+            "END ${1:MyRoutine}"
+        ],
+        "description": "Routine"
+    },
+
+    "Program": {
+        "prefix": "PROGRAM",
+        "body": [
+            "PROGRAM ${1:MyProgram}",
+            "----------------------------------------------------",
+            "-- Customer standard: $2",
+            "-- Application package: $3",     
+            "----------------------------------------------------",
+            "-- Copyright (c):  FANUC Deutschland GmbH           ",
+            "--                 Bernhäuser Str. 36               ",
+            "--                 73765 Neuhausen auf den Fildern  ",
+            "--                 Germany                          ",
+            "----------------------------------------------------",
+            "-- Creation date: ${CURRENT_YEAR}.${CURRENT_MONTH}.${CURRENT_DATE}",
+            "-- Created by: $4",
+            "----------------------------------------------------",
+            "-- Version: ${5:0.0.0.0 - 00}",
+            "----------------------------------------------------",
+		    "-- Function: $6",          
+            "----------------------------------------------------",
+		    "-- Last modified: ${CURRENT_YEAR}.${CURRENT_MONTH}.${CURRENT_DATE}",
+		    "-- Last modified by: $4                             ",
+            "----------------------------------------------------",
+            "%COMMENT = '$5'",
+            "%SYSTEM",
+            "%ALPHABETIZE",
+            "%NOLOCKGROUP",
+            "%NOPAUSESHFT",
+            "%NOPAUSE = ERROR + COMMAND + TPENABLE",
+            "%NOABORT = ERROR + TPENABLE",
+            "%NOBUSYLAMP",
+            "%INCLUDE KLEVKEYS",
+            "%INCLUDE KLEVKMSK",
+            "%INCLUDE KLEVCCDF",
+            "%INCLUDE KLIOUOP",
+            "%INCLUDE KLIOTYPS",
+            "CONST",
+            "TYPE",
+            "VAR",
+            "----------------------------------------------------",
+            "-- BEGIN ${1:MyProgram}                             ",
+            "----------------------------------------------------",
+            "BEGIN",
+            "\t$0",
+            "END ${1:MyProgram}"
+        ],
+        "description": "Program"
+    },
+
+
+    "Set Var Routine": {
+        "prefix": "SET_VAR",
+        "body": [
+            "SET_VAR(${1:ENTRY}, '${2|*SYSTEM*,PROGRAM_NAME|}', '${3|$SYSTEM_VARIABLE,VARIABLE_NAME|}', ${4:VALUE}, ${5:STATUS})",
+            "$0"
+        ],
+        "description": "SET_VAR Routine"
+    },
+
+
+
+    "Index Routine": {
+        "prefix": "INDEX",
+        "body": [
+            "INDEX(${1:mainString}, ${2:findString})"
+        ],
+        "description": 
+        "INDEX Routine, Return Integer"
+    },
+
+    "Abort task Routine": {
+        "prefix": "ABORT_TASK",
+        "body": [
+            "ABORT_TASK('${1|taskName,*ALL*|}', ${2:forceAbort}, ${3:cancelMotion}, ${4:STATUS})"
+        ],
+        "description": 
+        "ABORT_TASK([in]task_name:STRING, [in]force_sw:BOOLEAN, [in]cancel_mtn_sw:BOOLEAN, [out]status:INTEGER)"
+    },
+
+    "Add dictionary Routine": {
+        "prefix": "ADD_DICT",
+        "body": [
+            "ADD_DICT('${1:file_name}', '${2:dict_name}', ${3|lang_name,dp_japanese,dp_default,dp_english,dp_french,dp_german,dp_spanish|}, ${4:add_option}, ${5:STATUS})"
+        ],
+        "description": 
+        "ADD_DICT(file_name, dict_name, lang_name, add_option, status)"
+    },   
+
+    "Array Len": {
+        "prefix": "ADD_DICT",
+        "body": [
+            "ADD_DICT('${1:file_name}', '${2:dict_name}', ${3|lang_name,dp_japanese,dp_default,dp_english,dp_french,dp_german,dp_spanish|}, ${4:add_option}, ${5:STATUS})"
+        ],
+        "description": 
+        "ADD_DICT(file_name, dict_name, lang_name, add_option, status)"
+    },      
+
+
+    "Array Datatype": {
+        "prefix": "ARRAY",
+        "body": [
+            "ARRAY[${1:size},${2:size}] OF ${3:data_type}",
+            "$0"
+        ],
+        "description": "ARRAY<[size{,size}]> OF data_type"
+    },
+    
+    "CALL_PROG Built-In": {
+        "prefix": "CALL_PROG",
+        "body": [
+            "CALL_PROG('${1:prog_name}', ${2:prog_index})",
+            "$0"
+        ],
+        "description": "CALL_PROG(prog_name, prog_index)"
+    },   
+
+    "CALL_PROGLIN Built-In": {
+        "prefix": "CALL_PROGLIN",
+        "body": [
+            "CALL_PROGLIN('${1:prog_name}', ${2:prog_line}, ${3:prog_index}, ${1:pause_entry})",
+            "$0"
+        ],
+        "description": "CALL_PROGLIN(prog_name, prog_line, prog_index, pause_entry)"
+    }, 
+
+    "CHECK_DICT Built-In": {
+        "prefix": "CHECK_DICT",
+        "body": [
+            "CHECK_DICT('${1:dict_name}', ${2:element_no}, ${3:status})",
+            "$0"
+        ],
+        "description": "CHECK_DICT(dict_name, element_no, status)"
+    }, 
+
+    "CHECK_NAME Built-In": {
+        "prefix": "CHECK_NAME",
+        "body": [
+            "CHECK_NAME(${1:name_spec}, ${2:status})",
+            "$0"
+        ],
+        "description": "CHECK_NAME(name_spec, status)"
+    },
+
+    "CHR Built-In": {
+        "prefix": "CHR",
+        "body": [
+            "CHR (${1:asciiCode})",
+            "$0"
+        ],
+        "description": "CHR (asciiCode)"
+    },   
+
+    
+    "CLEAR Built-In": {
+        "prefix": "CLEAR",
+        "body": [
+            "CLEAR(${1:file_spec}, ${2:status})",
+            "$0"
+        ],
+        "description": "CLEAR(file_spec, status)"
+    },
+
+    
+    "CLOSE FILE Statement": {
+        "prefix": "CLOSE FILE",
+        "body": [
+            "CLOSE FILE {1:file_var}",
+            "$0"
+        ],
+        "description": "CLOSE FILE file_var"
+    },
+
+    "CONNECT TIMER Statement": {
+        "prefix": "CONNECT TIMER",
+        "body": [
+            "CONNECT TIMER TO {1:clock_var}",
+            "$0"
+        ],
+        "description": "CONNECT TIMER TO clock_var"
+    },
+
+    "CURPOS Built-In": {
+        "prefix": "CURPOS",
+        "body": [
+            "CURPOS(${1:axis_limit_mask}, ${2:ovr_trv_mask} ${3|\\, group_no, |})"
+        ],
+        "description": "CURPOS(axis_limit_mask, ovr_trv_mask <,group_no>)"
+    },
+
+    "DELAY Statement": {
+        "prefix": "DELAY",
+        "body": [
+            "DELAY ${1:time_in_ms}"
+        ],
+        "description": "DELAY time_in_ms"
+    },
+
+    "DISCONNECT TIMER Statement": {
+        "prefix": "DISCONNECT TIMER",
+        "body": [
+            "DISCONNECT TIMER ${1:timer_var}"
+        ],
+        "description": "DISCONNECT TIMER timer_var"
+    },
+
+    "DISCTRL_FORM Built_In": {
+        "prefix": "DISCTRL_FORM",
+        "body": [
+            "DISCTRL_FORM('${1:dict_name}', ${2:ele_number}, ${3:value_array}, ${4:inact_array}, ${5:change_array}, ${6|kc_func_key,kc_enter_key,kc_prev_key|}, ${7:def_item}, ${8|ky_undef,ky_select,ky_new_menu,ky_f1,ky_f2,ky_f3,ky_f4,ky_f5,ky_f6,ky_f7,ky_f8,ky_f9,ky_f10|}, ${9:status})"
+        ],
+        "description": "DISCTRL_FORM(dict_name, ele_number, value_array, inact_array, change_array, term_mask, def_item, term_char, status)"
+    },
+
+    "ERR_DATA Built-In": {
+        "prefix": "ERR_DATA",
+        "body": [
+            "ERR_DATA(${1:seq_num}, ${2:error_code}, ${3:error_string}, ${4:cause_code}, ${5:cause_string}, ${6:time_int}, ${7|severity,0,1,2|}, ${9:prog_nam})"
+        ],
+        "description": "ERR_DATA(seq_num, error_code, error_string, cause_code, cause_string, time_int, severity (0:warning, 1:pause, 2:abort), prog_nam)"
+    },
+
+    "ERROR Condition": {
+        "prefix": "ERROR",
+        "body": [
+            "ERROR[${1|errorNumber,*|}]"
+        ],
+        "description": "ERROR[errorNumber], * = all errors"
+    },
+
+    "EXP Built-In": {
+        "prefix": "EXP",
+        "body": [
+            "EXP(${1|errorNumber})"
+        ],
+        "description": "EXP(x) => e^x, x = REAL"
+    },
+
+    "FILE_LIST Built-In": {
+        "prefix": "FILE_LIST",
+        "body": [
+            "FILE_LIST(${1:file_path}, ${2:n_skip}, ${3|format,1,2,3,4|}, ${4:ary_nam}, ${5:n_files}, ${6:status})"
+        ],
+        "description": "FILE_LIST(file_spec, n_skip, format, ary_nam, n_files, status)"
+    },
+
+    "FORCE_SPMENU Built-In": {
+        "prefix": "FORCE_SPMENU",
+        "body": [
+            "FORCE_SPMENU(${1|tp_panel,crt_panel|}, ${2|SPI_TPHINTS,SPI_TPPRGADJ,SPI_TPMIRROR,SPI_TPSHIFT,SPI_TPTSTRUN,SPI_TPMANUAL,SCR_MACMAN,SPI_TPOTREL,SPI_TPALARM,SCR_ALM_ALL,SPI_TPALARM,SCR_ALM_MOT,SPI_TPALARM,SCR_ALM_SYS,SPI_TPALARM,SCR_ALM_APPL,SPI_TPDIGIO,SPI_TPANAIO,SPI_TPGRPIO,SPI_TPROBIO,SPI_TPUOPIO,SPI_TPSOPIO,SPI_TPPLCIO,SPI_TPSETGEN,SPI_TPFRAM,SPI_TPPORT,SPI_TPMMACRO,SCR_MACSETUP,SPI_TPREFPOS,SPI_TPPWORD,SPI_TPHCCOMM,SPI_TPSYRSR,SPI_TPFILS,SPI_TPSTATUS,SCR_AXIS,SPI_TPMEMORY,SPI_TPVERSN,SPI_TPPRGSTS,SPI_TPSFTY,SPI_TPUSER,SPI_TPSELECT,SPI_TPTCH,SPI_TPREGIS,SCR_NUMREG,SPI_SFMPREG,SCR_POSREG,SPI_TPSYSV,SCR_NUMVAR,SPI_TPSYSV,SCR_POSVAR,SPI_TPPOSN,SPI_TPSYSV,SCR_CLOCK,SPI_TPSYSV,SCR_SYSVAR,SPI_TPMASCAL,SPI_TPBRKCTR,SPI_TPAXLM,SPI_CRTKCL,SCR_KCL,SPI_CRTKCL,SCR_CRT,SPI_TPUSER2|}, ${3:screen_no})"
+        ],
+        "description": "FORCE_SPMENU(device_code, spmenu_id, screen_no)"
+    },
+
+    "GET_ATTR_PRG Built-In": {
+        "prefix": "GET_ATTR_PRG",
+        "body": [
+            "GET_ATTR_PRG('${1:program_name}', ${2|AT_PROG_TYPE,AT_PROG_NAME,AT_OWNER,AT_COMMENT,AT_PROG_SIZE,AT_ALLC_SIZE,AT_NUM_LINE,AT_CRE_TIME,AT_MDFY_TIME,AT_SRC_NAME,AT_SRC_VRSN,AT_DEF_GROUP,AT_PROTECT,AT_STORAGE,AT_STK_SIZE,AT_TASK_PRI,AT_DURATION,AT_BUSY_OFF,AT_IGNR_ABRT,AT_IGNR_PAUS,AT_CONTROL|}, ${3:int_value}, ${4:string_value}, ${5:status})"
+        ],
+        "description": "GET_ATTR_PRG(program_name, attr_number, int_value, string_value, status)"
+    },
+
+    "GET_JPOS_REG Built-In": {
+        "prefix": "GET_JPOS_REG",
+        "body": [
+            "GET_JPOS_REG(${1:register_no}, ${2:status} ${3|\\, group_no, |})"
+        ],
+        "description": "GET_JPOS_REG(register_no, status <,group_no>)"
+    },      
+    
+    "GET_JPOS_TPE Built-In": {
+        "prefix": "GET_JPOS_TPE",
+        "body": [
+            "GET_JPOS_TPE(${1:open_id}, ${2:position_no}, ${3:status} ${4|\\, group_no, |})"
+        ],
+        "description": "GET_JPOS_TPE(open_id, position_no, status <, group_no>)"
+    }, 
+
+    "GET_PORT_ASG Built-In": {
+        "prefix": "GET_PORT_ASG",
+        "body": [
+            "GET_PORT_ASG(${1|port_type,io_din,io_dout,io_anin,io_anout,io_tpin,io_tpout,io_gpin,io_gpout,io_uopin,io_uopout,io_iopin,io_iopout,io_flag,io_marker|}, ${2:port_no}, ${3:rack_no}, ${4:slot_no}, ${5:phy_port_type}, ${6:phy_port_no}, ${7:n_ports}, ${8:status})"
+        ],
+        "description": "GET_PORT_ASG(port_type, log_port_no, rack_no, slot_no, phy_port_type, phy_port_no, n_ports, status)"
+    }, 
+
+    "GET_PORT_ATR Built-In": {
+        "prefix": "GET_PORT_ATR",
+        "body": [
+            "GET_PORT_ATR(${1|port_1,port_2,port_3,port_4,port_5|}, ${2|atr_readahd,atr_baud,atr_parity,atr_sbits,atr_dbits,atr_xonoff,atr_eol,atr_modem|}, ${3:atr_value})"
+        ],
+        "description": "GET_PORT_ATR(port_id, atr_type, atr_value)"
+    }, 
+
+    "GET_PORT_CMT Built-In": {
+        "prefix": "GET_PORT_CMT",
+        "body": [
+            "GET_PORT_CMT(${1|port_type,io_din,io_dout,io_anin,io_anout,io_tpin,io_tpout,io_gpin,io_gpout,io_uopin,io_uopout,io_iopin,io_iopout,io_flag,io_marker|}, ${2:port_no}, ${3:comment_str}, ${4:status})"
+        ],
+        "description": "GET_PORT_CMT(port_type, port_no, comment_str, status)"
+    }, 
+
+    "GET_PORT_VAL Built-In": {
+        "prefix": "GET_PORT_VAL",
+        "body": [
+            "GET_PORT_VAL(${1|port_type,io_din,io_dout,io_anin,io_anout,io_tpin,io_tpout,io_gpin,io_gpout,io_uopin,io_uopout,io_iopin,io_iopout,io_flag,io_marker|}, ${2:port_no}, ${3:value}, ${4:status})"
+        ],
+        "description": "GET_PORT_VAL(port_type, port_no, value, status)"
+    },
+
+    "GET_POS_FRM Built-In": {
+        "prefix": "GET_POS_FRM",
+        "body": [
+            "GET_POS_FRM(${1:open_id}, ${2:position_no}, ${3:group_num}, ${4:ufram_no}, ${5:utool_no}, ${6:status})"
+        ],
+        "description": "GET_POS_FRM(open_id, position_no, gnum, ufram_no, utool_no, status)"
+    },    
+
+    "GET_POS_REG Built-In": {
+        "prefix": "GET_POS_REG",
+        "body": [
+            "GET_POS_REG(${1:register_no}, ${2:status} ${3|\\, group_no, |})"
+        ],
+        "description": "GET_POS_REG(register_no, status <,group_no>)"
+    },    
+
+    "GET_REG Built-In": {
+        "prefix": "GET_REG",
+        "body": [
+            "GET_REG(${1:register_no}, ${2:real_flag}, ${3:int_value}, ${4:real_value}, ${5:status})"
+        ],
+        "description": "GET_REG(register_no, real_flag, int_value, real_value, status)"
+    },
+
+    "GET_REG_CMT Built-In": {
+        "prefix": "GET_REG_CMT",
+        "body": [
+            "GET_REG_CMT(${1:register_no}, ${2:comment_string}, ${3:status})"
+        ],
+        "description": "GET_REG_CMT (register_no, comment_string, status)"
+    },    
+
+    "GET_TIME Built-In": {
+        "prefix": "GET_TIME",
+        "body": [
+            "GET_TIME(${1:int_time})"
+        ],
+        "description": "GET_TIME(i)"
+    },  
+
+    "GET_TPE_CMT Built-In": {
+        "prefix": "GET_TPE_CMT",
+        "body": [
+            "GET_TPE_CMT(${1:open_id}, ${1:pos_no}, ${1:comment}, ${1:status})"
+        ],
+        "description": "GET_TPE_CMT(open_id, pos_no, comment, status))"
+    },
+    
+    "GET_TPE_PRM Built-In": {
+        "prefix": "GET_TPE_PRM",
+        "body": [
+            "GET_TPE_PRM(${1:param_no}, ${2:data_type}, ${3:int_value}, ${4:real_value}, ${5:str_value}, ${6:status})"
+        ],
+        "description": "GET_TPE_PRM(param_no, data_type, int_value, real_value, str_value, status)"
+    },  
+
+    "GET_TSK_INFO Built-In": {
+        "prefix": "GET_TSK_INFO",
+        "body": [
+            "GET_TSK_INFO('${1:task_name}', ${2:task_no}, ${3|TSK_HOLDCOND,TSK_LINENUM,TSK_LOCKGRP,TSK_MCTL,TSK_NOABORT,TSK_NOBUSY,TSK_NOPAUSE,TSK_NUMCLDS,TSK_PARENT,TSK_PAUSESFT,TSK_PRIORITY,TSK_PROGNAME,TSK_PROGTYPE,TSK_STATUS,TSK_PROGTYPE|}, ${4:value_int}, ${5:value_str}, ${6:status})"
+        ],
+        "description": "GET_TSK_INFO(task_name, task_no, attribute, value_int, value_str, status)"
+    },  
+
+    "Get Var Routine": {
+        "prefix": "GET_VAR",
+        "body": [
+            "GET_VAR(${1:ENTRY}, '${2|*SYSTEM*,PROGRAM_NAME|}', '${3|$SYSTEM_VARIABLE,VARIABLE_NAME|}', ${4:VALUE}, ${5:STATUS})",
+            "$0"
+        ],
+        "description": "GET_VAR Routine"
+    },
+
+    "KCL Built-In Procedure": {
+        "prefix": "KCL",
+        "body": [
+            "KCL ('${1|command,ABORT ALL,ABORT fctn,RMDIR + dir,COPY FILE fileName + ' to ' + filePath + ' overwrite','RMDIR ' + directoryPath|}', ${2:status})",
+            "$0"
+        ],
+        "description": "KCL (command, status)"
+    },   
+
+    "POST_ERR Built-In": {
+        "prefix": "POST_ERR",
+        "body": [
+            "POST_ERR(${1:error_code}, ${2:parameter}, ${3:cause_code}, ${4|0,1,2|})",
+            "$0"
+        ],
+        "description": "POST_ERR(error_code, parameter, cause_code, severity)"
+    },  
+
+    "PULSE Built-In": {
+        "prefix": "PULSE",
+        "body": [
+            "PULSE DOUT[${1:port_no}] FOR ${2:time_in_ms} ${3|NOWAIT, |}",
+            "$0"
+        ],
+        "description": "PULSE DOUT[port_no] FOR time_in_ms"
+    },
+
+    "READ_DICT Built-In": {
+        "prefix": "READ_DICT",
+        "body": [
+            "READ_DICT('${1:dict_name}', ${2:element_no}, ${3:stringArray}, ${4:first_line}, ${5:last_line}, ${6:status})",
+            "$0"
+        ],
+        "description": "READ_DICT(dict_name, element_no, stringArray, first_line, last_line, status)"
+    },  
+
+    "READ_DICT_V Built-In": {
+        "prefix": "READ_DICT_V",
+        "body": [
+            "READ_DICT_V('${1:dict_name}', ${2:element_no}, ${3:value_array}, ${4:stringArray}, ${5:status})",
+            "$0"
+        ],
+        "description": "READ_DICT_V(dict_name, element_no, value_array, stringArray, status)"
+    },  
+
+    "REMOVE_DICT Built-In": {
+        "prefix": "REMOVE_DICT",
+        "body": [
+            "REMOVE_DICT('${1:dict_name}',  ${2|lang_name,dp_japanese,dp_default,dp_english,dp_french,dp_german,dp_spanish|}, ${3:status})",
+            "$0"
+        ],
+        "description": "REMOVE_DICT(dict_name, lang_name, status)"
+    },  
+
+    "RUN_TASK Built-In": {
+        "prefix": "RUN_TASK",
+        "body": [
+            "RUN_TASK('${1:task_name}', ${2:line_number}, ${3:pause_on_sft}, ${4:tp_motion}, ${5:lock_mask}, ${6:status})",
+            "$0"
+        ],
+        "description": "RUN_TASK (task_name, line_number, pause_on_sft, tp_motion, lock_mask, status)"
+    },  
+
+    "SET_ATTR_PRG Built-In": {
+        "prefix": "SET_ATTR_PRG",
+        "body": [
+            "SET_ATTR_PRG('${1:program_name}', ${2|attr_number,AT_PROG_TYPE,AT_PROG_NAME,AT_OWNER,AT_COMMENT,AT_PROG_SIZE,AT_ALLC_SIZE,AT_NUM_LINE,AT_CRE_TIME,AT_MDFY_TIME,AT_SRC_NAME,AT_SRC_VRSN,AT_DEF_GROUP,AT_PROTECT,AT_STORAGE,TPSTOR_SHOD,AT_STK_SIZE,AT_TASK_PRI,AT_DURATION,AT_BUSY_OFF,AT_IGNR_ABRT,AT_IGNR_PAUS,AT_CONTROL|}, ${3:int_value}, ${4:string_value}, ${5:status})",
+            "$0"
+        ],
+        "description": "SET_ATTR_PRG(program_name, attr_number, int_value, string_value, status)"
+    },  
+
+    "SET_INT_REG Built-In": {
+        "prefix": "SET_INT_REG",
+        "body": [
+            "SET_INT_REG(${1:register_no}, ${2:int_value}, ${3:status})",
+            "$0"
+        ],
+        "description": "SET_INT_REG(register_no, int_value, status)"
+    },
+
+    "SET_PORT_CMT Built-In": {
+        "prefix": "SET_PORT_CMT",
+        "body": [
+            "SET_PORT_CMT(${1|port_type,io_din,io_dout,io_anin,io_anout,io_tpin,io_tpout,io_gpin,io_gpout,io_uopin,io_uopout,io_iopin,io_iopout,io_flag,io_marker|}, ${2:port_no}, ${3:comment_str}, ${4:status})"
+        ],
+        "description": "SET_PORT_CMT(port_type, port_no, comment_str, status)"
+    },
+
+    "COPY_FILE Built-In": {
+        "prefix": "COPY_FILE",
+        "body": [
+            "COPY_FILE('${1|from_file,MC:,UD1:,UT1:,C1:|}', '${2|to_file,MC:,UD1:,UT1:,C1:|}', ${3:overwrite_sw}, ${4:nowait_sw}, ${5:status})"
+        ],
+        "description": "COPY_FILE(from_file, to_file, overwrite_sw, nowait_sw, status)"
+    }
+
+}

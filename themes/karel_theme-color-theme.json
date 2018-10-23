@@ -1,0 +1,95 @@
+{
+	"$schema": "vscode://schemas/color-theme",
+	"name": "Karel Dark+ (default dark)",
+    "include": "./dark_vs.json",
+	"tokenColors": [
+		{
+			"name": "Karel Function",
+			"scope": [
+				"string.regexp.karel",
+			],
+			"settings": {
+				"foreground": "#d83c3c"
+			}
+		},
+		{
+			"name": "Return type",
+			"scope": [
+				"meta.return-type.karel",
+			],
+			"settings": {
+				"foreground": "#C7BD03"
+			}
+		},
+		{
+			"name": "Environments",
+			"scope": [
+				"punctuation.definition.tag.karel",
+			],
+			"settings": {
+				"foreground": "#00A0A0"
+			}
+		},
+		{
+			"name": "Control flow keywords (if, while, repeat...)",
+			"scope": "keyword.control.conditional.karel",
+			"settings": {
+				"foreground": "#0080FF"
+			}
+		},
+		{
+			"name": "System variables",
+			"scope": [
+				"support.other.parenthesis.regexp.karel",
+			],
+			"settings": {
+				"foreground": "#FF8040"
+			}
+		},
+		{
+			"name": "Karel Constants",
+			"scope": [
+				"variable.constants.karel"
+			],
+			"settings": {
+				"foreground": "#C7BD03"
+			}
+		},
+		{
+			"name": "Strings",
+			"scope": [
+				"string.karel"
+			],
+			"settings": {
+				"foreground": "#a53dc5"
+			}
+		},
+		{
+			"name": "Routine, Program, etc",
+			"scope": [
+				"keyword.other.karel"
+			],
+			"settings": {
+				"foreground": "#0080FF"
+			}
+		},
+		{
+            "name": "Operators, digital ports",
+			"scope": [
+				"support.function.karel",
+			],
+			"settings": {
+				"foreground": "#e7dca8"
+			}
+		},
+		{
+            "name": "Fanuc constants",
+			"scope": [
+				"constant.character.escape.karel",
+			],
+			"settings": {
+				"foreground": "#e9a94a"
+			}
+		}
+	]
+}
