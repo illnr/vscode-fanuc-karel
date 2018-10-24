@@ -26,5 +26,14 @@
         ["(", ")"],
         ["\"", "\""],
         ["'", "'"]
-    ]
+    ],
+
+    "folding": {
+        "markers": {
+            "start": "^((ROUTINE|PROGRAM|IF|FOR|SELECT|STRUCTURE|USING) +(\\w)+)|(CONDITION( *\\[{1} *)\\d+( *\\]{1} *:{1}))", 
+            "end": "^((END +(\\w)+ *)|(ENDFOR|ENDIF|ENDSELECT|ENDCONDITION|ENDSTRUCTURE|ENDUSING) *)"
+        },
+        "offSide": true
+    }
+    
 }
