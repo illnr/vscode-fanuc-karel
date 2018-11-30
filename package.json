@@ -2,13 +2,13 @@
     "name": "fanuc-karel-syntax",
     "displayName": "Fanuc-Karel-Syntax",
     "description": "Fanuc Karel (.kl) Syntax Support",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "publisher": "fabi",
     "engines": {
-        "vscode": "^1.21.0"
+        "vscode": "^1.23.0"
     },
     "categories": [
-        "Languages"
+        "Programming Languages"
     ],
     "contributes": {
         "languages": [{
@@ -25,6 +25,14 @@
         "snippets":[{
                 "language": "fanuc-karel",
                 "path": "./snippets/fanuc-karel.json"
-        }]
+        }],
+        "themes": [
+            {
+                "label": "Karel_Theme",
+                "id": "karel",
+                "uiTheme": "vs-dark",
+                "path": "./themes/karel_theme-color-theme.json"
+            }
+        ]
     }
 }
