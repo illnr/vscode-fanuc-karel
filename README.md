@@ -6,11 +6,21 @@ Makes live easier to read karel code in VSCode (#Fanuc #karel #.kl).
 
 Just rudimentary/basic syntax highlighting for (Fanuc) Karel code files (.kl).
 
+## Screenshot
+
+![screenshot of code coloring](screenshot.png)
+
 ## Requirements
 
 None
 
 ## Installation
+
+### Install from Marketplace
+
+Just search for "Fanuc".
+
+### Manual Installation
 
 Just clone this repo into `~/.vscode/extensions` (on Linux/Mac)
 
