@@ -1,6 +1,6 @@
 # fanuc-karel-syntax README
 
-Makes live easier to read KAREL code in VSCode (#Fanuc #karel #.kl).
+Makes life easier to read KAREL code in VSCode (#Fanuc #karel #.kl).
 
 ## Features
 
