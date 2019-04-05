@@ -1,10 +1,13 @@
 # fanuc-karel-syntax README
 
-Makes live easier to read karel code in VSCode (#Fanuc #karel #.kl).
+Makes live easier to read KAREL code in VSCode (#Fanuc #karel #.kl).
 
 ## Features
 
-Just rudimentary/basic syntax highlighting for (Fanuc) Karel code files (.kl).
+Just rudimentary/basic syntax highlighting for:
+- (Fanuc) Karel code files (.kl).
+- CM-files
+- UTX, ETX and FTX files
 
 ## Requirements
 
@@ -36,6 +39,14 @@ see [https://github.com/iBaff/vscode-fanuc-karel](https://github.com/iBaff/vscod
 ## Release Notes
 
 Users appreciate release notes as you update your extension.
+
+### 1.0.0
+
+Added highlighting, snippets, foldings for KAREL and CM-files
+
+Added highlighting for UTX, ETX and FTX files.
+
+Added FANUC-Theme based on VSCode Dark+ theme. 
 
 ### 0.0.1
 
