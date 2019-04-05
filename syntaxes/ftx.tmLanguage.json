@@ -1,0 +1,84 @@
+{
+	"name": "FTX Visual Studio",
+	"scopeName": "source.ftx",
+	"fileType": ["ftx"],
+	"patterns": [
+		{
+			"comment": "FTX Data Types",
+			"match":"(?i)\\b(VAR|TYPE|CONST|ENDSTRUCTURE|STRUCTURE|INTEGER|REAL|BOOLEAN|STRING|ARRAY|BYTE|XYZWPREXT|FILE|XYZWPR|POSITION)\\b",
+			"captures": {
+				"1": { "name": "keyword.datatype.dic" }
+			  }
+		},
+		{
+			"comment": "Karel constructs",
+			"match": "(?i)\\b(\\.form|\\.endform|USING|ENDUSING|DOWNTO|RETURN|IF|THEN|ELSE|ENDIF|SELECT|ENDSELECT|CASE|OF|FROM|EVAL|FROM|IN|WHEN|WITH|WHILE|DO|ENDWHILE|FOR|TO|ENDFOR|WAIT|ENABLE|DISABLE|CONDITION|ENDCONDITION|PURGE|REPEAT|UNTIL|CONNECT|DISCONNECT|TIMER|PULSE|PAUSE)\\b",
+			"captures": {
+				"1": { "name": "keyword.constructs.dic" }
+			  }
+		},
+		{
+			"comment": "Karel operator",
+			"match": ",",
+			"captures": {
+					"1": { "name": "string.regexp.dic" }
+					}
+		},
+		{
+			"comment": "Comment",
+			"match":"(\\*.*)",
+			"captures": {
+					"1": { "name": "keyword.comment.dic"}
+			}
+		},
+		{
+			"comment": "Reversed Word",
+			"match": "(&[a-zA-Z_]*)",
+			"captures": {
+					"1": { "name": "keyword.reversed.dic"}
+			}
+		},
+		{
+			"comment": "Form Structure 1",
+			"match": "(\\.form)",
+			"captures": {
+					"1": { "name": "keyword.forms.dic"}
+			}
+		},
+		{
+			"comment": "Form Structure 2",
+			"match": "(\\.endform)",
+			"captures": {
+					"1": { "name": "keyword.forms.dic"}
+			}
+		},
+		{
+			"comment": "Form Structure 2",
+			"match": "(?i)\\b(unnumber|unclear)\\b",
+			"captures": {
+					"1": { "name": "keyword.forms.dic"}
+			}
+		},
+		{
+			"comment": "String",
+			"match": "(\"([^\"])*\")",
+			"captures": {
+				"1": { "name": "type.string.dic"}
+			}
+		},
+		{
+			"comment": "Constant 1",
+			"match": "(\\$[0-9a-zA-Z\\+_,-]*)",
+			"captures": {
+				"1": { "name": "type.constant.dic"}
+			}
+		},
+		{
+			"comment": "Constant 2",
+			"match": "(@[0-9,]*)",
+			"captures": {
+				"1": { "name": "type.constant.dic"}
+			}
+		}
+    ] 
+}

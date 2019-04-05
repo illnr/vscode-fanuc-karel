@@ -593,6 +593,13 @@
             "COPY_FILE('${1|from_file,MC:,UD1:,UT1:,C1:|}', '${2|to_file,MC:,UD1:,UT1:,C1:|}', ${3:overwrite_sw}, ${4:nowait_sw}, ${5:status})"
         ],
         "description": "COPY_FILE(from_file, to_file, overwrite_sw, nowait_sw, status)"
+    },
+    "SPRUNCMD Built-In": {
+        "prefix": "SPRUNCMD",
+        "body": [
+            "SPRUNCMD('${1:COMMAND}', ${2:status})"
+        ],
+        "description": "SPRUNCMD('COMMAND', status)"
     }
 
 }

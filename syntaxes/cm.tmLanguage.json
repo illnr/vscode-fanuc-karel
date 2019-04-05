@@ -1,0 +1,72 @@
+{
+    "name": "CM Visual Studio",
+    "scopeName": "source.CM",
+	"fileType": ["CM"],
+	"patterns":    [
+		{
+			"comment": "Karel system",
+			"match": "(?i)\\B(\\${1}\\w+)\\b",
+			"captures": {
+                "1": { "name": "system.variable.CM" }
+			  }
+		},
+		{
+			"comment": "Karel program control",
+			"match": "(?i)\\b(PRINT|DELPC|PCLOAD|RUNPC|DELTP|TPLOAD)\\b",
+			"captures": {
+				"1": { "name": "keyword.program.control.CM" }
+			  }
+		},
+		{
+			"comment": "Karel file control",
+			"match": "(?i)\\b(PCVLOAD|TXPLOAD|ASLOAD|PCCLEAR|DELFR|DEL|VRLOAD|VRCLEAR|FRCOPY|COPY|WR_FILE)\\b",
+			"captures": {
+				"1": { "name": "keyword.file.control.CM" }
+			  }
+		},
+		{
+			"comment": "Karel other control",
+			"match": "(?i)\\b(CLRALMH|DELAY|EXIT|IGALBKUP|SPEP_ON|SPEP_OFF|RE_POWER|ABORT|MKDIR|FRSETPR|FRCLRPR)\\b",
+			"captures": {
+				"1": { "name": "keyword.other.control.CM" }
+			  }
+		},
+		{
+			"comment": "KCL Command",
+			"match": "(?i)\\b(SETVAR|SETIOVAL)\\b",
+			"captures": {
+				"1": { "name": "keyword.kcl.command.CM"}
+			}
+		},
+		{
+			"comment": "CM String",
+			"match": "(\"([^\"])*\")",
+			"captures": {
+				"1": { "name": "type.string.CM"}
+			}
+		},
+		{
+			"comment": "CM Comment",
+			"match":"(!.*)$",
+			"captures": {
+				"1": { "name": "type.comment.CM"}
+			}
+		},
+		{
+			"comment": "CM Operator",
+			"match":"(<|<=|=|<>|>=|>|\\[|\\]|\\(|\\)|\\+)",
+			"captures": {
+				"1": { "name": "type.operator.CM"}
+			}
+		},
+		{
+			"comment": "CM @ Operator",
+			"match":"(@.*)$",
+			"captures": {
+				"1": { "name": "type.operator.callfunction.CM"}
+			}
+		}
+    ]
+
+
+}
