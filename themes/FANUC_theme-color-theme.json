@@ -1,0 +1,251 @@
+{
+	"$schema": "vscode://schemas/color-theme",
+	"name": "Karel Dark+ (default dark)",
+    "include": "./dark_vs.json",
+	"tokenColors": [
+		{
+			"name": "Karel Function",
+			"scope": [
+				"string.regexp.karel",
+			],
+			"settings": {
+				"foreground": "#d83c3c"
+			}
+		},
+		{
+			"name": "Return type",
+			"scope": [
+				"meta.return-type.karel",
+			],
+			"settings": {
+				"foreground": "#C7BD03"
+			}
+		},
+		{
+			"name": "Environments",
+			"scope": [
+				"punctuation.definition.tag.karel",
+			],
+			"settings": {
+				"foreground": "#00A0A0"
+			}
+		},
+		{
+			"name": "Control flow keywords (if, while, repeat...)",
+			"scope": "keyword.control.conditional.karel",
+			"settings": {
+				"foreground": "#0080FF"
+			}
+		},
+		{
+			"name": "System variables",
+			"scope": [
+				"support.other.parenthesis.regexp.karel",
+			],
+			"settings": {
+				"foreground": "#FF8040"
+			}
+		},
+		{
+			"name": "Karel Constants",
+			"scope": [
+				"variable.constants.karel"
+			],
+			"settings": {
+				"foreground": "#C7BD03"
+			}
+		},
+		{
+			"name": "Strings",
+			"scope": [
+				"string.karel"
+			],
+			"settings": {
+				"foreground": "#a53dc5"
+			}
+		},
+		{
+			"name": "Routine, Program, etc",
+			"scope": [
+				"keyword.other.karel"
+			],
+			"settings": {
+				"foreground": "#0080FF"
+			}
+		},
+		{
+            "name": "Operators, digital ports",
+			"scope": [
+				"support.function.karel",
+			],
+			"settings": {
+				"foreground": "#e7dca8"
+			}
+		},
+		{
+            "name": "Fanuc constants",
+			"scope": [
+				"constant.character.escape.karel",
+			],
+			"settings": {
+				"foreground": "#e9a94a"
+			}
+		},
+		{
+            "name": "Data Type",
+			"scope": "keyword.datatype.dic",
+			"settings": {
+				"foreground": "#2bb1bb"
+			}
+        },
+        {
+            "name": "Constructs",
+			"scope": "keyword.constructs.dic",
+			"settings": {
+				"foreground": "#a32bbb"
+			}
+		},
+		{
+            "name": "Comment",
+			"scope": "keyword.comment.dic",
+			"settings": {
+				"foreground": "#6A9955"
+			}
+		},
+		{
+            "name": "Reversed Words",
+			"scope": "keyword.reversed.dic",
+			"settings": {
+				"foreground": "#ffffff"
+			}
+		},
+		{
+            "name": "Form Structure",
+			"scope": "keyword.forms.dic",
+			"settings": {
+				"foreground": "#0080FF"
+			}
+		},
+		{
+			"name": "String",
+			"scope": "type.string.dic",
+			"settings": {
+				"foreground": "#a53dc5",
+			}
+		},
+		{
+			"name": "Constant",
+			"scope": "type.constant.dic",
+			"settings": {
+				"foreground": "#a7a7a7", 
+				"fontStyle": "bold"
+			}
+		},
+		{
+			"name": "Control flow keywords (if, while, repeat...)",
+			"scope": "keyword.control.conditional.CM",
+			"settings": {
+				"foreground": "#0080FF"
+			}
+		},
+		{
+			"name": "System variables",
+			"scope": [
+				"system.variable.CM",
+			],
+			"settings": {
+				"foreground": "#ff6d40"
+			}
+		},
+		{
+			"name": "Routine, Program, etc",
+			"scope": [
+				"keyword.other.CM"
+			],
+			"settings": {
+				"foreground": "#00ff9d"
+			}
+		},
+		{
+			"name": "TP File",
+			"scope": [
+				"tp.file.CM"
+			],
+			"settings": {
+				"foreground": "#12fdfd"
+			}
+		},
+		{
+			"name": "Program Control",
+			"scope": [
+				"keyword.program.control.CM"
+			],
+			"settings": {
+				"foreground": "#71a3ff"
+			}
+		},
+		{
+			"name": "File Control",
+			"scope": [
+				"keyword.file.control.CM"
+			],
+			"settings": {
+				"foreground": "#ffae00"
+			}
+		},
+		{
+			"name": "Other Control",
+			"scope": [
+				"keyword.other.control.CM"
+			],
+			"settings": {
+				"foreground": "#ff008c"
+			}
+		},
+		{
+			"name": "KCL Command",
+			"scope": [
+				"keyword.kcl.command.CM"
+			],
+			"settings": {
+				"foreground": "#c8ff00"
+			}
+		},
+		{
+			"name": "CM String",
+			"scope": [
+				"type.string.CM"
+			],
+			"settings": {
+				"foreground": "#ff0000"
+			}
+		},
+		{
+			"name": "CM Comment",
+			"scope": [
+				"type.comment.CM"
+			],
+			"settings": {
+				"foreground": "#6A9955"
+			}
+		},
+		{
+			"name": "CM Operator",
+			"scope": [
+				"type.operator.CM"
+			],
+			"settings": {
+				"foreground": "#fffd71"
+			}
+		},
+		{
+			"name": "CM @ Operator",
+			"scope": [
+				"type.operator.callfunction.CM"
+			],
+			"settings": {
+				"foreground": "#2f70fd"
+			}
+		}
+	]
+}
