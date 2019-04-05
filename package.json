@@ -3,7 +3,7 @@
     "displayName": "KAREL-Language-Support",
     "description": "Fanuc KAREL Syntax Support",
     "version": "1.0.0",
-    "publisher": "andymtorres",
+    "publisher": "fabi/andymtorres",
     "engines": {
         "vscode": "^1.33.0"
     },
