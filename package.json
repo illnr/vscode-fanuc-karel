@@ -2,8 +2,8 @@
     "name": "fanuc-karel-syntax",
     "displayName": "Fanuc-Karel-Syntax",
     "description": "Fanuc Karel (.kl) Syntax Support",
-    "version": "0.0.2",
-    "publisher": "fabi/andymtorres",
+    "version": "0.0.3",
+    "publisher": "fabi",
     "repository": "https://github.com/iBaff/vscode-fanuc-karel",
     "icon": "icon.png",
     "engines": {
