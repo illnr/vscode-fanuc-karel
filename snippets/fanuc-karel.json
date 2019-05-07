@@ -124,7 +124,7 @@
             "TYPE",
             "VAR",
             "BEGIN",
-            "\t$0", 
+            "\t$0",
             "END ${1:MyRoutine}"
         ],
         "description": "Routine"
@@ -140,7 +140,7 @@
             "----------------------------------------------------",
             "-- Version: ${3:0.0.0.0 - 00}",
             "----------------------------------------------------",
-		    "-- Function: $4",          
+		    "-- Function: $4",
             "----------------------------------------------------",
 		    "-- Last modified: ${CURRENT_YEAR}.${CURRENT_MONTH}.${CURRENT_DATE}",
 		    "-- Last modified by: $2                             ",
@@ -182,7 +182,7 @@
         "body": [
             "INDEX(${1:mainString}, ${2:findString})"
         ],
-        "description": 
+        "description":
         "INDEX Routine, Return Integer"
     },
 
@@ -191,7 +191,7 @@
         "body": [
             "ABORT_TASK('${1|taskName,*ALL*|}', ${2:forceAbort}, ${3:cancelMotion}, ${4:STATUS})"
         ],
-        "description": 
+        "description":
         "ABORT_TASK([in]task_name:STRING, [in]force_sw:BOOLEAN, [in]cancel_mtn_sw:BOOLEAN, [out]status:INTEGER)"
     },
 
@@ -200,18 +200,18 @@
         "body": [
             "ADD_DICT('${1:file_name}', '${2:dict_name}', ${3|lang_name,dp_japanese,dp_default,dp_english,dp_french,dp_german,dp_spanish|}, ${4:add_option}, ${5:STATUS})"
         ],
-        "description": 
+        "description":
         "ADD_DICT(file_name, dict_name, lang_name, add_option, status)"
-    },   
+    },
 
     "Array Len": {
         "prefix": "ADD_DICT",
         "body": [
             "ADD_DICT('${1:file_name}', '${2:dict_name}', ${3|lang_name,dp_japanese,dp_default,dp_english,dp_french,dp_german,dp_spanish|}, ${4:add_option}, ${5:STATUS})"
         ],
-        "description": 
+        "description":
         "ADD_DICT(file_name, dict_name, lang_name, add_option, status)"
-    },      
+    },
 
 
     "Array Datatype": {
@@ -222,7 +222,7 @@
         ],
         "description": "ARRAY<[size{,size}]> OF data_type"
     },
-    
+
     "CALL_PROG Built-In": {
         "prefix": "CALL_PROG",
         "body": [
@@ -230,7 +230,7 @@
             "$0"
         ],
         "description": "CALL_PROG(prog_name, prog_index)"
-    },   
+    },
 
     "CALL_PROGLIN Built-In": {
         "prefix": "CALL_PROGLIN",
@@ -239,7 +239,7 @@
             "$0"
         ],
         "description": "CALL_PROGLIN(prog_name, prog_line, prog_index, pause_entry)"
-    }, 
+    },
 
     "CHECK_DICT Built-In": {
         "prefix": "CHECK_DICT",
@@ -248,7 +248,7 @@
             "$0"
         ],
         "description": "CHECK_DICT(dict_name, element_no, status)"
-    }, 
+    },
 
     "CHECK_NAME Built-In": {
         "prefix": "CHECK_NAME",
@@ -266,9 +266,9 @@
             "$0"
         ],
         "description": "CHR (asciiCode)"
-    },   
+    },
 
-    
+
     "CLEAR Built-In": {
         "prefix": "CLEAR",
         "body": [
@@ -278,7 +278,7 @@
         "description": "CLEAR(file_spec, status)"
     },
 
-    
+
     "CLOSE FILE Statement": {
         "prefix": "CLOSE FILE",
         "body": [
@@ -286,6 +286,15 @@
             "$0"
         ],
         "description": "CLOSE FILE file_var"
+    },
+
+    "CLR_POS_REG Built-In": {
+        "prefix": "CLR_POS_REG",
+        "body": [
+            "CLR_POS_REG(${1:register_no}, ${2:group_no}, ${3:status})",
+            "$0"
+        ],
+        "description": "CLR_POS_REG(register_no, group_no, status)"
     },
 
     "CONNECT TIMER Statement": {
@@ -383,15 +392,15 @@
             "GET_JPOS_REG(${1:register_no}, ${2:status} ${3|\\, group_no, |})"
         ],
         "description": "GET_JPOS_REG(register_no, status <,group_no>)"
-    },      
-    
+    },
+
     "GET_JPOS_TPE Built-In": {
         "prefix": "GET_JPOS_TPE",
         "body": [
             "GET_JPOS_TPE(${1:open_id}, ${2:position_no}, ${3:status} ${4|\\, group_no, |})"
         ],
         "description": "GET_JPOS_TPE(open_id, position_no, status <, group_no>)"
-    }, 
+    },
 
     "GET_PORT_ASG Built-In": {
         "prefix": "GET_PORT_ASG",
@@ -399,7 +408,7 @@
             "GET_PORT_ASG(${1|port_type,io_din,io_dout,io_anin,io_anout,io_tpin,io_tpout,io_gpin,io_gpout,io_uopin,io_uopout,io_iopin,io_iopout,io_flag,io_marker|}, ${2:port_no}, ${3:rack_no}, ${4:slot_no}, ${5:phy_port_type}, ${6:phy_port_no}, ${7:n_ports}, ${8:status})"
         ],
         "description": "GET_PORT_ASG(port_type, log_port_no, rack_no, slot_no, phy_port_type, phy_port_no, n_ports, status)"
-    }, 
+    },
 
     "GET_PORT_ATR Built-In": {
         "prefix": "GET_PORT_ATR",
@@ -407,7 +416,7 @@
             "GET_PORT_ATR(${1|port_1,port_2,port_3,port_4,port_5|}, ${2|atr_readahd,atr_baud,atr_parity,atr_sbits,atr_dbits,atr_xonoff,atr_eol,atr_modem|}, ${3:atr_value})"
         ],
         "description": "GET_PORT_ATR(port_id, atr_type, atr_value)"
-    }, 
+    },
 
     "GET_PORT_CMT Built-In": {
         "prefix": "GET_PORT_CMT",
@@ -415,7 +424,7 @@
             "GET_PORT_CMT(${1|port_type,io_din,io_dout,io_anin,io_anout,io_tpin,io_tpout,io_gpin,io_gpout,io_uopin,io_uopout,io_iopin,io_iopout,io_flag,io_marker|}, ${2:port_no}, ${3:comment_str}, ${4:status})"
         ],
         "description": "GET_PORT_CMT(port_type, port_no, comment_str, status)"
-    }, 
+    },
 
     "GET_PORT_VAL Built-In": {
         "prefix": "GET_PORT_VAL",
@@ -431,7 +440,7 @@
             "GET_POS_FRM(${1:open_id}, ${2:position_no}, ${3:group_num}, ${4:ufram_no}, ${5:utool_no}, ${6:status})"
         ],
         "description": "GET_POS_FRM(open_id, position_no, gnum, ufram_no, utool_no, status)"
-    },    
+    },
 
     "GET_POS_REG Built-In": {
         "prefix": "GET_POS_REG",
@@ -439,7 +448,7 @@
             "GET_POS_REG(${1:register_no}, ${2:status} ${3|\\, group_no, |})"
         ],
         "description": "GET_POS_REG(register_no, status <,group_no>)"
-    },    
+    },
 
     "GET_REG Built-In": {
         "prefix": "GET_REG",
@@ -455,7 +464,7 @@
             "GET_REG_CMT(${1:register_no}, ${2:comment_string}, ${3:status})"
         ],
         "description": "GET_REG_CMT (register_no, comment_string, status)"
-    },    
+    },
 
     "GET_TIME Built-In": {
         "prefix": "GET_TIME",
@@ -463,7 +472,7 @@
             "GET_TIME(${1:int_time})"
         ],
         "description": "GET_TIME(i)"
-    },  
+    },
 
     "GET_TPE_CMT Built-In": {
         "prefix": "GET_TPE_CMT",
@@ -472,14 +481,14 @@
         ],
         "description": "GET_TPE_CMT(open_id, pos_no, comment, status))"
     },
-    
+
     "GET_TPE_PRM Built-In": {
         "prefix": "GET_TPE_PRM",
         "body": [
             "GET_TPE_PRM(${1:param_no}, ${2:data_type}, ${3:int_value}, ${4:real_value}, ${5:str_value}, ${6:status})"
         ],
         "description": "GET_TPE_PRM(param_no, data_type, int_value, real_value, str_value, status)"
-    },  
+    },
 
     "GET_TSK_INFO Built-In": {
         "prefix": "GET_TSK_INFO",
@@ -487,7 +496,7 @@
             "GET_TSK_INFO('${1:task_name}', ${2:task_no}, ${3|TSK_HOLDCOND,TSK_LINENUM,TSK_LOCKGRP,TSK_MCTL,TSK_NOABORT,TSK_NOBUSY,TSK_NOPAUSE,TSK_NUMCLDS,TSK_PARENT,TSK_PAUSESFT,TSK_PRIORITY,TSK_PROGNAME,TSK_PROGTYPE,TSK_STATUS,TSK_PROGTYPE|}, ${4:value_int}, ${5:value_str}, ${6:status})"
         ],
         "description": "GET_TSK_INFO(task_name, task_no, attribute, value_int, value_str, status)"
-    },  
+    },
 
     "Get Var Routine": {
         "prefix": "GET_VAR",
@@ -505,7 +514,25 @@
             "$0"
         ],
         "description": "KCL (command, status)"
-    },   
+    },
+
+    "MSG_CONNECT Built-In": {
+        "prefix": "MSG_CONNECT",
+        "body": [
+            "MSG_CONNECT(${1:tag}, ${2:status})",
+            "$0"
+        ],
+        "description": "MSG_CONNECT(tag, status)"
+    },
+
+    "MSG_DISCO Built-In": {
+        "prefix": "MSG_DISCO",
+        "body": [
+            "MSG_DISCO(${1:tag}, ${2:status})",
+            "$0"
+        ],
+        "description": "MSG_DISCO(tag, status) "
+    },
 
     "POST_ERR Built-In": {
         "prefix": "POST_ERR",
@@ -514,7 +541,7 @@
             "$0"
         ],
         "description": "POST_ERR(error_code, parameter, cause_code, severity)"
-    },  
+    },
 
     "PULSE Built-In": {
         "prefix": "PULSE",
@@ -532,7 +559,7 @@
             "$0"
         ],
         "description": "READ_DICT(dict_name, element_no, stringArray, first_line, last_line, status)"
-    },  
+    },
 
     "READ_DICT_V Built-In": {
         "prefix": "READ_DICT_V",
@@ -541,7 +568,7 @@
             "$0"
         ],
         "description": "READ_DICT_V(dict_name, element_no, value_array, stringArray, status)"
-    },  
+    },
 
     "REMOVE_DICT Built-In": {
         "prefix": "REMOVE_DICT",
@@ -550,7 +577,7 @@
             "$0"
         ],
         "description": "REMOVE_DICT(dict_name, lang_name, status)"
-    },  
+    },
 
     "RUN_TASK Built-In": {
         "prefix": "RUN_TASK",
@@ -559,7 +586,7 @@
             "$0"
         ],
         "description": "RUN_TASK (task_name, line_number, pause_on_sft, tp_motion, lock_mask, status)"
-    },  
+    },
 
     "SET_ATTR_PRG Built-In": {
         "prefix": "SET_ATTR_PRG",
@@ -568,7 +595,7 @@
             "$0"
         ],
         "description": "SET_ATTR_PRG(program_name, attr_number, int_value, string_value, status)"
-    },  
+    },
 
     "SET_INT_REG Built-In": {
         "prefix": "SET_INT_REG",
@@ -585,6 +612,15 @@
             "SET_PORT_CMT(${1|port_type,io_din,io_dout,io_anin,io_anout,io_tpin,io_tpout,io_gpin,io_gpout,io_uopin,io_uopout,io_iopin,io_iopout,io_flag,io_marker|}, ${2:port_no}, ${3:comment_str}, ${4:status})"
         ],
         "description": "SET_PORT_CMT(port_type, port_no, comment_str, status)"
+    },
+
+    "SET_REAL_REG Built-In": {
+        "prefix": "SET_REAL_REG",
+        "body": [
+            "SET_REAL_REG(${1:register_no}, ${2:real_value}, ${3:status})",
+            "$0"
+        ],
+        "description": "SET_REAL_REG(register_no, real_value, status) "
     },
 
     "COPY_FILE Built-In": {
