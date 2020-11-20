@@ -1,605 +1,2797 @@
 {
-    "For Loop": {
-        "prefix": "FOR",
-        "body": [
-            "FOR ${1:element} TO ${2:element} DO",
-            "\t$0",
-            "ENDFOR"
-        ],
-        "description": "For Loop"
+    "ABORT Action": {
+      "prefix": "ABORT",
+      "body": [
+        "ABORT"
+      ],
+      "description": "ABORT Action\nIf task execution is running or paused, the ABORT action will abort task execution\n"
     },
-
-    "IF statement": {
-        "prefix": "IF",
-        "body": [
-            "IF ${1:condition} THEN",
-            "\t$0",
-            "ENDIF"
-        ],
-        "description": "IF Statement"
-    },
-
-    "IF ELSE statement": {
-        "prefix": "IFELSE",
-        "body": [
-            "IF ${1:condition} THEN",
-            "\t$2",
-            "ELSE",
-            "\t$3",
-            "ENDIF"
-        ],
-        "description": "IF ELSE Statement"
-    },
-
-    "Select statement": {
-        "prefix": "SELECT",
-        "body": [
-            "SELECT ${1:element} OF",
-            "\tCASE(${2:element}):",
-            "\t$3",
-            "\tELSE:",
-            "\t$4",
-            "ENDSELECT",
-            "$0"
-        ],
-        "description": "SELECT Statement"
-    },
-
-    "While loop": {
-        "prefix": "WHILE",
-        "body": [
-            "WHILE ${1:element} DO",
-            "\t$2",
-            "ENDWHILE"
-        ],
-        "description": "While loop"
-    },
-
-    "Repeat loop": {
-        "prefix": "REPEAT",
-        "body": [
-            "REPEAT",
-            "\t$0",
-            "UNTIL(${1:element})"
-        ],
-        "description": "Repeat until loop"
-    },
-
-    "Condition handlers": {
-        "prefix": "CONDITION",
-        "body": [
-            "CONDITION[${1:1}]:",
-            "\tWHEN ${2:DOUT[1]} DO",
-            "\t\t${0:FOO}",
-            "ENDCONDITION"
-        ],
-        "description": "Condition handlers"
-    },
-
-    "Enable Condition handlers": {
-        "prefix": "ENABLE",
-        "body": [
-            "ENABLE CONDITION[${1:1}]",
-            "$0"
-        ],
-        "description": "Enable Condition handlers"
-    },
-
-    "Disable Condition handlers": {
-        "prefix": "DISABLE",
-        "body": [
-            "DISABLE CONDITION[${1:1}]",
-            "$0"
-        ],
-        "description": "Disable Condition handlers"
-    },
-
-    "Purge Condition handlers": {
-        "prefix": "PURGE",
-        "body": [
-            "PURGE CONDITION[${1:1}]",
-            "$0"
-        ],
-        "description": "Purge Condition handlers"
-    },
-
-    "ROUTINE": {
-        "prefix": "ROUTINE",
-        "body": [
-            "ROUTINE ${1:MyRoutine}",
-            "----------------------------------------------------",
-            "-- Creation date: ${CURRENT_YEAR}.${CURRENT_MONTH}.${CURRENT_DATE}",
-		    "-- Created by: $3",
-		    "----------------------------------------------------",
-		    "-- Function: $4",
-		    "----------------------------------------------------",
-		    "-- Arguments: $5",
-		    "----------------------------------------------------",
-            "-- Return value: $6",
-		    "----------------------------------------------------",
-		    "-- Last modified: ${CURRENT_YEAR}.${CURRENT_MONTH}.${CURRENT_DATE}",
-		    "-- Last modified by: $3",
-            "----------------------------------------------------",
-            "CONST",
-            "TYPE",
-            "VAR",
-            "BEGIN",
-            "\t$0", 
-            "END ${1:MyRoutine}"
-        ],
-        "description": "Routine"
-    },
-
-    "Program": {
-        "prefix": "PROGRAM",
-        "body": [
-            "PROGRAM ${1:MyProgram}",
-            "----------------------------------------------------",
-            "-- Creation date: ${CURRENT_YEAR}.${CURRENT_MONTH}.${CURRENT_DATE}",
-            "-- Created by: $2",
-            "----------------------------------------------------",
-            "-- Version: ${3:0.0.0.0 - 00}",
-            "----------------------------------------------------",
-		    "-- Function: $4",          
-            "----------------------------------------------------",
-		    "-- Last modified: ${CURRENT_YEAR}.${CURRENT_MONTH}.${CURRENT_DATE}",
-		    "-- Last modified by: $2                             ",
-            "----------------------------------------------------",
-            "%COMMENT = '$3'",
-            "%ALPHABETIZE",
-            "%INCLUDE KLEVKEYS",
-            "%INCLUDE KLEVKMSK",
-            "%INCLUDE KLEVCCDF",
-            "%INCLUDE KLIOUOP",
-            "%INCLUDE KLIOTYPS",
-            "CONST",
-            "TYPE",
-            "VAR",
-            "----------------------------------------------------",
-            "-- BEGIN ${1:MyProgram}                             ",
-            "----------------------------------------------------",
-            "BEGIN",
-            "\t$0",
-            "END ${1:MyProgram}"
-        ],
-        "description": "Program"
-    },
-
-
-    "Set Var Routine": {
-        "prefix": "SET_VAR",
-        "body": [
-            "SET_VAR(${1:ENTRY}, '${2|*SYSTEM*,PROGRAM_NAME|}', '${3|$SYSTEM_VARIABLE,VARIABLE_NAME|}', ${4:VALUE}, ${5:STATUS})",
-            "$0"
-        ],
-        "description": "SET_VAR Routine"
-    },
-
-
-
-    "Index Routine": {
-        "prefix": "INDEX",
-        "body": [
-            "INDEX(${1:mainString}, ${2:findString})"
-        ],
-        "description": 
-        "INDEX Routine, Return Integer"
-    },
-
     "Abort task Routine": {
-        "prefix": "ABORT_TASK",
-        "body": [
-            "ABORT_TASK('${1|taskName,*ALL*|}', ${2:forceAbort}, ${3:cancelMotion}, ${4:STATUS})"
-        ],
-        "description": 
-        "ABORT_TASK([in]task_name:STRING, [in]force_sw:BOOLEAN, [in]cancel_mtn_sw:BOOLEAN, [out]status:INTEGER)"
+      "prefix": "ABORT_TASK",
+      "body": [
+          "ABORT_TASK('${1|taskName,*ALL*|}', ${2:forceAbort}, ${3:cancelMotion}, ${4:STATUS})"
+      ],
+      "description": 
+      "ABORT_TASK Built-In Procedure\nInput/Output Parameters:\n[in] task_name :STRING\n[in] force_sw :BOOLEAN\n[in] cancel_mtn_sw :BOOLEAN\n[out] status :INTEGER\n%ENVIRONMENT Group :MULTI\n"
+    },
+
+    "ABS Built-In Function": {
+      "prefix": "ABS",
+      "body": [
+        "ABS(${1:X})"
+      ],
+      "description": "ABS Built-In Function\nFunction Return Type :INTEGER or REAL\nInput/Output Parameters:\n[in] x :INTEGER or REAL expression\n%ENVIRONMENT Group :SYSTEM\n"
+    },
+
+    "ACOS Built-In Function": {
+      "prefix": "ACOS",
+      "body": [
+        "ACOS(${1:X})"
+      ],
+      "description": "ACOS Built-In Function\nFunction Return Type :REAL\nInput/Output Parameters:\n[in] x :REAL\n%ENVIRONMENT Group :SYSTEM\n"
+    },
+
+    "ACT_TBL Built-In Procedure": {
+      "prefix": "ACT_TBL",
+      "body": [
+        "ACT_TBL(${1:action},${2:def_item},${3:table_data},${4:term_char},${5:attach_wind},${6:status})"
+      ],
+      "description": "ACT_TBL Built-In Procedure\nInput/Output Parameters:\n[in,out] action :INTEGER\n[in,out] def_item :INTEGER\n[in,out] table_data :XWORK_T\n[out] term_char :INTEGER\n[out] attach_wind :BOOLEAN\n[out] status :INTEGER\n%ENVIRONMENT Group :UIF\n"
+    },
+
+    "ADD_BYNAMEPC Built-In Procedure": {
+      "prefix": "ADD_BYNAMEPC",
+      "body": [
+        "ADD_BYNAMEPC(${1:dat_buffer},${2:dat_index},${3:prog_name},${4:var_name},${5:status})"
+      ],
+      "description": "ADD_BYNAMEPC Built-In Procedure\nInput/Output Parameters:\n[in] dat_buffer :ARRAY OF BYTE\n[in,out] dat_index :INTEGER\n[in] prog_name :STRING\n[in] var_name :STRING\n[out] status :INTEGER\n%ENVIRONMENT Group :PC\n"
     },
 
     "Add dictionary Routine": {
-        "prefix": "ADD_DICT",
-        "body": [
-            "ADD_DICT('${1:file_name}', '${2:dict_name}', ${3|lang_name,dp_japanese,dp_default,dp_english,dp_french,dp_german,dp_spanish|}, ${4:add_option}, ${5:STATUS})"
-        ],
-        "description": 
-        "ADD_DICT(file_name, dict_name, lang_name, add_option, status)"
-    },   
+      "prefix": "ADD_DICT",
+      "body": [
+          "ADD_DICT('${1:file_name}', '${2:dict_name}', ${3|lang_name,dp_japanese,dp_default,dp_english,dp_french,dp_german,dp_spanish|}, ${4:add_option}, ${5:STATUS})"
+      ],
+      "description": "ADD_DICT Built-In Procedure\nInput/Output Parameters:\n[in] file_name :STRING\n[in] dict_name :STRING\n[in] lang_name :STRING\n[in] add_option :INTEGER\n[out] status :INTEGER\n%ENVIRONMENT Group :PBCORE\n"
+    },
 
-    "Array Len": {
-        "prefix": "ADD_DICT",
-        "body": [
-            "ADD_DICT('${1:file_name}', '${2:dict_name}', ${3|lang_name,dp_japanese,dp_default,dp_english,dp_french,dp_german,dp_spanish|}, ${4:add_option}, ${5:STATUS})"
-        ],
-        "description": 
-        "ADD_DICT(file_name, dict_name, lang_name, add_option, status)"
-    },      
+    "ADD_INTPC Built-In Procedure": {
+      "prefix": "ADD_INTPC",
+      "body": [
+        "ADD_INTPC(${1:dat_buffer},${2:dat_index},${3:number},${4:status})"
+      ],
+      "description": "ADD_INTPC Built-In Procedure\nInput/Output Parameters:\n[in] dat_buffer :ARRAY OF BYTE\n[in,out] dat_index :INTEGER\n[in] number :INTEGER\n[out] status :INTEGER\n%ENVIRONMENT Group :PC\n"
+    },
 
+    "ADD_REALPC Built-In Procedure": {
+      "prefix": "ADD_REALPC",
+      "body": [
+        "ADD_REALPC(${1:dat_buffer},${2:dat_index},${3:number},${4:status})"
+      ],
+      "description": "ADD_REALPC Built-In Procedure\nInput/Output Parameters:\n[in] dat_buffer :ARRAY OF BYTE\n[in,out] dat_index :INTEGER\n[in] number :REAL\n[out] status :INTEGER\n%ENVIRONMENT Group :PC\n"
+    },
+
+    "ADD_STRINGPC Built-In Procedure": {
+      "prefix": "ADD_STRINGPC",
+      "body": [
+        "ADD_STRINGPC(${1:dat_buffer},${2:dat_index},${3:item},${4:status})"
+      ],
+      "description": "ADD_STRINGPC Built-In Procedure\nInput/Output Parameters:\n[in] dat_buffer :ARRAY OF BYTE\n[in,out] dat_index :INTEGER\n[in] item :string\n[out] status :INTEGER\n%ENVIRONMENT Group :PC\n"
+    },
+
+    "APPEND_NODE Built-In Procedure": {
+      "prefix": "APPEND_NODE",
+      "body": [
+        "APPEND_NODE(${1:path_var},${2:status})"
+      ],
+      "description": "APPEND_NODE Built-In Procedure\nInput/Output Parameters:\n[in] path_ var :PATH\n[out] status :INTEGER\n%ENVIRONMENT Group :PBCORE\n"
+    },
+
+    "APPEND_QUEUE Built-In Procedure": {
+      "prefix": "APPEND_QUEUE",
+      "body": [
+        "APPEND_QUEUE(${1:value},${2:queue},${3:queue_data},${4:sequence_no},${5:status})"
+      ],
+      "description": "APPEND_QUEUE Built-In Procedure\nInput/Output Parameters:\n[in] value :INTEGER\n[in,out] queue :QUEUE_TYPE\n[in,out] queue_data :ARRAY OF INTEGER\n[out] sequence_no :INTEGER\n[out] status :INTEGER\n%ENVIRONMENT Group :PBQMGR\n"
+    },
+
+    "APPROACH Built-In Function": {
+      "prefix": "APPROACH",
+      "body": [
+        "APPROACH(${1:posn})"
+      ],
+      "description": "APPROACH Built-In Function\nFunction Return Type :VECTOR\nInput/Output Parameters:\n[in] posn :POSITION\n%ENVIRONMENT Group :VECTR\n"
+    },
 
     "Array Datatype": {
-        "prefix": "ARRAY",
-        "body": [
-            "ARRAY[${1:size},${2:size}] OF ${3:data_type}",
-            "$0"
-        ],
-        "description": "ARRAY<[size{,size}]> OF data_type"
+      "prefix": "ARRAY",
+      "body": [
+          "ARRAY[${1:size},${2:size}] OF ${3:data_type}",
+          "$0"
+      ],
+      "description": "ARRAY<[size{,size}]> OF data_type"
+      },
+
+    "ARRAY_LEN Built-In Function": {
+      "prefix": "ARRAY_LEN",
+      "body": [
+          "ARRAY_LEN(${1:ary_var})"
+      ],
+      "description": "ARRAY_LEN Built-In Function\nFunction Return Type :INTEGER\nInput/Output Parameters:\n[in] ary_var :ARRAY\n%ENVIRONMENT Group :SYSTEM\n"
+    },
+
+    "ASIN Built-In Function": {
+      "prefix": "ASIN",
+      "body": [
+        "ASIN(${1:X})"
+      ],
+      "description": "ASIN Built-In Function\nFunction Return Type :REAL\nInput/Output Parameters:\n[in] x :REAL\n%ENVIRONMENT Group :SYSTEM\n"
+    },
+
+    "ATAN2 Built-In Function": {
+      "prefix": "ATAN2",
+      "body": [
+        "ATAN2(${1:X1},${2:Y1})"
+      ],
+      "description": "ATAN2 Built-In Function\nFunction Return Type :REAL\nInput/Output Parameters:\n[in] x1 :REAL\n[in] y1 :REAL\n%ENVIRONMENT Group :SYSTEM\n"
+    },
+
+    "ATT_WINDOW_D Built-In Procedure": {
+      "prefix": "ATT_WINDOW_D",
+      "body": [
+        "ATT_WINDOW_D(${1:window_name},${2:disp_dev_nam},${3:row},${4:col},${5:screen_name},${6:status})"
+      ],
+      "description": "ATT_WINDOW_D Built-In Procedure\nInput/Output Parameters:\n[in] window_name :STRING\n[in] disp_dev_nam :STRING\n[in] row :INTEGER\n[in] col :INTEGER\n[out] screen_name :STRING\n[out] status :INTEGER\n%ENVIRONMENT Group :PBCORE\n"
+    },
+
+    "ATT_WINDOW_S Built-In Procedure": {
+      "prefix": "ATT_WINDOW_S",
+      "body": [
+        "ATT_WINDOW_S(${1:window_name},${2:screen_name},${3:row},${4:col},${5:status})"
+      ],
+      "description": "ATT_WINDOW_S Built-In Procedure\nInput/Output Parameters:\n[in] window_name :STRING\n[in] screen_name :STRING\n[in] row :INTEGER\n[in] col :INTEGER\n[out] status :INTEGER\n%ENVIRONMENT Group :PBCORE\n"
+    },
+
+    "AVL_POS_NUM Built-In Procedure": {
+      "prefix": "AVL_POS_NUM",
+      "body": [
+        "AVL_POS_NUM(${1:open_id},${2:pos_num},${3:status})"
+      ],
+      "description": "AVL_POS_NUM Built-In Procedure\nInput/Output Parameters:\n[in] open_id :INTEGER\n[out] pos_num : INTEGER\n[out] status : INTEGER\n%ENVIRONMENT Group :TPE\n"
+    },
+
+    "BYNAME Built-In Function": {
+      "prefix": "BYNAME",
+      "body": [
+        "BYNAME(${1:prog_name},${2:var_name},${3:entry})"
+      ],
+      "description": "BYNAME Built-In Function\nInput/Output Parameters:\n[in] prog_name :STRING\n[in] var_name :STRING\n[in,out] entry :INTEGER\n%ENVIRONMENT Group :system\n"
+    },
+
+    "BYTES_AHEAD Built-In Procedure": {
+      "prefix": "BYTES_AHEAD",
+      "body": [
+        "BYTES_AHEAD(${1:file_id},${2:n_bytes},${3:status})"
+      ],
+      "description": "BYTES_AHEAD Built-In Procedure\nInput/Output Parameters:\n[in] file_id :FILE\n[out] n_bytes :INTEGER\n[out] status :INTEGER\n%ENVIRONMENT Group :FLBT\n"
+    },
+
+    "BYTES_LEFT Built-In Function": {
+      "prefix": "BYTES_LEFT",
+      "body": [
+        "BYTES_LEFT(${1:file_id})"
+      ],
+      "description": "BYTES_LEFT Built-In Function\nFunction Return Type :INTEGER\nInput/Output Parameters:\n[in] file_id :FILE\n%ENVIRONMENT Group :FLBT\n"
+    },
+
+    "CALL_PROG Built-In": {
+      "prefix": "CALL_PROG",
+      "body": [
+          "CALL_PROG('${1:prog_name}', ${2:prog_index})",
+          "$0"
+      ],
+      "description": "CALL_PROG Built-In Procedure\nInput/Output Parameters:\n[in] prog_name :STRING\n[in,out] prog_index :INTEGER\n%ENVIRONMENT Group :PBCORE\n"
     },
     
-    "CALL_PROG Built-In": {
-        "prefix": "CALL_PROG",
-        "body": [
-            "CALL_PROG('${1:prog_name}', ${2:prog_index})",
-            "$0"
-        ],
-        "description": "CALL_PROG(prog_name, prog_index)"
-    },   
-
     "CALL_PROGLIN Built-In": {
-        "prefix": "CALL_PROGLIN",
-        "body": [
-            "CALL_PROGLIN('${1:prog_name}', ${2:prog_line}, ${3:prog_index}, ${1:pause_entry})",
-            "$0"
-        ],
-        "description": "CALL_PROGLIN(prog_name, prog_line, prog_index, pause_entry)"
-    }, 
-
+      "prefix": "CALL_PROGLIN",
+      "body": [
+          "CALL_PROGLIN('${1:prog_name}', ${2:prog_line}, ${3:prog_index}, ${1:pause_entry})",
+          "$0"
+      ],
+      "description": "CALL_PROGLIN Built-In Procedure\nInput/Output Parameters:\n[in] prog_name :STRING\n[in] prog_line :INTEGER\n[in,out] prog_index :INTEGER\n[in] pause_entry :BOOLEAN\n%ENVIRONMENT Group :BYNAM\n"
+    },
+    
     "CHECK_DICT Built-In": {
-        "prefix": "CHECK_DICT",
-        "body": [
-            "CHECK_DICT('${1:dict_name}', ${2:element_no}, ${3:status})",
-            "$0"
-        ],
-        "description": "CHECK_DICT(dict_name, element_no, status)"
-    }, 
+      "prefix": "CHECK_DICT",
+      "body": [
+          "CHECK_DICT('${1:dict_name}', ${2:element_no}, ${3:status})",
+          "$0"
+      ],
+      "description": "CHECK_DICT Built-In Procedure\nInput/Output Parameters:\n[in] dict_name :STRING\n[in] element_no :STRING\n[out] status :INTEGER\n%ENVIRONMENT Group :UIF\n"
+    },
+
+    "CHECK_EPOS Built-In Procedure": {
+      "prefix": "CHECK_EPOS",
+      "body": [
+      "CHECK_EPOS(${1:eposn},${2:uframe},${3:utool},${4:status},${5:<group_no>})"
+      ],
+      "description": "CHECK_EPOS Built-In Procedure\nInput/Output Parameters:\n[in] eposn :XYZWPREXT\n[in] uframe :POSITION\n[in] utool :POSITION\n[out] status :INTEGER\n[in] group_no :INTEGER\n%ENVIRONMENT Group :PBCORE\n"
+    },
 
     "CHECK_NAME Built-In": {
-        "prefix": "CHECK_NAME",
-        "body": [
-            "CHECK_NAME(${1:name_spec}, ${2:status})",
-            "$0"
-        ],
-        "description": "CHECK_NAME(name_spec, status)"
+      "prefix": "CHECK_NAME",
+      "body": [
+          "CHECK_NAME(${1:name_spec}, ${2:status})",
+          "$0"
+      ],
+      "description": "CHECK_NAME Built-In Procedure\nInput/Output Parameters:\n[in] name_spec :STRING\n[out] status :INTEGER\n%ENVIRONMENT Group :FDEV\n"
     },
 
     "CHR Built-In": {
-        "prefix": "CHR",
-        "body": [
-            "CHR (${1:asciiCode})",
-            "$0"
-        ],
-        "description": "CHR (asciiCode)"
-    },   
-
-    
-    "CLEAR Built-In": {
-        "prefix": "CLEAR",
-        "body": [
-            "CLEAR(${1:file_spec}, ${2:status})",
-            "$0"
-        ],
-        "description": "CLEAR(file_spec, status)"
+      "prefix": "CHR",
+      "body": [
+          "CHR (${1:asciiCode})",
+          "$0"
+      ],
+      "description": "CHR Built-In Function\n[in] asciiCode :INTEGER\n"
     },
 
-    
+    "CLEAR Built-In": {
+      "prefix": "CLEAR",
+      "body": [
+          "CLEAR(${1:file_spec}, ${2:status})",
+          "$0"
+      ],
+      "description": "CLEAR Built-In Procedure\nInput/Output Parameters:\n[in] file_spec :STRING\n[out] status :INTEGER\n%ENVIRONMENT Group :PBCORE\n"
+    },
+
     "CLOSE FILE Statement": {
-        "prefix": "CLOSE FILE",
-        "body": [
-            "CLOSE FILE {1:file_var}",
-            "$0"
-        ],
-        "description": "CLOSE FILE file_var"
+      "prefix": "CLOSE FILE",
+      "body": [
+          "CLOSE FILE {1:file_var}",
+          "$0"
+      ],
+      "description": "CLOSE FILE file_var"
+    },
+
+    "CLEAR_SEMA Built-In Procedure": {
+      "prefix": "CLEAR_SEMA",
+      "body": [
+        "CLEAR_SEMA(${1:semaphore_no})"
+      ],
+      "description": "CLEAR_SEMA Built-In Procedure\nInput/Output Parameters:\n[in] semaphore_no :INTEGER\n%ENVIRONMENT Group :MULTI\n"
+    },
+
+    "CLOSE HAND Statement": {
+      "prefix": "CLOSE HAND",
+      "body": [
+        "CLOSE HAND${1:hand_num}"
+      ],
+      "description": "CLOSE HAND Statement\nhand_num :an INTEGER expression\n"
+    },
+
+    "CLOSE_TPE Built-In Procedure": {
+      "prefix": "CLOSE_TPE",
+      "body": [
+        "CLOSE_TPE(${1:open_id},${2:status})"
+      ],
+      "description": "CLOSE_TPE Built-In Procedure\nInput/Output Parameters:\n[in] open_id :INTEGER\n[out] status :INTEGER\n%ENVIRONMENT Group :PBCORE\n"
+    },
+
+    "CLR_IO_STAT Built-In Procedure": {
+      "prefix": "CLR_IO_STAT",
+      "body": [
+        "CLR_IO_STAT(${1:file_id})"
+      ],
+      "description": "CLR_IO_STAT Built-In Procedure\nInput/Output Parameters:\n[in] file_id :FILE\n%ENVIRONMENT Group :PBCORE\n"
+    },
+
+    "CLR_PORT_SIM Built-In Procedure": {
+      "prefix": "CLR_PORT_SIM",
+      "body": [
+        "CLR_PORT_SIM(${1:port_type},${2:port_no},${3:status})"
+      ],
+      "description": "CLR_PORT_SIM Built-In Procedure\nInput/Output Parameters:\n[in] port_type :INTEGER\n[in] port_no :INTEGER\n[out] status :INTEGER\n%ENVIRONMENT Group :iosetup\n"
+    },
+
+    "CLR_POS_REG Built-In Procedure": {
+      "prefix": "CLR_POS_REG",
+      "body": [
+        "CLR_POS_REG(${1:register_no},${2:group_no},${3:status})"
+      ],
+      "description": "CLR_POS_REG Built-In Procedure\nInput/Output Parameters:\n[in] register_no :INTEGER\n[in] group_no :INTEGER\n[out] status :INTEGER\n%ENVIRONMENT Group :REGOPE\n"
+    },
+
+    "CNC_DYN_DISB Built-In Procedure": {
+      "prefix": "CNC_DYN_DISB",
+      "body": [
+        "CNC_DYN_DISB(${1:b_var},'${2:window_name}',${3:status})"
+      ],
+      "description": "CNC_DYN_DISB Built-In Procedure\nInput/Output Parameters:\n[in] b_var :BOOLEAN\n[in] window_name :STRING\n[out] status :INTEGER\n%ENVIRONMENT Group :UIF\n"
+    },
+
+    "CNC_DYN_DISE Built-In Procedure": {
+      "prefix": "CNC_DYN_DISE",
+      "body": [
+        "CNC_DYN_DISE(${1:e_var},'${2:window_name}',${3:status})"
+      ],
+      "description": "CNC_DYN_DISE Built-In Procedure\nInput/Output Parameters:\n[in] e_var :BOOLEAN\n[in] window_name :STRING\n[out] status :INTEGER\n%ENVIRONMENT Group :UIF\n"
+    },
+
+    "CNC_DYN_DISI Built-In Procedure": {
+      "prefix": "CNC_DYN_DISI",
+      "body": [
+        "CNC_DYN_DISI(${1:int_var},'${2:window_name}',${3:status})"
+      ],
+      "description": "CNC_DYN_DISI Built-In Procedure\nInput/Output Parameters:\n[in] int_var :BOOLEAN\n[in] window_name :STRING\n[out] status :INTEGER\n%ENVIRONMENT Group :UIF\n"
+    },
+
+    "CNC_DYN_DISP Built-In Procedure": {
+      "prefix": "CNC_DYN_DISP",
+      "body": [
+        "CNC_DYN_DISP(${1:port_type},${2:port_no},'${3:window_name}',${4:status})"
+      ],
+      "description": "CNC_DYN_DISP Built-In Procedure\nInput/Output Parameters:\n[in] port_type :INTEGER\n[in] port_no :INTEGER\n[in] window_name :STRING\n[out] status :INTEGER\n%ENVIRONMENT Group :UIF\n"
+    },
+
+    "CNC_DYN_DISR Built-In Procedure": {
+      "prefix": "CNC_DYN_DISR",
+      "body": [
+        "CNC_DYN_DISR(${1:real_var},'${2:window_name}',${3:status})"
+      ],
+      "description": "CNC_DYN_DISR Built-In Procedure\nInput/Output Parameters:\n[in] real_var :REAL\n[in] window_name :STRING\n[out] status :INTEGER\n%ENVIRONMENT Group :UIF\n"
+    },
+
+    "CNC_DYN_DISS Built-In Procedure": {
+      "prefix": "CNC_DYN_DISS",
+      "body": [
+        "CNC_DYN_DISS('${1:str_var}',${2:window_name},${3:status})"
+      ],
+      "description": "CNC_DYN_DISS Built-In Procedure\nInput/Output Parameters:\n[in] str_var :STRING\n[in] window_name :STRING\n[out] status :INTEGER\n%ENVIRONMENT Group :UIF\n"
+    },
+
+    "CNCL_STP_MTN Built-In Procedure": {
+      "prefix": "CNCL_STP_MTN",
+      "body": [
+        "CNCL_STP_MTN"
+      ],
+      "description": "CNCL_STP_MTN Built-In Procedure\n%ENVIRONMENT Group :motn\n"
+    },
+
+    "CNV_CNF_STRG Built-In Procedure": {
+      "prefix": "CNV_CNF_STRG",
+      "body": [
+        "CNV_CNF_STRG(${1:source},'${2:target}',${3:<group_no>})"
+      ],
+      "description": "CNV_CNF_STRG Built-In Procedure\nInput/Output Parameters:\n[in] source :CONFIG\n[out] target :STRING\n[in] group_no :INTEGER\n"
+    },
+
+    "CNV_CONF_STR Built-In Procedure": {
+      "prefix": "CNV_CONF_STR",
+      "body": [
+        "CNV_CONF_STR(${1:source},'${2:target}')"
+      ],
+      "description": "CNV_CONF_STR Built-In Procedure\nInput/Output Parameters:\n[in] source :CONFIG\n[out] target :STRING\n%ENVIRONMENT Group :STRNG\n"
+    },
+
+    "CNV_INT_STR Built-In Procedure": {
+      "prefix": "CNV_INT_STR",
+      "body": [
+        "CNV_INT_STR(${1:source},${2:length},${3:base},'${4:target}')"
+      ],
+      "description": "CNV_INT_STR Built-In Procedure\nInput/Output Parameters:\n[in] source :INTEGER expression\n[in] length :INTEGER expression\n[in] base :INTEGER expression\n[out] target :STRING expression\n%ENVIRONMENT Group :PBCORE\n"
+    },
+
+    "CNV_JPOS_REL Built-In Procedure": {
+      "prefix": "CNV_JPOS_REL",
+      "body": [
+        "CNV_INT_STR(${1:jointpos},${2:real_array},${3:status})"
+      ],
+      "description": "CNV_JPOS_REL Built-In Procedure\nInput/Output Parameters:\n[in] joint_pos :JOINTPOS\n[out] real_array :ARRAY [num_joints] OF REAL\n[out] status :INTEGER\n%ENVIRONMENT Group :SYSTEM\n"
+    },
+
+    "CNV_REAL_STR Built-In Procedure": {
+      "prefix": "CNV_REAL_STR",
+      "body": [
+        "CNV_REAL_STR(${1:source},${2:length},${3:num_digits},'${4:target}')"
+      ],
+      "description": "CNV_REAL_STR Built-In Procedure\nInput/Output Parameters:\n[in] source :REAL expression\n[in] length :INTEGER expression\n[in] num_digits :INTEGER expression\n[out] target :STRING\n%ENVIRONMENT Group :STRNG\n"
+    },
+
+    "CNV_REL_JPOS Built-In Procedure": {
+      "prefix": "CNV_REL_JPOS",
+      "body": [
+        "CNV_REL_JPOS(${1:real_array},${2:joint_pos},${3:status})"
+      ],
+      "description": "CNV_REL_JPOS Built-In Procedure\nInput/Output Parameters:\n[in] real_array :ARRAY [num_joints] OF REAL\n[out] joint_pos :JOINTPOS\n[out] status :INTEGER\n%ENVIRONMENT Group :SYSTEM\n"
+    },
+
+    "CNV_STR_CONF Built-In Procedure": {
+      "prefix": "CNV_STR_CONF",
+      "body": [
+        "CNV_STR_CONF('${1:source}',${2:target},${3:status})"
+      ],
+      "description": "CNV_STR_CONF Built-In Procedure\nInput/Output Parameters:\n[in] source :STRING\n[out] target :CONFIG\n[out] status :INTEGER\n%ENVIRONMENT Group :STRNG\n"
+    },
+
+    "CNV_STR_INT Built-In Procedure": {
+      "prefix": "CNV_STR_INT",
+      "body": [
+        "CNV_STR_INT('${1:source}',${2:target})"
+      ],
+      "description": "CNV_STR_INT Built-In Procedure\nInput/Output Parameters:\n[in] source :STRING\n[out] target :INTEGER\n%ENVIRONMENT Group :PBCORE\n"
+    },
+
+    "CNV_STR_REAL Built-In Procedure": {
+      "prefix": "CNV_STR_REAL",
+      "body": [
+        "CNV_STR_REAL('${1:source}',${2:target})"
+      ],
+      "description": "CNV_STR_REAL Built-In Procedure\nInput/Output Parameters:\n[in] source :STRING\n[out] target :REAL\n%ENVIRONMENT Group :PBCORE\n"
+    },
+
+    "CNV_STR_TIME Built-In Procedure": {
+      "prefix": "CNV_STR_TIME",
+      "body": [
+        "CNV_STR_TIME('${1:source}',${2:target})"
+      ],
+      "description": "CNV_STR_TIME Built-In Procedure\nInput/Output Parameters:\n[in] source :STRING\n[out] target :INTEGER\n%ENVIRONMENT Group :PBCORE\n"
+    },
+
+    "CNV_TIME_STR Built-In Procedure": {
+      "prefix": "CNV_TIME_STR",
+      "body": [
+        "CNV_TIME_STR(${1:source},'${2:target}')"
+      ],
+      "description": "CNV_TIME_STR Built-In Procedure\nInput/Output Parameters:\n[in] source :INTEGER\n[out] target :STRING\n%ENVIRONMENT Group :PBCORE\n"
+    },
+
+    "COMPARE_FILE Built-in Procedure": {
+      "prefix": "COMPARE_FILE",
+      "body": [
+        "COMPARE_FILE('${1:filea}','${2:fileb}',${3:result_file},${4:ascii_flag},${5:diff_count},${6:status})"
+      ],
+      "description": "COMPARE_FILE Built-in Procedure\nInput/Output Parameters:\n[in] filea :STRING\n[in] fileb :STRING\n[out] result_file :FILE\n[in] ascii_flag:BOOLEAN\n[out] diff_count :INTEGER\n[out] status :INTEGER\n%ENVIRONMENT Group :FDEV\n"
+    },
+
+    "Condition handlers": {
+      "prefix": "CONDITION",
+      "body": [
+          "CONDITION[${1:1}]:",
+          "\tWHEN ${2:DOUT[1]} DO",
+          "\t\t${0:FOO}",
+          "ENDCONDITION"
+      ],
+      "description": "Condition handlers"
     },
 
     "CONNECT TIMER Statement": {
-        "prefix": "CONNECT TIMER",
-        "body": [
-            "CONNECT TIMER TO {1:clock_var}",
-            "$0"
-        ],
-        "description": "CONNECT TIMER TO clock_var"
+      "prefix": "CONNECT TIMER",
+      "body": [
+        "CONNECT TIMER TO ${1:clock_var}",
+        "$0"
+      ],
+      "description": "CONNECT TIMER TO clock_var"
     },
 
-    "CURPOS Built-In": {
-        "prefix": "CURPOS",
-        "body": [
-            "CURPOS(${1:axis_limit_mask}, ${2:ovr_trv_mask} ${3|\\, group_no, |})"
-        ],
-        "description": "CURPOS(axis_limit_mask, ovr_trv_mask <,group_no>)"
-    },
-
-    "DELAY Statement": {
-        "prefix": "DELAY",
-        "body": [
-            "DELAY ${1:time_in_ms}"
-        ],
-        "description": "DELAY time_in_ms"
-    },
-
-    "DISCONNECT TIMER Statement": {
-        "prefix": "DISCONNECT TIMER",
-        "body": [
-            "DISCONNECT TIMER ${1:timer_var}"
-        ],
-        "description": "DISCONNECT TIMER timer_var"
-    },
-
-    "DISCTRL_FORM Built_In": {
-        "prefix": "DISCTRL_FORM",
-        "body": [
-            "DISCTRL_FORM('${1:dict_name}', ${2:ele_number}, ${3:value_array}, ${4:inact_array}, ${5:change_array}, ${6|kc_func_key,kc_enter_key,kc_prev_key|}, ${7:def_item}, ${8|ky_undef,ky_select,ky_new_menu,ky_f1,ky_f2,ky_f3,ky_f4,ky_f5,ky_f6,ky_f7,ky_f8,ky_f9,ky_f10|}, ${9:status})"
-        ],
-        "description": "DISCTRL_FORM(dict_name, ele_number, value_array, inact_array, change_array, term_mask, def_item, term_char, status)"
-    },
-
-    "ERR_DATA Built-In": {
-        "prefix": "ERR_DATA",
-        "body": [
-            "ERR_DATA(${1:seq_num}, ${2:error_code}, ${3:error_string}, ${4:cause_code}, ${5:cause_string}, ${6:time_int}, ${7|severity,0,1,2|}, ${9:prog_nam})"
-        ],
-        "description": "ERR_DATA(seq_num, error_code, error_string, cause_code, cause_string, time_int, severity (0:warning, 1:pause, 2:abort), prog_nam)"
-    },
-
-    "ERROR Condition": {
-        "prefix": "ERROR",
-        "body": [
-            "ERROR[${1|errorNumber,*|}]"
-        ],
-        "description": "ERROR[errorNumber], * = all errors"
-    },
-
-    "EXP Built-In": {
-        "prefix": "EXP",
-        "body": [
-            "EXP(${1|errorNumber})"
-        ],
-        "description": "EXP(x) => e^x, x = REAL"
-    },
-
-    "FILE_LIST Built-In": {
-        "prefix": "FILE_LIST",
-        "body": [
-            "FILE_LIST(${1:file_path}, ${2:n_skip}, ${3|format,1,2,3,4|}, ${4:ary_nam}, ${5:n_files}, ${6:status})"
-        ],
-        "description": "FILE_LIST(file_spec, n_skip, format, ary_nam, n_files, status)"
-    },
-
-    "FORCE_SPMENU Built-In": {
-        "prefix": "FORCE_SPMENU",
-        "body": [
-            "FORCE_SPMENU(${1|tp_panel,crt_panel|}, ${2|SPI_TPHINTS,SPI_TPPRGADJ,SPI_TPMIRROR,SPI_TPSHIFT,SPI_TPTSTRUN,SPI_TPMANUAL,SCR_MACMAN,SPI_TPOTREL,SPI_TPALARM,SCR_ALM_ALL,SPI_TPALARM,SCR_ALM_MOT,SPI_TPALARM,SCR_ALM_SYS,SPI_TPALARM,SCR_ALM_APPL,SPI_TPDIGIO,SPI_TPANAIO,SPI_TPGRPIO,SPI_TPROBIO,SPI_TPUOPIO,SPI_TPSOPIO,SPI_TPPLCIO,SPI_TPSETGEN,SPI_TPFRAM,SPI_TPPORT,SPI_TPMMACRO,SCR_MACSETUP,SPI_TPREFPOS,SPI_TPPWORD,SPI_TPHCCOMM,SPI_TPSYRSR,SPI_TPFILS,SPI_TPSTATUS,SCR_AXIS,SPI_TPMEMORY,SPI_TPVERSN,SPI_TPPRGSTS,SPI_TPSFTY,SPI_TPUSER,SPI_TPSELECT,SPI_TPTCH,SPI_TPREGIS,SCR_NUMREG,SPI_SFMPREG,SCR_POSREG,SPI_TPSYSV,SCR_NUMVAR,SPI_TPSYSV,SCR_POSVAR,SPI_TPPOSN,SPI_TPSYSV,SCR_CLOCK,SPI_TPSYSV,SCR_SYSVAR,SPI_TPMASCAL,SPI_TPBRKCTR,SPI_TPAXLM,SPI_CRTKCL,SCR_KCL,SPI_CRTKCL,SCR_CRT,SPI_TPUSER2|}, ${3:screen_no})"
-        ],
-        "description": "FORCE_SPMENU(device_code, spmenu_id, screen_no)"
-    },
-
-    "GET_ATTR_PRG Built-In": {
-        "prefix": "GET_ATTR_PRG",
-        "body": [
-            "GET_ATTR_PRG('${1:program_name}', ${2|AT_PROG_TYPE,AT_PROG_NAME,AT_OWNER,AT_COMMENT,AT_PROG_SIZE,AT_ALLC_SIZE,AT_NUM_LINE,AT_CRE_TIME,AT_MDFY_TIME,AT_SRC_NAME,AT_SRC_VRSN,AT_DEF_GROUP,AT_PROTECT,AT_STORAGE,AT_STK_SIZE,AT_TASK_PRI,AT_DURATION,AT_BUSY_OFF,AT_IGNR_ABRT,AT_IGNR_PAUS,AT_CONTROL|}, ${3:int_value}, ${4:string_value}, ${5:status})"
-        ],
-        "description": "GET_ATTR_PRG(program_name, attr_number, int_value, string_value, status)"
-    },
-
-    "GET_JPOS_REG Built-In": {
-        "prefix": "GET_JPOS_REG",
-        "body": [
-            "GET_JPOS_REG(${1:register_no}, ${2:status} ${3|\\, group_no, |})"
-        ],
-        "description": "GET_JPOS_REG(register_no, status <,group_no>)"
-    },      
-    
-    "GET_JPOS_TPE Built-In": {
-        "prefix": "GET_JPOS_TPE",
-        "body": [
-            "GET_JPOS_TPE(${1:open_id}, ${2:position_no}, ${3:status} ${4|\\, group_no, |})"
-        ],
-        "description": "GET_JPOS_TPE(open_id, position_no, status <, group_no>)"
-    }, 
-
-    "GET_PORT_ASG Built-In": {
-        "prefix": "GET_PORT_ASG",
-        "body": [
-            "GET_PORT_ASG(${1|port_type,io_din,io_dout,io_anin,io_anout,io_tpin,io_tpout,io_gpin,io_gpout,io_uopin,io_uopout,io_iopin,io_iopout,io_flag,io_marker|}, ${2:port_no}, ${3:rack_no}, ${4:slot_no}, ${5:phy_port_type}, ${6:phy_port_no}, ${7:n_ports}, ${8:status})"
-        ],
-        "description": "GET_PORT_ASG(port_type, log_port_no, rack_no, slot_no, phy_port_type, phy_port_no, n_ports, status)"
-    }, 
-
-    "GET_PORT_ATR Built-In": {
-        "prefix": "GET_PORT_ATR",
-        "body": [
-            "GET_PORT_ATR(${1|port_1,port_2,port_3,port_4,port_5|}, ${2|atr_readahd,atr_baud,atr_parity,atr_sbits,atr_dbits,atr_xonoff,atr_eol,atr_modem|}, ${3:atr_value})"
-        ],
-        "description": "GET_PORT_ATR(port_id, atr_type, atr_value)"
-    }, 
-
-    "GET_PORT_CMT Built-In": {
-        "prefix": "GET_PORT_CMT",
-        "body": [
-            "GET_PORT_CMT(${1|port_type,io_din,io_dout,io_anin,io_anout,io_tpin,io_tpout,io_gpin,io_gpout,io_uopin,io_uopout,io_iopin,io_iopout,io_flag,io_marker|}, ${2:port_no}, ${3:comment_str}, ${4:status})"
-        ],
-        "description": "GET_PORT_CMT(port_type, port_no, comment_str, status)"
-    }, 
-
-    "GET_PORT_VAL Built-In": {
-        "prefix": "GET_PORT_VAL",
-        "body": [
-            "GET_PORT_VAL(${1|port_type,io_din,io_dout,io_anin,io_anout,io_tpin,io_tpout,io_gpin,io_gpout,io_uopin,io_uopout,io_iopin,io_iopout,io_flag,io_marker|}, ${2:port_no}, ${3:value}, ${4:status})"
-        ],
-        "description": "GET_PORT_VAL(port_type, port_no, value, status)"
-    },
-
-    "GET_POS_FRM Built-In": {
-        "prefix": "GET_POS_FRM",
-        "body": [
-            "GET_POS_FRM(${1:open_id}, ${2:position_no}, ${3:group_num}, ${4:ufram_no}, ${5:utool_no}, ${6:status})"
-        ],
-        "description": "GET_POS_FRM(open_id, position_no, gnum, ufram_no, utool_no, status)"
-    },    
-
-    "GET_POS_REG Built-In": {
-        "prefix": "GET_POS_REG",
-        "body": [
-            "GET_POS_REG(${1:register_no}, ${2:status} ${3|\\, group_no, |})"
-        ],
-        "description": "GET_POS_REG(register_no, status <,group_no>)"
-    },    
-
-    "GET_REG Built-In": {
-        "prefix": "GET_REG",
-        "body": [
-            "GET_REG(${1:register_no}, ${2:real_flag}, ${3:int_value}, ${4:real_value}, ${5:status})"
-        ],
-        "description": "GET_REG(register_no, real_flag, int_value, real_value, status)"
-    },
-
-    "GET_REG_CMT Built-In": {
-        "prefix": "GET_REG_CMT",
-        "body": [
-            "GET_REG_CMT(${1:register_no}, ${2:comment_string}, ${3:status})"
-        ],
-        "description": "GET_REG_CMT (register_no, comment_string, status)"
-    },    
-
-    "GET_TIME Built-In": {
-        "prefix": "GET_TIME",
-        "body": [
-            "GET_TIME(${1:int_time})"
-        ],
-        "description": "GET_TIME(i)"
-    },  
-
-    "GET_TPE_CMT Built-In": {
-        "prefix": "GET_TPE_CMT",
-        "body": [
-            "GET_TPE_CMT(${1:open_id}, ${1:pos_no}, ${1:comment}, ${1:status})"
-        ],
-        "description": "GET_TPE_CMT(open_id, pos_no, comment, status))"
-    },
-    
-    "GET_TPE_PRM Built-In": {
-        "prefix": "GET_TPE_PRM",
-        "body": [
-            "GET_TPE_PRM(${1:param_no}, ${2:data_type}, ${3:int_value}, ${4:real_value}, ${5:str_value}, ${6:status})"
-        ],
-        "description": "GET_TPE_PRM(param_no, data_type, int_value, real_value, str_value, status)"
-    },  
-
-    "GET_TSK_INFO Built-In": {
-        "prefix": "GET_TSK_INFO",
-        "body": [
-            "GET_TSK_INFO('${1:task_name}', ${2:task_no}, ${3|TSK_HOLDCOND,TSK_LINENUM,TSK_LOCKGRP,TSK_MCTL,TSK_NOABORT,TSK_NOBUSY,TSK_NOPAUSE,TSK_NUMCLDS,TSK_PARENT,TSK_PAUSESFT,TSK_PRIORITY,TSK_PROGNAME,TSK_PROGTYPE,TSK_STATUS,TSK_PROGTYPE|}, ${4:value_int}, ${5:value_str}, ${6:status})"
-        ],
-        "description": "GET_TSK_INFO(task_name, task_no, attribute, value_int, value_str, status)"
-    },  
-
-    "Get Var Routine": {
-        "prefix": "GET_VAR",
-        "body": [
-            "GET_VAR(${1:ENTRY}, '${2|*SYSTEM*,PROGRAM_NAME|}', '${3|$SYSTEM_VARIABLE,VARIABLE_NAME|}', ${4:VALUE}, ${5:STATUS})",
-            "$0"
-        ],
-        "description": "GET_VAR Routine"
-    },
-
-    "KCL Built-In Procedure": {
-        "prefix": "KCL",
-        "body": [
-            "KCL ('${1|command,ABORT ALL,ABORT fctn,RMDIR + dir,COPY FILE fileName + ' to ' + filePath + ' overwrite','RMDIR ' + directoryPath|}', ${2:status})",
-            "$0"
-        ],
-        "description": "KCL (command, status)"
-    },   
-
-    "POST_ERR Built-In": {
-        "prefix": "POST_ERR",
-        "body": [
-            "POST_ERR(${1:error_code}, ${2:parameter}, ${3:cause_code}, ${4|0,1,2|})",
-            "$0"
-        ],
-        "description": "POST_ERR(error_code, parameter, cause_code, severity)"
-    },  
-
-    "PULSE Built-In": {
-        "prefix": "PULSE",
-        "body": [
-            "PULSE DOUT[${1:port_no}] FOR ${2:time_in_ms} ${3|NOWAIT, |}",
-            "$0"
-        ],
-        "description": "PULSE DOUT[port_no] FOR time_in_ms"
-    },
-
-    "READ_DICT Built-In": {
-        "prefix": "READ_DICT",
-        "body": [
-            "READ_DICT('${1:dict_name}', ${2:element_no}, ${3:stringArray}, ${4:first_line}, ${5:last_line}, ${6:status})",
-            "$0"
-        ],
-        "description": "READ_DICT(dict_name, element_no, stringArray, first_line, last_line, status)"
-    },  
-
-    "READ_DICT_V Built-In": {
-        "prefix": "READ_DICT_V",
-        "body": [
-            "READ_DICT_V('${1:dict_name}', ${2:element_no}, ${3:value_array}, ${4:stringArray}, ${5:status})",
-            "$0"
-        ],
-        "description": "READ_DICT_V(dict_name, element_no, value_array, stringArray, status)"
-    },  
-
-    "REMOVE_DICT Built-In": {
-        "prefix": "REMOVE_DICT",
-        "body": [
-            "REMOVE_DICT('${1:dict_name}',  ${2|lang_name,dp_japanese,dp_default,dp_english,dp_french,dp_german,dp_spanish|}, ${3:status})",
-            "$0"
-        ],
-        "description": "REMOVE_DICT(dict_name, lang_name, status)"
-    },  
-
-    "RUN_TASK Built-In": {
-        "prefix": "RUN_TASK",
-        "body": [
-            "RUN_TASK('${1:task_name}', ${2:line_number}, ${3:pause_on_sft}, ${4:tp_motion}, ${5:lock_mask}, ${6:status})",
-            "$0"
-        ],
-        "description": "RUN_TASK (task_name, line_number, pause_on_sft, tp_motion, lock_mask, status)"
-    },  
-
-    "SET_ATTR_PRG Built-In": {
-        "prefix": "SET_ATTR_PRG",
-        "body": [
-            "SET_ATTR_PRG('${1:program_name}', ${2|attr_number,AT_PROG_TYPE,AT_PROG_NAME,AT_OWNER,AT_COMMENT,AT_PROG_SIZE,AT_ALLC_SIZE,AT_NUM_LINE,AT_CRE_TIME,AT_MDFY_TIME,AT_SRC_NAME,AT_SRC_VRSN,AT_DEF_GROUP,AT_PROTECT,AT_STORAGE,TPSTOR_SHOD,AT_STK_SIZE,AT_TASK_PRI,AT_DURATION,AT_BUSY_OFF,AT_IGNR_ABRT,AT_IGNR_PAUS,AT_CONTROL|}, ${3:int_value}, ${4:string_value}, ${5:status})",
-            "$0"
-        ],
-        "description": "SET_ATTR_PRG(program_name, attr_number, int_value, string_value, status)"
-    },  
-
-    "SET_INT_REG Built-In": {
-        "prefix": "SET_INT_REG",
-        "body": [
-            "SET_INT_REG(${1:register_no}, ${2:int_value}, ${3:status})",
-            "$0"
-        ],
-        "description": "SET_INT_REG(register_no, int_value, status)"
-    },
-
-    "SET_PORT_CMT Built-In": {
-        "prefix": "SET_PORT_CMT",
-        "body": [
-            "SET_PORT_CMT(${1|port_type,io_din,io_dout,io_anin,io_anout,io_tpin,io_tpout,io_gpin,io_gpout,io_uopin,io_uopout,io_iopin,io_iopout,io_flag,io_marker|}, ${2:port_no}, ${3:comment_str}, ${4:status})"
-        ],
-        "description": "SET_PORT_CMT(port_type, port_no, comment_str, status)"
+    "CONT_TASK Built-In Procedure": {
+      "prefix": "CONT_TASK",
+      "body": [
+        "CONT_TASK(${1:task_name},${2:status})"
+      ],
+      "description": "CONT_TASK Built-In Procedure\nInput/Output Parameters:\n[in] task_name :STRING\n[out] status :INTEGER\n%ENVIRONMENT Group :MULTI\n"
     },
 
     "COPY_FILE Built-In": {
-        "prefix": "COPY_FILE",
-        "body": [
-            "COPY_FILE('${1|from_file,MC:,UD1:,UT1:,C1:|}', '${2|to_file,MC:,UD1:,UT1:,C1:|}', ${3:overwrite_sw}, ${4:nowait_sw}, ${5:status})"
-        ],
-        "description": "COPY_FILE(from_file, to_file, overwrite_sw, nowait_sw, status)"
+      "prefix": "COPY_FILE",
+      "body": [
+          "COPY_FILE('${1|from_file,MC:,UD1:,UT1:,C1:|}', '${2|to_file,MC:,UD1:,UT1:,C1:|}', ${3:overwrite_sw}, ${4:nowait_sw}, ${5:status})"
+      ],
+      "description": "COPY_FILE Built-In Procedure\nInput/Output Parameters:\n[in] from_file :STRING\n[in] to_file :STRING\n[in] overwrite_sw :BOOLEAN\n[in] nowait_sw :BOOLEAN\n[out] status :INTEGER\n%ENVIRONMENT Group :FDEV\n"
     },
-    "SPRUNCMD Built-In": {
-        "prefix": "SPRUNCMD",
-        "body": [
-            "SPRUNCMD('${1:COMMAND}', ${2:status})"
-        ],
-        "description": "SPRUNCMD('COMMAND', status)"
-    }
 
+    "COPY_PATH Built-In Procedure": {
+      "prefix": "COPY_PATH",
+      "body": [
+        "COPY_PATH(${1:source_path},${2:start_node},${3:end_node},${4:dest_path},${5:status})"
+      ],
+      "description": "COPY_PATH Built-In Procedure\nInput/Output Parameters:\n[in] source_path :PATH\n[in] start_node :INTEGER\n[in] end_node :INTEGER\n[in] dest_path :PATH\n[out] status :INTEGER\n%ENVIRONMENT Group :pathop\n"
+    },
+
+    "COPY_QUEUE Built-In Procedure": {
+      "prefix": "COPY_QUEUE",
+      "body": [
+        "COPY_QUEUE(${1:queue_t},${2:queue_data},${3:sequence_no},${4:n_skip},${5:out_data},${6:n_got},${7:status})"
+      ],
+      "description": "COPY_QUEUE Built-In Procedure\nInput/Output Parameters:\n[in] queue_t :QUEUE_TYPE\n[in] queue_data :ARRAY OF INTEGER\n[in] n_skip :INTEGER\n[in] sequence_no :INTEGER\n[out] out_data :ARRAY OF INTEGER\n[out] n_got :INTEGER\n[out] status :INTEGER\n%ENVIRONMENT Group :PBQMGR\n"
+    },
+
+    "COPY_TPE Built-In Procedure": {
+      "prefix": "COPY_TPE",
+      "body": [
+        "COPY_TPE(${1:from_prog},${2:to_prog},${3:overwrite_sw},${4:status})"
+      ],
+      "description": "COPY_TPE Built-In Procedure\nInput/Output Parameters:\n[in] from_prog :STRING\n[in] to_prog :STRING\n[in] overwrite_sw :BOOLEAN\n[out] status :INTEGER\n%ENVIRONMENT Group :TPE\n"
+    },
+
+    "CREATE_TPE Built-In Procedure": {
+      "prefix": "CREATE_TPE",
+      "body": [
+        "CREATE_TPE('${1:prog_name}',${2:prog_type},${3:status})"
+      ],
+      "description": "CREATE_TPE Built-In Procedure\nInput/Output Parameters:\n[in] prog_name :STRING\n[in] prog_type :INTEGER\n[out] status :INTEGER\n%ENVIRONMENT Group :TPE\n"
+    },
+
+    "CREATE_VAR Built-In Procedure": {
+      "prefix": "CREATE_VAR",
+      "body": [
+        "CREATE_VAR('${1:var_prog_nam}','${2:var_nam}','${3:typ_prog_nam}','${4:type_nam}',${5:group_num},${6:inner_dim},${7:mid_dim},${8:outer_dim},${9:status},${10:<mem_pool>})"
+      ],
+      "description": "CREATE_VAR Built-In Procedure\nInput/Output Parameters:\n[in] var_prog_nam :STRING\n[in] var_nam :STRING\n[in] typ_prog_nam :STRING\n[in] type_nam :STRING\n[in] group_num :INTEGER\n[in] inner_dim :INTEGER\n[in] mid_dim :INTEGER\n[in] outer_dim :INTEGER\n[out] status :INTEGER\n[in] mem_pool :INTEGER\n%ENVIRONMENT Group :MEMO\n"
+    },
+
+    "CURJPOS Built-In Function": {
+      "prefix": "CURJPOS",
+      "body": [
+        "CURJPOS(${1:axs_lim_mask},${2:ovr_trv},${3:<group_no>})"
+      ],
+      "description": "CURJPOS Built-In Function\nFunction Return Type :JOINTPOS\nInput/Output Parameters:\n[out] axs_lim_mask :INTEGER\n[out] ovr_trv_mask :INTEGER\n[in] group_no :INTEGER\n%ENVIRONMENT Group :SYSTEM\n"
+    },
+
+    "CURPOS Built-In": {
+      "prefix": "CURPOS",
+      "body": [
+          "CURPOS(${1:axis_limit_mask}, ${2:ovr_trv_mask} ${3|\\, group_no, |})"
+      ],
+      "description": "CURPOS Built-In Function\nFunction Return Type :XYZWPREXT\nInput/Output Parameters:\n[out] axis_limit_mask :INTEGER\n[out] ovr_trv_mask :INTEGER\n[in] group_no :INTEGER\n%ENVIRONMENT Group :SYSTEM\n"
+    },
+
+    "CURR_PROG Built-In Function": {
+      "prefix": "CURR_PROG",
+      "body": [
+        "CURR_PROG"
+      ],
+      "description": "CURR_PROG Built-In Function\nFunction Return Type :STRING[12]\n%ENVIRONMENT Group :BYNAM\n"
+    },
+
+    "DAQ_CHECKP Built-In Procedure": {
+      "prefix": "DAQ_CHECKP",
+      "body": [
+        "DAQ_CHECKP(${1:pipe_num},${2:pipe_stat},${3:bytes_avail})"
+      ],
+      "description": "DAQ_CHECKP Built-In Procedure\nInput/Output Parameters:\n[in] pipe_num :INTEGER\n[out] pipe_stat :INTEGER\n[out] bytes_avail :INTEGER\n"
+    },
+
+    "DAQ_REGPIPE Built-In Procedure": {
+      "prefix": "DAQ_REGPIPE",
+      "body": [
+        "DAQ_REGPIPE(${1:pipe_num},${2:mem_type},${3:pipe_size},'${4:prog_name}','${5:var_name},'${6:pipe_name}',${7:stream_size},${8:status})"
+      ],
+      "description": "DAQ_REGPIPE Built-In Procedure\nInput/Output Parameters:\n[in] pipe_num :INTEGER\n[in] mem_type :INTEGER\n[in] pipe_size :INTEGER\n[in] prog_name :STRING\n[in] var_name :STRING\n[in] pipe_name :STRING\n[in] stream_size :INTEGER\n[out] status :INTEGER\n"
+    },
+
+    "DAQ_START Built-In Procedure": {
+      "prefix": "DAQ_START",
+      "body": [
+        "DAQ_START(${1:pipe_num},${2:pipe_mode},${3:stream_dev},${4:status})"
+      ],
+      "description": "DAQ_START Built-In Procedure\nInput/Output Parameters:\n[in] pipe_num :INTEGER\n[in] pipe_mode :INTEGER\n[in] stream_dev :STRING\n[out] status :INTEGER\n"
+    },
+
+    "DAQ_STOP Built-In Procedure": {
+      "prefix": "DAQ_STOP",
+      "body": [
+        "DAQ_STOP(${1:pipe_num},${2:force_off},${3:status})"
+      ],
+      "description": "DAQ_STOP Built-In Procedure\nInput/Output Parameters:\n[in] pipe_num :INTEGER\n[in] force_off :BOOLEAN\n[out] status :INTEGER\n"
+    },
+
+    "DAQ_UNREG Built-In Procedure": {
+      "prefix": "DAQ_UNREG",
+      "body": [
+        "DAQ_UNREG(${1:pipe_num},${2:status})"
+      ],
+      "description": "DAQ_UNREG Built-In Procedure\nInput/Output Parameters:\n[in] pipe_num :INTEGER\n[out] status :INTEGER\n"
+    },
+
+    "DAQ_WRITE Built-In Procedure": {
+      "prefix": "DAQ_WRITE",
+      "body": [
+        "DAQ_WRITE(${1:pipe_num},'${2:prog_name}','${3:var_name}',${4:status})"
+      ],
+      "description": "DAQ_WRITE Built-In Procedure\nInput/Output Parameters:\n[in] pipe_num :INTEGER\n[in] prog_name :STRING\n[in] var_name :STRING\n[out] status :INTEGER\n"
+    },
+
+    "DEF_SCREEN Built-In Procedure": {
+      "prefix": "DEF_SCREEN",
+      "body": [
+        "DEF_SCREEN('${1:screen_name},'${2:disp_dev_name}',${3:status})"
+      ],
+      "description": "DEF_SCREEN Built-In Procedure\nInput/Output Parameters:\n[in] screen_name :STRING\n[in] disp_dev_name :STRING\n[out] status :INTEGER\n%ENVIRONMENT Group :UIF\n"
+    },
+
+    "DEF_WINDOW Built-In Procedure": {
+      "prefix": "DEF_WINDOW",
+      "body": [
+        "DEF_WINDOW('${1:window_name}',${2:n_rows},${3:n_cols},${4:options},${5:status})"
+      ],
+      "description": "DEF_WINDOW Built-In Procedure\nInput/Output Parameters:\n[in] window_name :STRING\n[in] n_rows :INTEGER\n[in] n_cols :INTEGER\n[in] options :INTEGER\n[out] status :INTEGER\n%ENVIRONMENT Group :PBCORE\n"
+    },
+
+    "DELAY Statement": {
+      "prefix": "DELAY",
+      "body": [
+          "DELAY ${1:time_in_ms}"
+      ],
+      "description": "DELAY time_in_ms"
+    },
+
+    "DELETE_FILE Built-In Procedure": {
+      "prefix": "DELETE_FILE",
+      "body": [
+        "DELETE_FILE('${1:file_spec}',${2:nowait_sw},${3:status})"
+      ],
+      "description": "DELETE_FILE Built-In Procedure\nInput/Output Parameters:\n[in] file_spec :STRING\n[in] nowait_sw :BOOLEAN\n[out] status :INTEGER\n%ENVIRONMENT Group :FDEV\n"
+    },
+
+    "DELETE_NODE Built-In Procedure": {
+      "prefix": "DELETE_NODE",
+      "body": [
+        "DELETE_NODE(${1:path_var},${2:node_num},${3:status})"
+      ],
+      "description": "DELETE_NODE Built-In Procedure\nInput/Output Parameters:\n[in] path_var :PATH\n[in] node_num :INTEGER\n[out] status :INTEGER\n%ENVIRONMENT Group :PATHOP\n"
+    },
+
+    "DELETE_QUEUE Built-In Procedure": {
+      "prefix": "DELETE_QUEUE",
+      "body": [
+        "DELETE_QUEUE(${1:sequence_no},${2:queue},${3:queue_data},${4:status})"
+      ],
+      "description": "DELETE_QUEUE Built-In Procedure\nInput/Output Parameters:\n[in] sequence_no :INTEGER\n[in,out] queue_t :QUEUE_TYPE\n[in,out] queue_data :ARRAY OF INTEGER\n[out] status :INTEGER\n%ENVIRONMENT Group :PBQMGR\n"
+    },
+
+    "DEL_INST_TPE Built-In Procedure": {
+      "prefix": "DEL_INST_TPE",
+      "body": [
+        "DEL_INST_TPE(${1:open_id},${2:lin_num},${3:status})"
+      ],
+      "description": "DEL_INST_TPE Built-In Procedure\nInput/Output Parameters:\n[in] open_id :INTEGER\n[in] lin_num :INTEGER\n[out] status :INTEGER\n%ENVIRONMENT Group :TPE\n"
+    },
+
+    "DET_WINDOW Built-In Procedure": {
+      "prefix": "DET_WINDOW",
+      "body": [
+        "DET_WINDOW('${1:window_name}','${2:screen_name}',${3:status})"
+      ],
+      "description": "DET_WINDOW Built-In Procedure\nInput/Output Parameters:\n[in] window_name :STRING\n[in] screen_name :STRING\n[out] status :INTEGER\n%ENVIRONMENT Group :PBCORE\n"
+    },
+
+    "Disable Condition handlers": {
+      "prefix": "DISABLE",
+      "body": [
+          "DISABLE CONDITION[${1:1}]",
+          "$0"
+      ],
+      "description": "Disable Condition handlers"
+    },
+
+    "DISCONNECT TIMER Statement": {
+      "prefix": "DISCONNECT TIMER",
+      "body": [
+        "DISCONNECT TIMER ${1:timer_var}"
+      ],
+      "description": "DISCONNECT TIMER timer_var"
+    },
+
+    "DISCTRL_ALPH Built_In Procedure": {
+      "prefix": "DISCTRL_ALPH",
+      "body": [
+        "DISCTRL_ALPH('${1:window_name}',${2:row},${3:col},'${4:str}','${5|dict_name,PROG,COMM|}',${6:dict_ele},${7|term_chr,ky_enter,ky_prev,ky_new_menu|},${8:status})"
+      ],
+      "description": "DISCTRL_ALPH Built_In Procedure\nInput/Output Parameters:\n[in] window_name :STRING\n[in] row :INTEGER\n[in] col :INTEGER\n[in,out] str :STRING\n[in] dict_name :STRING\n[in] dict_ele :INTEGER\n[out] term_char :INTEGER\n[out] status :INTEGER\n%ENVIRONMENT Group :UIF\n"
+    },
+
+    "DISCTRL_FORM Built_In": {
+      "prefix": "DISCTRL_FORM",
+      "body": [
+          "DISCTRL_FORM('${1:dict_name}', ${2:ele_number}, ${3:value_array}, ${4:inact_array}, ${5:change_array}, ${6|kc_func_key,kc_enter_key,kc_prev_key|}, ${7:def_item}, ${8|ky_undef,ky_select,ky_new_menu,ky_f1,ky_f2,ky_f3,ky_f4,ky_f5,ky_f6,ky_f7,ky_f8,ky_f9,ky_f10|}, ${9:status})"
+      ],
+      "description": "DISCTRL_FORM Built_In Procedure\nInput/Output Parameters:\n[in] dict_name : STRING\n[in] ele_number : INTEGER\n[in] value_array : ARRAY OF STRING\n[in] inactive_array : ARRAY OF BOOLEAN\n[out] change_array : ARRAY OF BOOLEAN\n[in] term_mask : INTEGER\n[in,out] def_item : INTEGER\n[out] term_char : INTEGER\n[out] status : INTEGER\n%ENVIRONMENT Group :PBcore\n"
+    },
+
+    "DISCTRL_LIST Built-In Procedure": {
+      "prefix": "DISCTRL_LIST",
+      "body": [
+        "DISCTRL_LIST(${1:file_var},${2:display_data},${3:list_data[*]},${4|action,dc_disp,dc_up,dc_dn,dc_lf,dc_rt|},${5:status})"
+      ],
+      "description": "DISCTRL_LIST Built-In Procedure\nInput/Output Parameters:\n[in] file_ var :FILE\n[in,out] display_data :DISP_DAT_T\n[in] list_data :ARRAY OF STRING\n[in] action :INTEGER\n[out] status :INTEGER\n%ENVIRONMENT Group :PBCORE\n"
+    },
+
+    "DISCTRL_PLMN Built-In Procedure": {
+      "prefix": "DISCTRL_PLMN",
+      "body": [
+        "DISCTRL_PLMN('${1:dict_name}',${2:element_no},${3:ftn_key_no},${4:def_item},${5|term_char,ky_enter,ky_prev,ky_new_menu,ky_f1,ky_f2,ky_f3,ky_f4,ky_f5|},${6:status})"
+      ],
+      "description": "DISCTRL_PLMN Built-In Procedure\nInput/Output Parameters:\n[in] dict_name :STRING\n[in] element_no :INTEGER\n[in] ftn_key_num :INTEGER\n[in,out] def_item :INTEGER\n[out] term_char :INTEGER\n[out] status :INTEGER\n%ENVIRONMENT Group : UIF\n"
+    },
+
+    "DISCTRL_SBMN Built-In Procedure": {
+      "prefix": "DISCTRL_SBMN",
+      "body": [
+        "DISCTRL_SBMN('${1:dict_name}',${2:element_no},${3:def_item},${4|term_char,ky_enter,ky_prev,ky_new_menu,ky_f1,ky_f2,ky_f3,ky_f4,ky_f5|},${5:status})"
+      ],
+      "description": "DISCTRL_SBMN Built-In Procedure\nInput/Output Parameters:\n[in] dict_name :STRING\n[in] element_no :INTEGER\n[in,out] def_item :INTEGER\n[out] term_char :INTEGER\n[out] status :INTEGER\n%ENVIRONMENT Group : UIF\n"
+    },
+
+    "DISCTRL_TBL Built-In Procedure": {
+      "prefix": "DISCTRL_TBL",
+      "body": [
+        "DISCTRL_SBMN('${1:dict_name}',${2:ele_number},${3:num_rows},${4:num_columns},${5:col_data},${6:inact_array},${7:change_array},${8:def_item},${9|term_char,ky_undef,ky_select,ky_new_menu,ky_f1,ky_f2,ky_f3,ky_f4,ky_f5,ky_f6,ky_f7,ky_f8,ky_f9,ky_f10|},${10|term_mask,kc_display,kc_func_key,kc_enter_key,kc_delete,kc_lr_arw,kc_ud_arw,kc_other|},${11:value_array},${12:attach_wind},${13:status})"
+      ],
+      "description": "DISCTRL_TBL Built-In Procedure\nInput/Output Parameters:\n[in] dict_name :STRING\n[in] ele_number :INTEGER\n[in] num_rows :INTEGER\n[in] num_columns :INTEGER\n[in] col_data :ARRAY OF COL_DESC_T\n[in] inact_array :ARRAY OF BOOLEAN\n[out] change_array :ARRAY OF BOOLEAN\n[in,out] def_item :INTEGER\n[out] term_char :INTEGER\n[in] term_mask :INTEGER\n[in] value_array :ARRAY OF STRING\n[in] attach_wind :BOOLEAN\n[out] status :INTEGER\n%ENVIRONMENT Group : UIF\n"
+    },
+
+    "DISMOUNT_DEV Built-In Procedure": {
+      "prefix": "DISMOUNT_DEV",
+      "body": [
+        "DISMOUNT_DEV('${1:device}',${2:status})"
+      ],
+      "description": "DISMOUNT_DEV Built-In Procedure\nInput/Output Parameters:\n[in] device :STRING\n[out] status :INTEGER\n%ENVIRONMENT Group :FDEV\n"
+    },
+
+    "DOSFILE_INF Built-In Procedure": {
+      "prefix": "DOSFILE_INF",
+      "body": [
+        "DOSFILE_INF('${1:device}',${2:item},'${3:value_str}',${4:status})"
+      ],
+      "description": "DOSFILE_INF Built-In Procedure\nInput/Output Parameters:\n[in] device :STRING\n[in] item :INTEGER\n[out] value_str :STRING\n[out] status :INTEGER\n%ENVIRONMENT Group :PBCORE\n"
+    },
+
+    "Enable Condition handlers": {
+      "prefix": "ENABLE",
+      "body": [
+          "ENABLE CONDITION[${1:1}]",
+          "$0"
+      ],
+      "description": "Enable Condition handlers"
+    },
+    
+    "ERR_DATA Built-In": {
+      "prefix": "ERR_DATA",
+      "body": [
+          "ERR_DATA(${1:seq_num}, ${2:error_code}, ${3:error_string}, ${4:cause_code}, ${5:cause_string}, ${6:time_int}, ${7|severity,0,1,2|}, ${9:prog_nam})"
+      ],
+      "description": "ERR_DATA Built-In Procedure\nInput/Output Parameters:\n[in,out] seq_num :INTEGER\n[out] error_code :INTEGER\n[out] error_string :STRING\n[out] cause_code :INTEGER\n[out] cause_string :STRING\n[out] time_int :INTEGER\n[out] severity(0:warning, 1:pause, 2:abort):INTEGER\n[out] prog_nam :STRING\n%ENVIRONMENT Group :ERRS\n"
+    },
+    
+    "ERROR Condition": {
+      "prefix": "ERROR",
+      "body": [
+          "ERROR[${1|errorNumber,*|}]"
+      ],
+      "description": "ERROR[errorNumber], * = all errors"
+    },
+
+    "EVAL Clause": {
+      "prefix": "EVAL",
+      "body": [
+        "EVAL(${1:expression})"
+      ],
+      "description": "EVAL Clause\nexpression :a valid KAREL expression\n"
+    },
+
+    "EVENT Condition": {
+      "prefix": "EVENT",
+      "body": [
+        "EVENT[${1:event_no}]"
+      ],
+      "description": "EVENT Condition\nevent_no :is an INTEGER expression\n"
+    },
+
+    "EXP Built-In": {
+      "prefix": "EXP",
+      "body": [
+          "EXP(${1|errorNumber})"
+      ],
+      "description": "EXP(x) => e^x, x = REAL"
+    },
+
+    "FILE_LIST Built-In": {
+      "prefix": "FILE_LIST",
+      "body": [
+          "FILE_LIST(${1:file_path}, ${2:n_skip}, ${3|format,1,2,3,4|}, ${4:ary_nam[*]}, ${5:n_files}, ${6:status})"
+      ],
+      "description": "FILE_LIST Built-In Procedure\nInput/Output Parameters:\n[in] file_path :STRING\n[in] n_skip :INTEGER\n[in] format :INTEGER\n[out] ary_nam :ARRAY of STRING\n[out] n_files :INTEGER\n[out] status :INTEGER\n%ENVIRONMENT Group :BYNAM\n"
+    },
+
+    "For Loop": {
+      "prefix": "FOR",
+      "body": [
+          "FOR ${1:element} TO ${2:element} DO",
+          "\t$0",
+          "ENDFOR"
+      ],
+      "description": "For Loop"
+    },
+
+    "FORCE_LINK Built-In Procedure": {
+      "prefix": "FORCE_LINK",
+      "body": [
+        "FORCE_LINK(${1:pane_id},'${2:url}')"
+      ],
+      "description": "FORCE_LINK Built-In Procedure\nInput/Output Parameters:\n[in] pane_id :INTEGER\n[in] url :STRING\n%ENVIRONMENT Group :pbcore\n"
+    },
+
+    "FORCE_SPMENU Built-In": {
+      "prefix": "FORCE_SPMENU",
+      "body": [
+          "FORCE_SPMENU(${1|tp_panel,crt_panel|}, ${2|SPI_TPHINTS,SPI_TPPRGADJ,SPI_TPMIRROR,SPI_TPSHIFT,SPI_TPTSTRUN,SPI_TPMANUAL,SCR_MACMAN,SPI_TPOTREL,SPI_TPALARM,SCR_ALM_ALL,SPI_TPALARM,SCR_ALM_MOT,SPI_TPALARM,SCR_ALM_SYS,SPI_TPALARM,SCR_ALM_APPL,SPI_TPDIGIO,SPI_TPANAIO,SPI_TPGRPIO,SPI_TPROBIO,SPI_TPUOPIO,SPI_TPSOPIO,SPI_TPPLCIO,SPI_TPSETGEN,SPI_TPFRAM,SPI_TPPORT,SPI_TPMMACRO,SCR_MACSETUP,SPI_TPREFPOS,SPI_TPPWORD,SPI_TPHCCOMM,SPI_TPSYRSR,SPI_TPFILS,SPI_TPSTATUS,SCR_AXIS,SPI_TPMEMORY,SPI_TPVERSN,SPI_TPPRGSTS,SPI_TPSFTY,SPI_TPUSER,SPI_TPSELECT,SPI_TPTCH,SPI_TPREGIS,SCR_NUMREG,SPI_SFMPREG,SCR_POSREG,SPI_TPSYSV,SCR_NUMVAR,SPI_TPSYSV,SCR_POSVAR,SPI_TPPOSN,SPI_TPSYSV,SCR_CLOCK,SPI_TPSYSV,SCR_SYSVAR,SPI_TPMASCAL,SPI_TPBRKCTR,SPI_TPAXLM,SPI_CRTKCL,SCR_KCL,SPI_CRTKCL,SCR_CRT,SPI_TPUSER2|}, ${3:screen_no})"
+      ],
+      "description": "FORCE_SPMENU Built-In Procedure\nInput/Output Parameters:\n[in] device_code :INTEGER\n[in] spmenu_id :INTEGER\n[in] screen_no :INTEGER\n%ENVIRONMENT Group :pbcore\n"
+    },
+
+    "FORMAT_DEV Built-In Procedure": {
+      "prefix": "FORMAT_DEV",
+      "body": [
+        "FORMAT_DEV('${1:device}','${2:volume_name}',${3:nowait_sw},${4:status})"
+      ],
+      "description": "FORMAT_DEV Built-In Procedure\nInput/Output Parameters:\n[in] device :STRING\n[in] volume_name :STRING\n[in] nowait_sw :BOOLEAN\n[out] status :INTEGER\n%ENVIRONMENT Group :FDEV\n"
+    },
+
+    "FRAME Built-In Function": {
+      "prefix": "FRAME",
+      "body": [
+        "FRAME(${1:pos1},${2:pos2},${3:pos3},${4:<pos4>})"
+      ],
+      "description": "FRAME Built-In Function\nFunction Return Type :Position\nInput/Output Parameters:\n[in]pos1 :POSITION\n[in]pos2 :POSITION\n[in]pos3 :POSITION\n[in]pos4 :POSITION\n%ENVIRONMENT Group :SYSTEM\n"
+    },
+
+    "FROM Clause": {
+      "prefix": "FROM",
+      "body": [
+        "FROM ${1:prog_name}"
+      ],
+      "description": "FROM Clause\nprog_name : any KAREL program identifier\n"
+    },
+
+    "GET_ATTR_PRG Built-In": {
+      "prefix": "GET_ATTR_PRG",
+      "body": [
+          "GET_ATTR_PRG('${1:program_name}', ${2|AT_PROG_TYPE,AT_PROG_NAME,AT_OWNER,AT_COMMENT,AT_PROG_SIZE,AT_ALLC_SIZE,AT_NUM_LINE,AT_CRE_TIME,AT_MDFY_TIME,AT_SRC_NAME,AT_SRC_VRSN,AT_DEF_GROUP,AT_PROTECT,AT_STORAGE,AT_STK_SIZE,AT_TASK_PRI,AT_DURATION,AT_BUSY_OFF,AT_IGNR_ABRT,AT_IGNR_PAUS,AT_CONTROL|}, ${3:int_value}, ${4:string_value}, ${5:status})"
+      ],
+      "description": "GET_ATTR_PRG Built-In Procedure\nInput/Output Parameters:\n[in] program_name :STRING\n[in] attr_number :INTEGER\n[out] int_value :INTEGER\n[out] string_value :STRING\n[out] status :INTEGER\n%ENVIRONMENT Group :PBCORE\n"
+    },
+
+    "GET_FILE_POS Built-In Function": {
+      "prefix": "GET_FILE_POS",
+      "body": [
+        "GET_FILE_POS(${1:file_id})"
+      ],
+      "description": "GET_FILE_POS Built-In Function\nFunction Return Type :INTEGER\nInput/Output Parameters:\n[in] file_id :FILE\n%ENVIRONMENT Group :FLBT\n"
+    },
+
+    "GET_JPOS_REG Built-In": {
+      "prefix": "GET_JPOS_REG",
+      "body": [
+          "GET_JPOS_REG(${1:register_no}, ${2:status} ${3|\\, group_no, |})"
+      ],
+      "description": "GET_JPOS_REG Built-In Function\nFunction Return Type :REGOPE\nInput/Output Parameters:\n[in] register_no :INTEGER\n[out] status :INTEGER\n[in] group_no :INTEGER\n%ENVIRONMENT Group :REGOPE\n"
+    },
+    
+    "GET_JPOS_TPE Built-In": {
+      "prefix": "GET_JPOS_TPE",
+      "body": [
+          "GET_JPOS_TPE(${1:open_id}, ${2:position_no}, ${3:status} ${4|\\, group_no, |})"
+      ],
+      "description": "GET_JPOS_TPE Built-In Function\nFunction Return Type :JOINTPOS\nInput/Output Parameters:\n[in] open_id :INTEGER\n[in] position_no :INTEGER\n[out] status :INTEGER\n[in] group_no :INTEGER\n%ENVIRONMENT Group :PBCORE\n"
+    },
+    
+    "GET_PORT_ASG Built-In": {
+      "prefix": "GET_PORT_ASG",
+      "body": [
+          "GET_PORT_ASG(${1|port_type,io_din,io_dout,io_anin,io_anout,io_tpin,io_tpout,io_gpin,io_gpout,io_uopin,io_uopout,io_iopin,io_iopout,io_flag,io_marker|}, ${2:port_no}, ${3:rack_no}, ${4:slot_no}, ${5:phy_port_type}, ${6:phy_port_no}, ${7:n_ports}, ${8:status})"
+      ],
+      "description": "GET_PORT_ASG Built-In Procedure\nInput/Output Parameters:\n[in] log_port_type :INTEGER\n[in] port_no :INTEGER\n[out] rack_no :INTEGER\n[out] slot_no :INTEGER\n[out] phy_port_type :INTEGER\n[out] phy_port_no :INTEGER\n[out] n_ports :INTEGER\n[out] status :INTEGER\n%ENVIRONMENT Group :IOSETUP\n"
+    }, 
+    
+    "GET_PORT_ATR Built-In": {
+      "prefix": "GET_PORT_ATR",
+      "body": [
+          "GET_PORT_ATR(${1|port_1,port_2,port_3,port_4,port_5|}, ${2|atr_readahd,atr_baud,atr_parity,atr_sbits,atr_dbits,atr_xonoff,atr_eol,atr_modem|}, ${3:atr_value})"
+      ],
+      "description": "GET_PORT_ATR Built-In Function\nFunction Return Type :INTEGER\nInput/Output Parameters:\n[in] port_id :INTEGER\n[in] atr_type :INTEGER\n[out] atr_value :INTEGER\n%ENVIRONMENT Group :FLBT\n"
+    }, 
+    
+    "GET_PORT_CMT Built-In": {
+      "prefix": "GET_PORT_CMT",
+      "body": [
+          "GET_PORT_CMT(${1|port_type,io_din,io_dout,io_anin,io_anout,io_tpin,io_tpout,io_gpin,io_gpout,io_uopin,io_uopout,io_iopin,io_iopout,io_flag,io_marker|}, ${2:port_no}, ${3:comment_str}, ${4:status})"
+      ],
+      "description": "GET_PORT_CMT Built-In Procedure\nInput/Output Parameters:\n[in] port_type :INTEGER\n[in] port_no :INTEGER\n[out] comment_str :STRING\n[out] status :INTEGER\n%ENVIRONMENT Group :IOSETUP\n"
+    },
+
+    "GET_PORT_MOD Built-In Procedure": {
+      "prefix": "GET_PORT_MOD",
+      "body": [
+        "GET_PORT_MOD(${1:port_type},${2:port_no},${3:mode_mask},${4:status})"
+      ],
+      "description": "GET_PORT_MOD Built-In Procedure\nInput/Output Parameters:\n[in] port_type :INTEGER\n[in] port_no :INTEGER\n[out] mode_mask :INTEGER\n[out] status :INTEGER\n%ENVIRONMENT Group :IOSETUP\n"
+    },
+
+    "GET_PORT_SIM Built-In Procedure": {
+      "prefix": "GET_PORT_SIM",
+      "body": [
+        "GET_PORT_SIM(${1:port_type},${2:port_no},${3:simulated},${4:status})"
+      ],
+      "description": "GET_PORT_SIM Built-In Procedure\nInput/Output Parameters:\n[in] port_type :INTEGER\n[in] port_no :INTEGER\n[out] simulated :INTEGER\n[out] status :INTEGER\n%ENVIRONMENT Group :IOSETUP\n"
+    },
+
+    "GET_PORT_VAL Built-In": {
+      "prefix": "GET_PORT_VAL",
+      "body": [
+          "GET_PORT_VAL(${1|port_type,io_din,io_dout,io_anin,io_anout,io_tpin,io_tpout,io_gpin,io_gpout,io_uopin,io_uopout,io_iopin,io_iopout,io_flag,io_marker|}, ${2:port_no}, ${3:value}, ${4:status})"
+      ],
+      "description": "GET_PORT_VAL Built-In Procedure\nInput/Output Parameters:\n[in] port_type :INTEGER\n[in] port_no :INTEGER\n[out] value :STRING\n[out] status :INTEGER\n%ENVIRONMENT Group :IOSETUP\n"
+    },
+    
+    "GET_POS_FRM Built-In": {
+      "prefix": "GET_POS_FRM",
+      "body": [
+          "GET_POS_FRM(${1:open_id}, ${2:position_no}, ${3:group_num}, ${4:ufram_no}, ${5:utool_no}, ${6:status})"
+      ],
+      "description": "GET_POS_FRM Built-In Procedure\nInput/Output Parameters:\n[in] open_id :INTEGER\n[in] position_no :INTEGER\n[in] group_num :INTEGER\n[out] ufram_no :INTEGER\n[out] utool_no :INTEGER\n[out] status :INTEGER\n%ENVIRONMENT Group :pbcore\n"
+    },    
+    
+    "GET_POS_REG Built-In": {
+      "prefix": "GET_POS_REG",
+      "body": [
+          "GET_POS_REG(${1:register_no}, ${2:status} ${3|\\, group_no, |})"
+      ],
+      "description": "GET_POS_REG Built-In Function\nFunction Return Type :XYZWPREXT\nInput/Output Parameters:\n[in] register_no :INTEGER\n[out] status :INTEGER\n[in] group_no :INTEGER\n%ENVIRONMENT Group :REGOPE\n"
+    },
+
+    "GET_POS_TPE Built-In Function": {
+      "prefix": "GET_POS_TPE",
+      "body": [
+        "GET_POS_TPE(${1:open_id},${2:position_no},${3:status},${4:<group_no>})"
+      ],
+      "description": "GET_POS_TPE Built-In Function\nFunction Return Type :XYZWPREXT\nInput/Output Parameters:\n[in] open_id : INTEGER\n[in] position_no : INTEGER\n[out] status : INTEGER\n[in] group_no : INTEGER\n%ENVIRONMENT Group :PBCORE\n"
+    },
+
+    "GET_POS_TYP Built-In Procedure": {
+      "prefix": "GET_POS_TYP",
+      "body": [
+        "GET_POS_TYP(${1:open_id},${2:position_no},${3:group_no},${4:posn_typ},${5:num_axs},${6:status})"
+      ],
+      "description": "GET_POS_TYP Built-In Procedure\nInput/Output Parameters:\n[in] open_id :INTEGER\n[in] position_no :INTEGER\n[in] group_no :INTEGER\n[out] posn_typ :INTEGER\n[out] num_axs :INTEGER\n[out] status :INTEGER\n%ENVIRONMENT Group :PBCORE\n"
+    },
+
+    "GET_PREG_CMT Built-In-Procedure": {
+      "prefix": "GET_PREG_CMT",
+      "body": [
+        "GET_PREG_CMT(${1:register_no},'${2:comment_string}',${3:status})"
+      ],
+      "description": "GET_PREG_CMT Built-In-Procedure\nInput/Output Parameters:\n[in] register_no: INTEGER\n[out] comment_string: STRING\n[out] status: INTEGER\n%ENVIORNMENT group: REGOPE\n"
+    },
+
+    "GET_QUEUE Built-In Procedure": {
+      "prefix": "GET_QUEUE",
+      "body": [
+        "GET_QUEUE(${1:queue},${2:queue_data},${3:value}${4:status},${5:sequence_no})"
+      ],
+      "description": "GET_QUEUE Built-In Procedure\nInput/Output Parameters:\n[in,out] queue_t :QUEUE_TYPE\n[in,out] queue_data :ARRAY OF INTEGER\n[out] value :INTEGER\n[out] sequence_no :INTEGER\n[out] status :INTEGER\n%ENVIRONMENT Group :PBQMGR\n"
+    },
+
+    "GET_REG Built-In": {
+      "prefix": "GET_REG",
+      "body": [
+          "GET_REG(${1:register_no}, ${2:real_flag}, ${3:int_value}, ${4:real_value}, ${5:status})"
+      ],
+      "description": "GET_REG Built- ROUTINE\nInput/Output Parameters:\n[in] register_no :INTEGER\n[out] real_flag :BOOLEAN\n[out] int_value :INTEGER\n[out] real_value :REAL\n[out] status :INTEGER\n%ENVIRONMENT Group :REGOPE\n"
+    },
+    
+    "GET_REG_CMT Built-In": {
+      "prefix": "GET_REG_CMT",
+      "body": [
+          "GET_REG_CMT(${1:register_no}, ${2:comment_string}, ${3:status})"
+      ],
+      "description": "GET_REG_CMT\nInput/Output Parameters:\n[in] register_no: INTEGER\n[out] comment_string: STRING\n[out] status: INTEGER\n%ENVIRONMENT group: REGOPE\n"
+    },
+
+    "GET_SREG_CMT Builtin Procedure": {
+      "prefix": "GET_SREG_CMT",
+      "body": [
+        "GET_SREG_CMT(${1:register_no},'${2:comment}',${3:status})"
+      ],
+      "description": "GET_SREG_CMT Builtin Procedure\nInput/Output Parameters:\n[in] register_no :INTEGER\n[out] comment :STRING[254]\n[out] status :INTEGER\n%ENVIRONMENT Group :REGOPE\n"
+    },
+
+    "GET_STR_REG Built-In Procedure": {
+      "prefix": "GET_STR_REG",
+      "body": [
+        "GET_SREG_CMT(${1:register_no},'${2:value}',${3:status})"
+      ],
+      "description": "GET_STR_REG Built-In Procedure\nInput/Output Parameters:\n[in] register_no :INTEGER\n[out] value :STRING[254]\n[out] status :INTEGER\n%ENVIRONMENT Group :REGOPE\n"
+    },
+
+    "GET_TIME Built-In": {
+      "prefix": "GET_TIME",
+      "body": [
+          "GET_TIME(${1:int_time})"
+      ],
+      "description": "GET_TIME Built-In Procedure\nInput/Output Parameters:\n[out] i :INTEGER\n%ENVIRONMENT Group :TIM\n"
+    },
+    
+    "GET_TPE_CMT Built-In": {
+      "prefix": "GET_TPE_CMT",
+      "body": [
+          "GET_TPE_CMT(${1:open_id}, ${1:pos_no}, ${1:comment}, ${1:status})"
+      ],
+      "description": "GET_TPE_CMT Built-in Procedure\nInput/Output Parameters:\n[in] open_id :INTEGER\n[in] pos_no :INTEGER\n[out] comment :STRING\n[out] status :INTEGER\n%ENVIRONMENT Group :TPE\n"
+    },
+    
+    "GET_TPE_PRM Built-In": {
+      "prefix": "GET_TPE_PRM",
+      "body": [
+          "GET_TPE_PRM(${1:param_no}, ${2:data_type}, ${3:int_value}, ${4:real_value}, ${5:str_value}, ${6:status})"
+      ],
+      "description": "GET_TPE_PRM Built-in Procedure\nInput/Output Parameters:\n[in] param_no :INTEGER\n[out] data_type :INTEGER\n[out] int_value :INTEGER\n[out] real_value :REAL\n[out] str_value :STRING\n[out] status :INTEGER\n%ENVIRONMENT Group :PBCORE\n"
+    },  
+    
+    "GET_TSK_INFO Built-In": {
+      "prefix": "GET_TSK_INFO",
+      "body": [
+          "GET_TSK_INFO('${1:task_name}', ${2:task_no}, ${3|TSK_HOLDCOND,TSK_LINENUM,TSK_LOCKGRP,TSK_MCTL,TSK_NOABORT,TSK_NOBUSY,TSK_NOPAUSE,TSK_NUMCLDS,TSK_PARENT,TSK_PAUSESFT,TSK_PRIORITY,TSK_PROGNAME,TSK_PROGTYPE,TSK_STATUS,TSK_PROGTYPE|}, ${4:value_int}, ${5:value_str}, ${6:status})"
+      ],
+      "description": "GET_TSK_INFO Built-In Procedure\nInput/Output Parameters:\n[in,out] task_name :STRING\n[in,out] task_no :INTEGER\n[in] attribute :INTEGER\n[out] value_int :INTEGER\n[out] value_str :STRING\n[out] status :INTEGER\n%ENVIRONMENT Group :PBCORE\n"
+    },
+
+    "GET_USEC_SUB Built-In Procedure": {
+      "prefix": "GET_USEC_SUB",
+      "body": [
+        "us_delta = GET_USEC_SUB(${1:us2},${1:us1})"
+      ],
+      "description": "GET_USEC_SUB Built-In Procedure\nFunction Return Type :INTEGER\nInput/Output Parameters:\n[in] us2: INTEGER\n[in] us1: INTEGER\n%ENVIRONMENT Group: TIM\n"
+    },
+
+    "GET_USEC_TIM Built-In Function": {
+      "prefix": "GET_USEC_TIM",
+      "body": [
+        "us = GET_USEC_TIM"
+      ],
+      "description": "GET_USEC_TIM Built-In Function\nFunction Return Type: INTEGER\n%ENVIRONMENT Group: TIM\n"
+    },
+
+    "Get Var Routine": {
+      "prefix": "GET_VAR",
+      "body": [
+          "GET_VAR(${1:ENTRY}, '${2|*SYSTEM*,PROGRAM_NAME|}', '${3|$SYSTEM_VARIABLE,VARIABLE_NAME|}', ${4:VALUE}, ${5:STATUS})",
+          "$0"
+      ],
+      "description": "GET_VAR Built-In Procedure\nInput/Output Parameters:\n[in,out] entry :INTEGER\n[in] prog_name :STRING\n[in] var_name :STRING\n[out] value :Any valid KAREL data type except PATH\n[out] status :INTEGER\n%ENVIRONMENT Group :SYSTEM\n"
+    },
+    
+    "GO_TO": {
+      "prefix": "GO TO",
+      "body": [
+        "GO TO '${1:stmnt_label}'"
+      ],
+      "description": "GO_TO"
+    },
+    
+    "HOLD": {
+      "prefix": "HOLD",
+      "body":[
+          "HOLD"
+      ]
+    },
+
+    "IF statement": {
+      "prefix": "IF",
+      "body": [
+          "IF ${1:condition} THEN",
+          "\t$0",
+          "ENDIF"
+      ],
+      "description": "IF Statement"
+    },
+  
+    "IF ELSE statement": {
+      "prefix": "IFELSE",
+      "body": [
+          "IF ${1:condition} THEN",
+          "\t$2",
+          "ELSE",
+          "\t$3",
+          "ENDIF"
+      ],
+      "description": "IF ELSE Statement"
+    },
+
+    "Index Routine": {
+      "prefix": "INDEX",
+      "body": [
+          "INDEX(${1:mainString}, ${2:findString})"
+      ],
+      "description": 
+      "INDEX Built-In Function\nFunction Return Type :INTEGER\nInput/Output Parameters:\n[in] mainString :STRING\n[in] findString :STRING\n%ENVIRONMENT Group :SYSTEM\n"
+    },
+
+    "INI_DYN_DISB Built-In Procedure": {
+      "prefix": "INI_DYN_DISB",
+      "body": [
+        "INI_DYN_DISB(${1:b_var},'${2:window_name}', ${3:field_width}, ${4:attr_mask}, ${5:char_size}, ${6:row}, ${7:col}, ${8:interval}, ${9:string[*]}, ${10:status})",
+        "$0"
+      ],
+      "description": "INI_DYN_DISB Built-In Procedure\nInput/Output Parameters:\n[in] b_var :BOOLEAN\n[in] window_name :STRING\n[in] field_width :INTEGER\n[in] attr_mask :INTEGER\n[in] char_size :INTEGER\n[in] row :INTEGER\n[in] col :INTEGER\n[in] interval :INTEGER\n[in] strings :ARRAY OF STRING\n[out] status :INTEGER\n%ENVIRONMENT Group :UIF\n"
+    },
+    
+    "INIT_TBL Built-In Procedure": {
+      "prefix": "INIT_TBL",
+      "body": [
+        "INIT_TBL('${1:dict_name}', ${2:ele_number}, ${3:num_rows}, ${4:num_columns}, ${5:col_data}, ${6:inact_array}, ${7:change_arry}, ${8:value_array[*]}, ${9:vptr_array}, ${10:table_data}, ${11:status})",
+        "$0"
+      ],
+      "description": "INIT_TBL Built-In Procedure\nInput/Output Parameters\n[in] dict_name :STRING\n[in] ele_number :INTEGER\n[in] num_rows :INTEGER\n[in] num_columns :INTEGER\n[in] col_data :ARRAY OF COL_DESC_T\n[in] inact_array :ARRAY OF BOOLEAN\n[in] change_array :ARRAY OF ARRAY OF BOOLEAN\n[in] value_array :ARRAY OF STRING\n[out] vptr_array :ARRAY OF ARRAY OF INTEGER\n[in,out] table_data :XWORK_T\n[out] status :INTEGER\n%ENVIRONMENT Group :UIF\n"
+    },
+    
+    "IN_RANGE Built-In Function": {
+      "prefix": "IN_RANGE",
+      "body": [
+        "IN_RANGE(${1:posn})",
+        "$0"
+      ],
+      "description": "IN_RANGE Built-In Function\nInput/Output Parameters:\n[in] posn : XYZWPREXT\n%ENVIRONMENT Group :SYSTEM\n"
+    },
+    
+    "INSERT_NODE Built-In Procedure": {
+      "prefix": "INSERT_NODE",
+      "body": [
+        "INSERT_NODE(${1:path_var}, ${2:node_num}, ${3:status})",
+        "$0"
+      ],
+      "description": "INSERT_NODE Built-In Procedure\nInput/Output Parameters:\n[in] path_var :PATH\n[in] node_num :INTEGER\n[out] status :INTEGER\n%ENVIRONMENT Group :PATHOP\n"
+    },
+    
+    "INV Built-In Function": {
+      "prefix": "INV",
+      "body": [
+        "INV(${1:pos})",
+        "$0"
+      ],
+      "description":  "INV Built-In Function\nInput/Output Parameters:\n[in] pos :POSITION\n%ENVIRONMENT Group :SYSTEM\n"
+    },
+    
+    "IO_MOD_TYPE Built-In Procedure": {
+      "prefix": "IO_MOD_TYPE",
+      "body": [
+        "IO_MOD_TYPE(${1:rack_no}, ${2:slot_no}, ${3:mod_type}, ${4:status})",
+        "$0"
+      ],
+      "description": "IO_MOD_TYPE Built-In Procedure\nInput/Output Parameters:\n[in] rack_no :INTEGER\n[in] slot_no :INTEGER\n[out] mod_type :INTEGER\n[out] status :INTEGER\n%ENVIRONMENT Group :IOSETUP\n"
+    },
+    
+    "IO_STATUS Built-In Function": {
+      "prefix": "IO_STATUS",
+      "body": [
+        "IO_STATUS(${1:file_id})",
+        "$0"
+      ],
+      "description": "IO_STATUS Built-In Function\nInput/Output Parameters:\n[in] file_id :FILE\n%ENVIRONMENT Group :PBCORE\n"
+    },
+    
+    "J_IN_RANGE Built-In Function": {
+      "prefix": "J_IN_RANGE",
+      "body": [
+        "J_IN_RANGE(${1:posn})",
+        "$0"
+      ],
+      "description": "J_IN_RANGE Built-In Function\nFunction Return Type :BOOLEAN\nInput/Output Parameters:\n[in] posn :JOINTPOS\n%ENVIRONMENT Group :SYSTEM\n"
+    },
+    
+    "JOINTPOS Data Type": {
+      "prefix": "JOINTPOS",
+      "body": [
+        "JOINTPOS${1:n}",
+        "$0"
+      ],
+      "description": "JOINTPOS Data Type\nn = number of axes\n"
+    },
+    
+    "JOINT2POS Built-In Function": {
+      "prefix": "JOINT2POS",
+      "body": [
+        "JOINT2POS(${1|in_jnt, Joint angels can be coverted to Cartesian|}, ${2:uframe}, ${3:utool}, ${4:config_ref}, ${5:out_pos}, ${6:wjnt_cfg}, ${7:ext_ang}, ${8:status})",
+        "$0"
+      ],
+      "description": "JOINT2POS Built-In Function\nInput/Output Parameters:\n[in] in_jnt :Jointpos\n[in] uframe :POSITION\n[in] utool :POSITION\n[in] config_ref :INTEGER\n[out] out_pos :POSITION\n[out] wjnt_cfg :CONFIG\n[out] ext_ang :ARRAY OF REAL\n[out] status :INTEGER\n%ENVIRONMENT Group :MOTN\n"
+    },
+
+    "KCL Built-In Procedure": {
+      "prefix": "KCL",
+      "body": [
+          "KCL ('${1|command,ABORT ALL,ABORT fctn,RMDIR + dir,COPY FILE fileName + ' to ' + filePath + ' overwrite','RMDIR ' + directoryPath|}', ${2:status})",
+          "$0"
+      ],
+      "description": "KCL Built-In Procedure\nInput/Output Parameters:\n[in] command :STRING\n[out] status :INTEGER\n%ENVIRONMENT Group :kclop\n"
+    },
+    
+    "KCL_NO_WAIT Built-In Procedure": {
+      "prefix": "KCL_NO_WAIT",
+      "body": [
+        "KCL_NO_WAIT('${1|command,ABORT ALL,ABORT fctn,RMDIR + dir,COPY FILE fileName + ' to ' + filePath + ' overwrite','RMDIR ' + directoryPath|}', ${2:status})",
+        "$0"
+      ],
+      "description": "KCL_NO_WAIT Built-In Procedure\nInput/Output Parameters:\n[in] command :STRING\n[out] status :INTEGER\n%ENVIRONMENT Group :kclop\n"
+    },
+    
+    "KCL_STATUS Built-In Procedure": {
+      "prefix": "KCL_STATUS",
+      "body": [
+        "KCL_STATUS",
+        "$0"
+      ],
+      "description": "KCL_STATUS Built-In Procedure\nFunction Return Type :INTEGER\n%ENVIRONMENT Group :kclop\n"
+    },
+    
+    "LN Built-In Function": {
+      "prefix": "LN",
+      "body": [
+        "LN(${1:x})",
+        "$0"
+      ],
+      "description": "LN Built-In Function\nFunction Return Type :REAL\nInput/Output Parameters:\n[in] x : REAL\n%ENVIRONMENT Group :SYSTEM\n"
+    },
+    
+    "LOAD Built-In Procedure": {
+      "prefix": "LOAD",
+      "body": [
+        "LOAD('${1:file_spec}', ${2:option_sw}, ${3:status})",
+        "$0"
+      ],
+      "description": "LOAD Built-In Procedure\nInput/Output Parameters:\n[in] file_spec :STRING\n[in] option_sw :INTEGER\n[out] status :INTEGER\n%ENVIRONMENT Group :PBCORE\n"
+    },
+    
+    "LOAD_STATUS Built-In Procedure": {
+      "prefix": "LOAD_STATUS",
+      "body": [
+        "LOAD_STATUS('${1:prog_name}', ${2:loaded}, ${3:initialized})",
+        "\n"
+      ],
+      "description": "LOAD_STATUS Built-In Procedure\nInput/Output Parameters:\n[in] prog_name :STRING\n[out] loaded :BOOLEAN\n[out] initialized :BOOLEAN\n%ENVIRONMENT Group :PBCORE\n"
+    },
+    
+    "LOCK_GROUP Built-In Procedure": {
+      "prefix": "LOCK_GROUP",
+      "body": [
+        "LOCK_GROUP(${1|group_mask,1,2,4|}, ${2:status})",
+        "\n"
+      ],
+      "description": "LOCK_GROUP Built-In Procedure\nInput/Output Parameters:\n[in] group_mask : INTEGER\n[out] status : INTEGER\n%ENVIRONMENT Group :MULTI\n"
+    },
+    
+    "%LOCKGROUP Translator Directive": {
+      "prefix": "%LOCKGROUP",
+      "body": [
+        "%LOCKGROUP = ${1:n}",
+        "$0"
+      ],
+      "description": "%LOCKGROUP Translator Directive\nn is the number of the motion group to be locked.\n"
+    },
+    
+    "MIRROR Built-In Functione": {
+      "prefix": "MIRROR",
+      "body": [
+        "MIRROR(${1:old_pos}, ${2:mirror_frame}, ${3:orientation_flag})",
+        "$0"
+      ],
+      "description": "MIRROR Built-In Functione\nFunction Return Type: XYZWPREXT\nInput/Output Parameters:\n[in] old_pos :POSITION\n[in] mirror_frame :POSITION\n[in] orient_flag :BOOLEAN\n%ENVIRONMENT Group :MIR\n"
+    },
+    
+    "MODIFY_QUEUE Built-In Procedure": {
+      "prefix": "MODIFY_QUEUE",
+      "body": [
+        "MODIFY_QUEUE(${1:value}, ${2:sequence_no}, ${3:queue_t}, ${4:queue_data}, ${5:status})"
+      ],
+      "description": "MODIFY_QUEUE Built-In Procedure\nInput/Output Parameters:\n[in] value :INTEGER\n[in] sequence_no :INTEGER\n[in,out] queue_t :QUEUE_TYPE\n[in,out] queue_data :ARRAY OF INTEGER\n[out] status :INTEGER\n%ENVIRONMENT Group :PBQMGR\n"
+    },
+    
+    "MOTION_CTL Built-In Function": {
+      "prefix": "MOTION_CTL",
+      "body": [
+        "MOTION_CTL(${1:group_mask})"
+      ],
+      "description": "MOTION_CTL Built-In Function\nFunction Return Type :BOOLEAN\nInput/Output Parameters:\n[in] group_mask :INTEGER\n%ENVIRONMENT Group :MOTN\n"
+    },
+    
+    "MOUNT_DEV Built-In Procedure": {
+      "prefix": "MOUNT_DEV",
+      "body": [
+        "MOUNT_DEV('${1:device}', ${2:status})"
+      ],
+      "description": "MOUNT_DEV Built-In Procedure\nInput/Output Parameters:\n[in] device : STRING\n[out] status :INTEGER\n%ENVIRONMENT Group :FDEV\n"
+    },
+    
+    "MOVE_FILE Built-In Procedure": {
+      "prefix": "MOVE_FILE",
+      "body": [
+        "MOVE_FILE('${1:file_spec}', ${2:status})"
+      ],
+      "description": "MOVE_FILE Built-In Procedure\nInput/Output Parameters:\n[in] file_spec : string\n[out] status : integer\n%ENVIRONMENT Group :FDEV\n"
+    },
+    
+    "MSG_CONNECT Built-In Procedure": {
+      "prefix": "MSG_CONNECT",
+      "body": [
+        "MSG_CONNECT('${1:tag}', ${2:status})"
+      ],
+      "description": "MSG_CONNECT Built-In Procedure\nInput/Output Parameters:\n[in] tag :STRING\n[out] status :INTEGER\n%ENVIRONMENT Group :FLBT\n"
+    },
+    
+    "MSG_DISCO Built-In Procedure": {
+      "prefix": "MSG_DISCO",
+      "body": [
+        "MSG_DISCO('${1:tag}', ${2:status})"
+      ],
+      "description": "MSG_DISCO Built-In Procedure\nInput/Output Parameters:\n[in] tag :STRING\n[out] status :INTEGER\n%ENVIRONMENT Group :FLBT\n"
+    },
+    
+    "MSG_PING": {
+      "prefix": "MSG_PING",
+      "body": [
+        "MSG_PING('${1:host name}', ${2:status})"
+      ],
+      "description": "MSG_PING\nInput/Output Parameters:\n[in] host name :STRING\n[out] status :INTEGER\n%ENVIRONMENT Group :FLBT\n"
+    },
+    
+    "NOABORT Action": {
+      "prefix": "NOABORT",
+      "body": [
+        "NOABORT"
+      ],
+      "description": "NOABORT Action\nThe NOABORT action usually corresponds to an ERROR[n].\n"
+    },
+    
+    "NODE_SIZE Built-In Function": {
+      "prefix": "NODE_SIZE",
+      "body": [
+        "NODE_SIZE(${1:path_var})"
+      ],
+      "description": "NODE_SIZE Built-In Function\nFunction Return Type :INTEGER\nInput/Output Parameters:\n[in] path_var : PATH\nENVIRONMENT Group :PATHOP\n"
+    },
+    
+    "NOMESSAGE Action": {
+      "prefix": "NOMESSAGE",
+      "body": [
+        "NOMESSAGE"
+      ],
+      "description": "NOMESSAGE Action"
+    },
+    
+    "NOPAUSE Action": {
+      "prefix": "NOPAUSE",
+      "body": [
+        "NOPAUSE"
+      ],
+      "description": "NOPAUSE Action"
+    },
+    
+    "OPEN FILE Statement": {
+      "prefix": "OPEN FILE",
+      "body": [
+        "OPEN FILE ${1:file_var} ('${2:usage_string}', '${3:file_string}')"
+      ],
+      "description": "OPEN FILE Statement\nfile_var : FILE\nusage_string : a STRING\nfile_string : a STRING\n"
+    },
+    
+    "OPEN HAND Statement": {
+      "prefix": "OPEN HAND",
+      "body": [
+        "OPEN HAND ${1:hand_num}"
+      ],
+      "description": "OPEN HAND Statement\nhand_num : an INTEGER expression\n"
+    },
+    
+    "OPEN_TPE Built-In Procedure": {
+      "prefix": "OPEN_TPE",
+      "body": [
+        "OPEN_TPE('${1:prog_name}', ${2:open_mode}, ${3:reject_mode}, ${4:open_id}, ${5:status})"
+      ],
+      "description": "OPEN_TPE Built-In Procedure\nInput/Output Parameters:\n[in] prog_name :STRING\n[in] open_mode :INTEGER\n[in] reject_mode :INTEGER\n[out] open_id :INTEGER\n[out] status :INTEGER\n%ENVIRONMENT Group :PBCORE\n"
+    },
+    
+    "ORD Built-In Function": {
+      "prefix": "ORD",
+      "body": [
+        "ORD('${1:str}', ${2:str_index})"
+      ],
+      "description": "ORD Built-In Function\nFunction Return Type :INTEGER\nInput/Output Parameters:\n[in] str :STRING\n[in] str_index :INTEGER\n%ENVIRONMENT Group :SYSTEM\n"
+    },
+    
+    "ORIENT Built-In Function": {
+      "prefix": "ORIENT",
+      "body": [
+        "ORIENT(${1:posn})"
+      ],
+      "description": "ORIENT Built-In Function\nFunction Return Type :VECTOR\nInput/Output Parameters:\n[in] posn : POSITION\n%ENVIRONMENT Group :VECTR\n"
+    },
+    
+    "PATH Data Type": {
+      "prefix": "PATH",
+      "body": [
+        "PATH"
+      ],
+      "description": "PATH Data Type"
+    },
+    
+    "PATH_LEN Built-In Function": {
+      "prefix": "PATH_LEN",
+      "body": [
+        "PATH_LEN(${1:path_nam})"
+      ],
+      "description": "PATH_LEN Built-In Function\nFunction Return Type : INTEGER\nInput/Output Parameters :\n[in] path_nam : PATH\n%ENVIRONMENT Group :PBCORE\n"
+    },
+    
+    "PAUSE_TASK Built-In Procedure": {
+      "prefix": "PAUSE_TASK",
+      "body": [
+        "PAUSE_TASK('${1:task_name}', ${2:force_sw}, ${3:stop_mtn}, ${4:status})"
+      ],
+      "description": "PAUSE_TASK Built-In Procedure\nInput/Output Parameters:\n[in] task_name :STRING\n[in] force_sw :BOOLEAN\n[in] stop_mtn_sw :BOOLEAN\n[out] status :INTEGER\n%ENVIRONMENT Group :MULTI\n"
+    },
+    
+    "PEND_SEMA Built-In Procedure": {
+      "prefix": "PEND_SEMA",
+      "body": [
+        "PEND_SEMA('${1:semaphore_no}', ${2:max_time}, ${3:time_out})"
+      ],
+      "description": "PEND_SEMA Built-In Procedure\nInput/Output Parameters:\n[in] semaphore_no :INTEGER\n[in] max_time :INTEGER\n[out] time_out :BOOLEAN\n%ENVIRONMENT Group :MULTI\n"
+    },
+    
+    "PIPE_CONFIG Built-In Procedure": {
+      "prefix": "pipe_config",
+      "body": [
+        "pipe_config('${1:pipe_name}', ${2:cmos_flag}, ${3:n_sectors}, ${4:record_size}, '${5:from_dict}', ${6:from_ele}, ${7:status})"
+      ],
+      "description": "PIPE_CONFIG Built-In Procedure\nInput/Output Parameters:\n[in] pipe_name :STRING\n[in] cmos_flag :BOOLEAN\n[in] n_sectors :INTEGER\n[in] record_size :INTEGER\n[in] form_dict :STRING\n[in] form_ele :INTEGER\n[out] status :INTEGER\n%ENVIRONMENT Group :FLBT\n"
+    },
+    
+    "POP_KEY_RD Built-In Procedure": {
+      "prefix": "POP_KEY_RD",
+      "body": [
+        "POP_KEY_RD('${1:key_dev_name}', ${2:pop_index}, ${3:status})"
+      ],
+      "description": "POP_KEY_RD Built-In Procedure\nInput/Output Parameters:\n[in] key_dev_name :STRING\n[in] pop_index :INTEGER\n[out] status :INTEGER\n%ENVIRONMENT Group :PBCORE\n"
+    }, 
+    
+    "Port_Id Action": {
+      "prefix": "port_id",
+      "body": [
+        "port_id[${1:n}] = ${2|expression, variabel, constant, EVAL clause|}"
+      ],
+      "description": "Port_Id Action\nport_id :an output port array\nn :an INTEGER\n"
+    },
+    
+    "POS Built-In Function": {
+      "prefix": "POS",
+      "body": [
+        "POS(${1:X}, ${2:Y}, ${3:Z}, ${4:W}, ${5:P}, ${6:R}, ${7:C})"
+      ],
+      "description": "POS Built-In Function\nFunction Return Type : XYZWPR\nInput/Output Parameters:\n[in] x, y, z, w, p, and r :REAL\n[in] c :CONFIG\n%ENVIRONMENT Group :SYStem\n"
+    },
+    
+    "POS2JOINT Built-In Function": {
+      "prefix": "POS2JOINT",
+      "body": [
+        "POS2JOINT(${1:ref_jnt}, ${2:in_pos}, ${3:uframe}, ${4:utool}, ${5:config_ref}, ${6:wjnt_cfg}, ${7:ext_ang}, ${8:out_jnt}, ${9:status})"
+      ],
+      "description": "POS2JOINT Built-In Function\nInput/Output Parameters:\n[in] ref_jnt :JOINTPOS\n[in] in_pos :POSITION\n[in] uframe :POSITION\n[in] utool :POSITION\n[in] config_ref :INTEGER\n[in] wjnt_cfg :CONFIG\n[in] ext_ang :ARRAY OF REAL\n[out] out_jnt :JOINTPOS\n[out] status :INTEGER\n%ENVIRONMENT Group :MOTN\n"
+    },
+    
+    "POS_REG_TYPE Built-In Procedure": {
+      "prefix": "POS_REG_TYPE",
+      "body": [
+        "POS_REG_TYPE(${1:register_no}, ${2:group_no}, ${3:posn_type}, ${4:num_axes}, ${5:staus})"
+      ],
+      "description": "POS_REG_TYPE Built-In Procedure\nInput/Output Parameters:\n[in] register : INTEGER\n[in] group_no : INTEGER\n[out] posn_type : INTEGER\n[out] num_axes : INTEGER\n[out] status : INTEGER\n%ENVIRONMENT Group :REGOPE\n"
+    },
+    
+    "POST_ERR Built-In": {
+      "prefix": "POST_ERR",
+      "body": [
+          "POST_ERR(${1:error_code}, ${2:parameter}, ${3:cause_code}, ${4|severity,0,1,2|})",
+          "$0"
+      ],
+      "description": "POST_ERR Built-In Procedure\nInput/Output Parameters:\n[in] error_code :INTEGER\n[in] parameter :STRING\n[in] cause_code :INTEGER\n[in] severity :INTEGER\n%ENVIRONMENT Group :PBCORE\n"
+    },
+
+    "POST_ERR_L Built-In Procedure": {
+      "prefix": "POST_ERR_L",
+      "body": [
+        "POST_ERR_L(${1:error_code}, '${2:parameter}', ${3:cause_code}, ${4:severity})"
+      ],
+      "description": "POST_ERR_L Built-In Procedure\nInput/Output Parameters:\n[in] error_code :INTEGER\n[in] parameter :STRING\n[in] cause_code :INTEGER\n[in] severity :INTEGER\n%ENVIRONMENT Group :PBCORE\n"
+    },
+    
+    "POST_SEMA Built-In Procedure": {
+      "prefix": "POST_SEMA",
+      "body": [
+        "POST_SEMA(${1:semaphore_no})"
+      ],
+      "description": "POST_SEMA Built-In Procedure\nInput/Output Parameters:\n[in] semaphore_ no : INTEGER\n%ENVIRONMENT Group : MULTI\n"
+    },
+    
+    "PRINT_FILE Built-In Procedure": {
+      "prefix": "PRINT_FILE",
+      "body": [
+        "PRINT_FILE('${1:file_spec}',${2:nowait_sw},${3:status})"
+      ],
+      "description": "PRINT_FILE Built-In Procedure\nInput/Output Parameters:\n[in] file_spec :STRING\n[in] nowait_sw :BOOLEAN\n[out] status :INTEGER\n%ENVIRONMENT Group : FDEV\n"
+    },
+    
+    "PROG_BACKUP Built-In Procedure": {
+      "prefix": "PROG_BACKUP",
+      "body": [
+        "PROG_BACKUP('${1:file_spec}',${2:prog_type},${3:max_size},${4:write_port},${5:status})"
+      ],
+      "description": "PROG_BACKUP Built-In Procedure\nInput/Output Parameters:\n[in] file_spec :STRING\n[in] prog_type :INTEGER\n[in] max_size: INTEGER[in] write_prot: BOOLEAN[out] status :INTEGER%ENVIRONMENT Group: CORE\n"
+    },
+    
+    "PROG_CLEAR Built-In Procedure": {
+      "prefix": "PROG_CLEAR",
+      "body": [
+        "PROG_CLEAR('${1:prog_name}',${2:prog_type},${3:status})"
+      ],
+      "description": "PROG_CLEAR Built-In Procedure\nInput/Output Parameters:\n[in] prog_name :STRING\n[in] prog_type :INTEGER\n[out] status :INTEGER\n%ENVIRONMENT Group: CORE\n"
+    },
+    
+    "PROG_RESTORE Built-In Procedure": {
+      "prefix": "PROG_RESTORE",
+      "body": [
+        "PROG_RESTORE('${1:file_spec}',${2:status})"
+      ],
+      "description": "PROG_RESTORE Built-In Procedure\nInput/Output Parameters:\n[in] file_spec :STRING\n[out] status :INTEGER\n%ENVIRONMENT Group: CORE\n"
+    },
+    
+    "PROG_LIST Built-In Procedure": {
+      "prefix": "PROG_LIST",
+      "body": [
+        "prog_list('${1:prog_name}',${2:prog_type},${3:n_skip},${4:format},${5:ary_name[*]},${6:n_progs},${7:<f_index>})"
+      ],
+      "description": "PROG_LIST Built-In Procedure\nInput/Output Parameters:\n[in] prog_name :STRING\n[in] prog_type :INTEGER\n[in] n_skip :INTEGER\n[in] format :INTEGER\n[out] ary_name :ARRAY of string\n[out] n_progs :INTEGER\n[out] status :INTEGER\n[in,out] f_index :INTEGER\n%ENVIRONMENT Group :BYNAM\n"
+    },
+
+    "Program": {
+      "prefix": "PROGRAM",
+      "body": [
+          "PROGRAM ${1:MyProgram}",
+          "----------------------------------------------------",
+          "-- Creation date: ${CURRENT_YEAR}.${CURRENT_MONTH}.${CURRENT_DATE}",
+          "-- Created by: $2",
+          "----------------------------------------------------",
+          "-- Version: ${3:0.0.0.0 - 00}",
+          "----------------------------------------------------",
+          "-- Function: $4",          
+          "----------------------------------------------------",
+          "-- Last modified: ${CURRENT_YEAR}.${CURRENT_MONTH}.${CURRENT_DATE}",
+          "-- Last modified by: $2                             ",
+          "----------------------------------------------------",
+          "%COMMENT = '$3'",
+          "%SYSTEM",
+          "%ALPHABETIZE",
+          "%NOLOCKGROUP",
+          "%NOPAUSESHFT",
+          "%NOPAUSE = ERROR + COMMAND + TPENABLE",
+          "%NOABORT = ERROR + TPENABLE",
+          "%NOBUSYLAMP",
+          "%INCLUDE KLEVKEYS",
+          "%INCLUDE KLEVKMSK",
+          "%INCLUDE KLEVCCDF",
+          "%INCLUDE KLIOUOP",
+          "%INCLUDE KLIOTYPS",
+          "CONST",
+          "TYPE",
+          "VAR",
+          "----------------------------------------------------",
+          "-- BEGIN ${1:MyProgram}                             ",
+          "----------------------------------------------------",
+          "BEGIN",
+          "\t$0",
+          "END ${1:MyProgram}"
+      ],
+      "description": "Program"
+    },
+    
+    "PULSE Built-In": {
+      "prefix": "PULSE",
+      "body": [
+          "PULSE DOUT[${1:port_no}] FOR ${2:time_in_ms} ${3|NOWAIT, |}",
+          "$0"
+      ],
+        "description": "PULSE DOUT[port_no] FOR time_in_ms"
+    },
+    
+    "Purge Condition handlers": {
+      "prefix": "PURGE",
+      "body": [
+          "PURGE CONDITION[${1:1}]",
+          "$0"
+      ],
+      "description": "Purge Condition handlers"
+    },
+    
+    "PURGE_DEV Built-In Procedure": {
+      "prefix": "PURGE_DEV",
+      "body": [
+        "PURGE_DEV('${1:device}',${2:status})"
+      ],
+      "description": "PURGE_DEV Built-In Procedure\nInput/Output Parameters:\n[in] device : STRING\n[out] status : INTEGER\n%ENVIRONMENT Group :FDEV\n"
+    },
+    
+    "PUSH_KEY_RD Built-In Procedure": {
+      "prefix": "PUSH_KEY_RD",
+      "body": [
+        "PUSH_KEY_RD('${1:key_dev_name}',${2:key_mask},${3:pop_index},${4:status})"
+      ],
+      "description": "PUSH_KEY_RD Built-In Procedure\nInput/Output Parameters:\n[in] key_dev_name :STRING\n[in] key_mask :INTEGER\n[out] pop_index :INTEGER\n[out] status :INTEGER\n%ENVIRONMENT Group :PBCORE\n"
+    },
+
+    "READ_DICT Built-In": {
+      "prefix": "READ_DICT",
+      "body": [
+          "READ_DICT('${1:dict_name}', ${2:element_no}, ${3:stringArray}, ${4:first_line}, ${5:last_line}, ${6:status})",
+          "$0"
+      ],
+      "description": "READ_DICT Built-In Procedure\nInput/Output Parameters:\n[in] dict_name : STRING\n[in] element_no : INTEGER\n[out] ksta : ARRAY OF STRING\n[in] first_line : INTEGER\n[out] last_line : INTEGER\n[out] status : INTEGER\n%ENVIRONMENT Group :PBCORE\n"
+  },  
+
+  "READ_DICT_V Built-In": {
+      "prefix": "READ_DICT_V",
+      "body": [
+          "READ_DICT_V('${1:dict_name}', ${2:element_no}, ${3:value_array}, ${4:stringArray}, ${5:status})",
+          "$0"
+      ],
+      "description": "READ_DICT_V Built-In-Procedure\nInput/Output Parameters:\n[in] dict_name : STRING\n[in] element_no : INTEGER\n[in] value_array : ARRAY OF STRING\n[out] ksta : ARRAY OF STRING\n[out] status : INTEGER\n%ENVIRONMENT Group :UIF\n"
+  },
+    
+    "READ_KB Built-In Procedure": {
+      "prefix": "READ_KB",
+      "body": [
+        "READ_KB(${1:file_var},'${2:buffer}',${3:buffer_size},${4:accept_mask},${5:term_mask},${6:time_out},'${7:init_data}',${8:n_chars_got},${9:term_char},${10:status})"
+      ],
+      "description": "READ_KB Built-In Procedure\nInput/Output Parameters:\n[in] file_var : FILE\n[out] buffer : STRING\n[in] buffer_size : INTEGER\n[in] accept_mask : INTEGER\n[in] time_out : INTEGER\n[in] term_mask : INTEGER\n[in] init_data : STRING\n[out] n_chars_got : INTEGER\n[out] term _char : INTEGER\n[out] stat us : INTEGER\n%ENVIRONMENT Group :PBCORE\n"
+    },
+    
+    "RELAX HAND Statement": {
+      "prefix": "RELAX HAND",
+      "body": [
+        "RELAX HAND ${1:hand_num}"
+      ],
+      "description": "RELAX HAND Statement\nhand_num : an INTEGER expression\n"
+    },
+
+    "REMOVE_DICT Built-In": {
+      "prefix": "REMOVE_DICT",
+      "body": [
+          "REMOVE_DICT('${1:dict_name}',  ${2|lang_name,dp_japanese,dp_default,dp_english,dp_french,dp_german,dp_spanish|}, ${3:status})",
+          "$0"
+      ],
+      "description": "REMOVE_DICT Built-In Procedure\nInput/Output Parameters:\n[in] dict_name : STRING\n[in] lang_name : STRING\n[out] status : INTEGER\n%ENVIRONMENT Group :UIF\n"
+    },
+    
+    "RENAME_FILE Built-In Procedure": {
+      "prefix": "RENAME_FILE",
+      "body": [
+        "RENAME_FILE('${1:old_file}','${2:new_file}',${3:nowait_sw},${4:status})"
+      ],
+      "description": "RENAME_FILE Built-In Procedure\nInput/Output Parameters:\n[in] old_file : STRING\n[in] new_file : STRING\n[in] nowait_sw : BOOLEAN\n[out] status : INTEGER\n%ENVIRONMENT Group :FDEV\n"
+    },
+    
+    "RENAME_VAR Built-In Procedure": {
+      "prefix": "RENAME_VAR",
+      "body": [
+        "RENAME_VAR('${1:prog_name}','${2:old_name}','${3:new_name}',${4:staus})"
+      ],
+      "description": "RENAME_VAR Built-In Procedure\nInput/Output Parameters:\n[in] prog_nam : STRING\n[in] old_nam : STRING\n[in] new_nam : STRING\n[out] status : INTEGER\n%ENVIRONMENT Group :MEMO\n"
+    },
+    
+    "RENAME_VARS Built-In Procedure": {
+      "prefix": "RENAME_VARS",
+      "body": [
+        "RENAME_VARS('${1:old_nam}','${2:new_nam}',${3:status})"
+      ],
+      "description": "Renames all of the variables in a specified program to a new program name.\nInput/Output Parameters:\n[in] old_nam : STRING\n[in] new_nam : STRING\n[out] status : INTEGER\n%ENVIRONMENT Group :MEMO\n"
+    },
+
+    "Repeat loop": {
+      "prefix": "REPEAT",
+      "body": [
+          "REPEAT",
+          "\t$0",
+          "UNTIL(${1:element})"
+      ],
+      "description": "Repeat until loop"
+    },
+    
+    "RESET Built-In Procedure": {
+      "prefix": "RESET",
+      "body": [
+        "RESET(${1:successful})"
+      ],
+      "description": "RESET Built-In Procedure\nInput/Output Parameters:\n[out] successful : BOOLEAN\n%ENVIRONMENT Group :MOTN\n"
+    },
+    
+    "RGET_PORTCMT Built-In ROUTINE": {
+      "prefix": "RGET_PORTCMT",
+      "body": [
+        "RGET_PORTCMT('${1:host_port}',${2:port_type},${3:port_no},${4:comment_str},${5:status})"
+      ],
+      "description": "RGET_PORTCMT Built-In ROUTINE\nInput/Output Parameters:\n[in] host_port: STRING\n[in] port_type: INTEGER\n[in] port_no: INTEGER\n[out] comment_str: INTEGER\n[out]status: INTEGER\n%ENVIRONMENT Group: RPCC\n"
+    },
+    
+    "RGET_PORTVAL Built-In ROUTINE": {
+      "prefix": "RGET_PORTVAL",
+      "body": [
+        "RGET_PORTVAL('${1:host_port}',${2:port_type},${3:port_no},${4:port_value},${5:status})"
+      ],
+      "description": "RGET_PORTVAL Built-In ROUTINE\nInput/Output parameters:\n[in]host_port: STRING\n[in]port_type: INTEGER\n[in]port_no:INTEGER\n[out]port_value:INTEGER\n[out]status: INTEGER\n%ENVIRONMENT Group: RPCC\n"
+    },
+    
+    "RGET_PREGCMT Built-In ROUTINE": {
+      "prefix": "RGET_PREGCMT",
+      "body": [
+        "RGET_PREGCMT('${1:host_port}',${2:register_no},'${3:comment_str}',${4:status})"
+      ],
+      "description": "RGET_PREGCMT Built-In ROUTINE\nInput/Output parameters:\n[in]host_port: STRING\n[in]register_no: INTEGER\n[out]comment_str : STRING\n[out]status: INTEGER\n%ENVIRONMENT Group: RPCC\n"
+    },
+    
+    "RGET_REG Built-In ROUTINE": {
+      "prefix": "RGET_REG",
+      "body": [
+        "RGET_REG('${1:host_port}',${2:register_no},${3:real_flag},${4:int_value},${5:real_value},${6:status})"
+      ],
+      "description": "RGET_REG Built-In ROUTINE\nInput/Output parameters:\n[in]host_port: STRING\n[in]register_no: BOOLEAN\n[out]real_flag: INTEGER\n[out]int_value: INTEGER\n[out]real_value: REAL\n[out]status: INTEGER\n%ENVIRONMENT Group: RPCC\n"
+    },
+    
+    "RGET_REG_CMT Built-In ROUTINE": {
+      "prefix": "RGET_REG_CMT",
+      "body": [
+        "RGET_REG_CMT('${1:host_port}',${2:register_no},'${3:comment_str}',${4:status})"
+      ],
+      "description": "RGET_REG_CMT Built-In ROUTINE\nInput/Output parameters:\n[in] host_port: STRING\n[in] register_no: INTEGER\n[out] comment_str: STRING\n[out] status: INTEGER\n%ENVIRONMENT Group: RPCC\n"
+    },
+    
+    "RGET_SREGCMT Built-in ROUTINE": {
+      "prefix": "RGET_SREGCMT",
+      "body": [
+        "RGET_SREGCMT('${1:host_port}',${2:register_no},'${3:comment_str}',${4:status})"
+      ],
+      "description": "RGET_SREGCMT Built-in ROUTINE\nInput/Output parameters:\n[in]host_port: STRING\n[in]register_no: INTEGER\n[out]comment_str: STRING\n[out]status: INTEGER\n%ENVIRONMENT Group: RPCC\n"
+    },
+    
+    "RGET_STR_REG Built-In ROUTINE": {
+      "prefix": "RGET_STR_REG",
+      "body": [
+        "RGET_STR_REG('${1:host_port}',${2:register_no},'${3:value}',${4:status})"
+      ],
+      "description": "RGET_STR_REG Built-In ROUTINE\nInput/Output parameters:\n[in] host_port: STRING\n[in] register_no: INTEGER\n[out] value : STRING[254]\n[out] status: INTEGER\n%ENVIRONMENT Group: RPCC\n"
+    },
+    
+    "RMCN_ALERT Built-In ROUTINE": {
+      "prefix": "RMCN_ALERT",
+      "body": [
+        "RMCN_ALERT('${1:alertaddr}','${2:subject}','${3:message}','${4:alerturl}',${5:status})"
+      ],
+      "description": "RMCN_ALERT Built-In ROUTINE\nInput/Output parameters:\n[in] alertaddr: STRING\n[in] subject: STRING\n[in] message: STRING\n[in] alerturl: STRING\n[out] status: INTEGER\n%ENVIRONMENT Group: PBCORE\n"
+    },
+    
+    "RMCN_SEND Built-in ROUTINE": {
+      "prefix": "RMCN_SEND",
+      "body": [
+        "RMCN_SEND('${1:xml_file}',${2:attachments[*]},${3:priority},${4:status})"
+      ],
+      "description": "RMCN_SEND Built-in ROUTINE\nInput/Output parameters:\n[in] xml_file: STRING\n[in] attachments: ARRAY OF STRING\n[in] priority: INTEGER\n[out] status: INTEGER\n%ENVIRONMENT Group: PBCORE\n"
+    },
+    
+    "RNUMREG_RECV Built-In ROUTINE": {
+      "prefix": "RNUMREG_RECV",
+      "body": [
+        "RNUMREG_RECV('${1:host_port}',${2:src_idx},${3:dest_idx},${4:option},${5:status})"
+      ],
+      "description": "RNUMREG_RECV Built-In ROUTINE\nInput/Output parameters:\n[in]host_port: STRING\n[in]src_idx : INTEGER\n[in]dest_idx : INTEGER\n[in]option : INTEGER\n[in]status : INTEGER\n%ENVIRONMENT Group: RPCC\n"
+    },
+    
+    "RNUMREG_SEND Built-In ROUTINE": {
+      "prefix": "RNUMREG_SEND",
+      "body": [
+        "RNUMREG_SEND('${1:host_port}',${2:dest_idx},${3:src_idx},${4:option},${5:status})"
+      ],
+      "description": "RNUMREG_SEND Built-In ROUTINE\nInput/Output parameters:\n[in]host_port: STRING\n[in]dest_idx : INTEGER\n[in]src_idx : INTEGER\n[in]option : INTEGER\n[in]status : INTEGER\n%ENVIRONMENT Group: RPCC\n"
+    },
+    
+    "ROUND Built-In Function": {
+      "prefix": "ROUND",
+      "body": [
+        "ROUND(${1:X})"
+      ],
+      "description": "ROUND Built-In Function\nFunction Return Type :INTEGER\nInput/Output Parameters:\n[in] x :REAL\n%ENVIRONMENT Group :SYStem\n"
+    },
+
+    "ROUTINE": {
+      "prefix": "ROUTINE",
+      "body": [
+          "ROUTINE ${1:MyRoutine}",
+          "----------------------------------------------------",
+          "-- Creation date: ${CURRENT_YEAR}.${CURRENT_MONTH}.${CURRENT_DATE}",
+          "-- Created by: $2",
+          "----------------------------------------------------",
+          "-- Function: $3",
+          "----------------------------------------------------",
+          "-- Arguments: $4",
+          "----------------------------------------------------",
+          "-- Return value: $5",
+          "----------------------------------------------------",
+          "-- Last modified: ${CURRENT_YEAR}.${CURRENT_MONTH}.${CURRENT_DATE}",
+          "-- Last modified by: $2",
+          "----------------------------------------------------",
+          "CONST",
+          "TYPE",
+          "VAR",
+          "BEGIN",
+          "\t$0", 
+          "END ${1:MyRoutine}"
+      ],
+      "description": "Routine"
+    },
+    
+    "RPREG_RECV Built-In ROUTINE": {
+      "prefix": "RPOSREG_RECV",
+      "body": [
+        "RPOSREG_RECV('${1:host_port}',${2:src_idx},${3:src_grp},${4:dest_idx},${5:dest_grp},${6:option},${7:status})"
+      ],
+      "description": "RPREG_RECV Built-In ROUTINE\nInput/Output parameters:\n[in]host_port: STRING\n[in]src_idx: INTEGER\n[in]src_grp: INTEGER\n[in]dest_idx: INTEGER\n[in]dest_grp: INTEGER\n[in]option: INTEGER\n[in]status: INTEGER\n%ENVIRONMENT Group: RPCC\n"
+    },
+    
+    "RPREG_SEND Built-in ROUTINE": {
+      "prefix": "RPOSREG_SEND",
+      "body": [
+        "RPOSREG_SEND('${1:host_port}',${2:dest_idx},${3:dest_grp},${4:src_idx},${5:src_grp},${6:option},${7:status})"
+      ],
+      "description": "RPREG_SEND Built-in ROUTINE\nInput/Output parameter:\n[in]host_port: STRING\n[in]dest_idx: INTEGER\n[in]dest_grp: INTEGER\n[in]src_idx: INTEGER\n[in]src_grp: INTEGER\n[in]option: INTEGER\n[in]status: INTEGER\n%ENVIRONMENT Group: RPCC\n"
+    },
+    
+    "RSET_INT_REG Built-in ROUTINE": {
+      "prefix": "RSET_INT_REG",
+      "body": [
+        "RSET_INT_REG('${1:host_port}',${2:register_no},${3:int_value},${4:status})"
+      ],
+      "description": "RSET_INT_REG Built-in ROUTINE\nInput/Output parameters:\n[in]host_port: STRING\n[in]register_no: BOOLEAN\n[in]int_value: INTEGER\n[out]status: INTEGER\n%ENVIRONMENT Group: RPCC\n"
+    },
+    
+    "RSET_PORTCMT Built-in ROUTINE": {
+      "prefix": "RSET_PORTCMT",
+      "body": [
+        "RSET_PORTCMT('${1:host_port}',${2:port_type},${3:port_no},'${4:comment_str}',${5:status})"
+      ],
+      "description": "RSET_PORTCMT Built-in ROUTINE\nInput/Output parameters:\n[in]host_port: STRING\n[in]port_type: INTEGER\n[in]port_no: INTEGER\n[in]comment_str: STRING\n[out]status: INTEGER\n%ENVIRONMENT Group: RPCC\n"
+    },
+    
+    "RSET_PORTSIM Built-in ROUTINE": {
+      "prefix": "RSET_PORTSIM",
+      "body": [
+        "RSET_PORTSIM('${1:host_port}',${2:port_type},${3:port_no},${4:value},${5:status})"
+      ],
+      "description": "RSET_PORTSIM Built-in ROUTINE\nInput/Output parameters:\n[in]host_port: STRING\n[in]port_type: INTEGER\n[in]port_no: INTEGER\n[in]value: INTEGER\n[out]status: INTEGER\n%ENVIRONMENT Group: RPCC\n"
+    },
+    
+    "RSET_PORTVAL Built-in ROUTINE": {
+      "prefix": "RSET_PORTVAL",
+      "body": [
+        "RSET_PORTVAL('${1:host_port}',${2:port_type},${3:port_no},${4:port_value},${5:status})"
+      ],
+      "description": "RSET_PORTVAL Built-in ROUTINE\nInput/Output parameters:\n[in]host_port: STRING\n[in]port_type: INTEGER\n[in]port_no: INTEGER\n[in]port_value: INTEGER\n[out]status: INTEGER\n%ENVIRONMENT Group: RPCC\n"
+    },
+    
+    "RSET_PREGCMT Built-in ROUTINE": {
+      "prefix": "RSET_PREGCMT",
+      "body": [
+        "RSET_PREGCMT('${1:host_port}',${2:register_no},'${3:comment_str}',${4:status})"
+      ],
+      "description": "RSET_PREGCMT Built-in ROUTINE\nInput/Output parameters:\n[in]host_port: STRING\n[in]register_no: INTEGER\n[in]comment_str : STRING\n[out]status: INTEGER\n%ENVIRONMENT Group: RPCC\n"
+    },
+    
+    "RSET_REALREG Built-in ROUTINE": {
+      "prefix": "RSET_REALREG",
+      "body": [
+        "RSET_REALREG('${1:host_port}',${2:register_no},${3:real_value},${4:status})"
+      ],
+      "description": "RSET_REALREG Built-in ROUTINE\nInput/Output parameters:\n[in] host_port: STRING\n[in] register_no: BOOLEAN\n[in] real_value: REAL\n[out] status: INTEGER\n%ENVIRONMENT RPCC\n"
+    },
+    
+    "RSET_REG_CMT Built-In ROUTINE": {
+      "prefix": "RSET_REG_CMT",
+      "body": [
+        "RSET_REG_CMT('${1:host_port}',${2:register_no},'${3:comment_str}',${4:status})"
+      ],
+      "description": "RSET_REG_CMT Built-In ROUTINE\nInput/Output parameters:\n[in]host_port: STRING\n[in]register_no: INTEGER\n[in]comment_str : STRING\n[out]status: INTEGER\n%ENVIRONMENT Group: RPCC\n"
+    },
+    
+    "RSET_SREGCMT Built-in ROUTINE": {
+      "prefix": "RSET_SREGCMT",
+      "body": [
+        "RSET_SREGCMT('${1:host_port}',${2:register_no},'${3:comment_str}',${4:status})"
+      ],
+      "description": "RSET_SREGCMT Built-in ROUTINE\nInput/Output parameters:\n[in]host_port: STRING\n[in]register_no: INTEGER\n[in]comment_str : STRING\n[out]status: INTEGER\n%ENVIRONMENT Group: RPCC\n"
+    },
+    
+    "RSET_STR_REG Built-in ROUTINE": {
+      "prefix": "RSET_STR_REG",
+      "body": [
+        "RSET_STR_REG('${1:host_port}',${2:register_no},'${3:value}',${4:status})"
+      ],
+      "description": "RSET_STR_REG Built-in ROUTINE\nInput/Output parameters:\n[in]host_port: STRING\n[in]register_no: INTEGER\n[in]value : STRING[254]\n[out]status: INTEGER\n%ENVIRONMENT Group: RPCC\n"
+    },
+
+    "RUN_TASK Built-In": {
+      "prefix": "RUN_TASK",
+      "body": [
+          "RUN_TASK('${1:task_name}', ${2:line_number}, ${3:pause_on_sft}, ${4:tp_motion}, ${5:lock_mask}, ${6:status})",
+          "$0"
+      ],
+      "description": "RUN_TASK Built-In Procedure\nInput/Output Parameters:\n[in] task_name : STRING\n[in] line_number : INTEGER\n[in] pause_on_sft : BOOLEAN\n[in] tp_motion : BOOLEAN\n[in] lock_mask : INTEGER\n[out] status : INTEGER\n%ENVIRONMENT Group :MULTI\n"
+    },
+    
+    "SAVE Built-In Procedure": {
+      "prefix": "SAVE",
+      "body": [
+        "SAVE('${1:prog_nam}','${2:file_spec}',${3:status})"
+      ],
+      "description": "SAVE Built-In Procedure\nInput/Output Parameters:\n[in] prog_nam :STRING\n[in] file_spec :STRING\n[out] status :INTEGER\n%ENVIRONMENT Group :MEMO\n"
+    },
+    
+    "SAVE_DRAM Built-In Procedure": {
+      "prefix": "SAVE_DRAM",
+      "body": [
+        "SAVE_DRAM('${1:prog_nam}',${2:status})"
+      ],
+      "description": "SAVE_DRAM Built-In Procedure\nInput/Output Parameters:\n[in] prog_nam: STRING\n[out] status: INTEGER\n%ENVIRONMENT Group: MEMO\n"
+    },
+
+    "Select statement": {
+      "prefix": "SELECT",
+      "body": [
+          "SELECT ${1:element} OF",
+          "\tCASE(${2:element}):",
+          "\t$3",
+          "\tELSE:",
+          "\t$4",
+          "ENDSELECT",
+          "$0"
+      ],
+      "description": "SELECT Statement"
+    },
+    
+    "SELECT_TPE Built-In Procedure": {
+      "prefix": "SELECT_TPE",
+      "body": [
+        "SELECT_TPE('${1:prog_name}',${2:status})"
+      ],
+      "description": "SELECT_TPE Built-In Procedure\nInput/Output Parameters:\n[in] prog_name :STRING\n[out] status : :INTEGER\n%ENVIRONMENT Group :TPE\n"
+    },
+    
+    "SEMA_COUNT Built-In Function": {
+      "prefix": "SEMA_COUNT",
+      "body": [
+        "SEMA_COUNT(${1:semaphore_no})"
+      ],
+      "description": "SEMA_COUNT Built-In Function\nFunction Return Type :INTEGER\nInput/Output Parameters:\n[in] semaphore_no : INTEGER\n%ENVIRONMENT Group :MULTI\n"
+    },
+    
+    "SEMAPHORE Condition": {
+      "prefix": "SEMAPHORE",
+      "body": [
+        "SEMAPHORE[${1:semaphore_no}]"
+      ],
+      "description": "SEMAPHORE Condition"
+    },
+    
+    "SEND_DATAPC Built-In Procedure": {
+      "prefix": "SEND_DATAPC",
+      "body": [
+        "SEND_DATAPC(${1:event_no},${2:dat_buffer},${3:status})"
+      ],
+      "description": "SEND_DATAPC Built-In Procedure\nInput/Output Parameters:\n[in] event_no :INTEGER\n[in] dat_buffer :ARRAY OF BYTE\n[out] status :INTEGER\n%ENVIRONMENT Group :PC\n"
+    },
+    
+    "SEND_EVENTPC Built-In Procedure": {
+      "prefix": "SEND_EVENTPC",
+      "body": [
+        "SEND_EVENTPC(${1:event_no},${2:status})"
+      ],
+      "description": "SEND_EVENTPC Built-In Procedure\nInput/Output Parameters:\n[in] event_no :INTEGER\n[out] status :INTEGER\n%ENVIRONMENT Group :PC\n"
+    },
+
+    "SET_ATTR_PRG Built-In": {
+      "prefix": "SET_ATTR_PRG",
+      "body": [
+          "SET_ATTR_PRG('${1:program_name}', ${2|attr_number,AT_PROG_TYPE,AT_PROG_NAME,AT_OWNER,AT_COMMENT,AT_PROG_SIZE,AT_ALLC_SIZE,AT_NUM_LINE,AT_CRE_TIME,AT_MDFY_TIME,AT_SRC_NAME,AT_SRC_VRSN,AT_DEF_GROUP,AT_PROTECT,AT_STORAGE,TPSTOR_SHOD,AT_STK_SIZE,AT_TASK_PRI,AT_DURATION,AT_BUSY_OFF,AT_IGNR_ABRT,AT_IGNR_PAUS,AT_CONTROL|}, ${3:int_value}, ${4:string_value}, ${5:status})",
+          "$0"
+      ],
+      "description": "SET_ATTR_PRG Built-In Procedure\nInput/Output Parameters:\n[in] program_name : STRING\n[in] attr_number : INTEGER\n[in] int_value : INTEGER\n[in] string_value : STRING\n[out] status : INTEGER\n%ENVIRONMENT Group :TPE\n"
+    },
+    
+    "SET_CURSOR Built-In Procedure": {
+      "prefix": "SET_CURSOR",
+      "body": [
+        "SET_CURSOR(${1:file_var},${2:row},${3:col},${4:status})"
+      ],
+      "description": "SET_CURSOR Built-In Procedure\nInput/Output Parameters:\n[in] file_var : FILE\n[in] row : INTEGER\n[in] col : INTEGER\n[out] status : INTEGER\n%ENVIRONMENT Group :PBCORE\n"
+    },
+    
+    "SET_EPOS_REG Built-In Procedure": {
+      "prefix": "SET_EPOS_REG",
+      "body": [
+        "SET_EPOS_REG(${1:register_no},${2:posn},${3:status},${4:group_no})"
+      ],
+      "description": "SET_EPOS_REG Built-In Procedure\nInput/Output Parameters:\n[in] register_no : INTEGER\n[in] posn : XYZWPREXT\n[out] status : INTEGER\n[in] group_no :INTEGER\n%ENVIRONMENT Group :REGOPE\n"
+    },
+    
+    "SET_EPOS_TPE Built-In Procedure": {
+      "prefix": "SET_EPOS_TPE",
+      "body": [
+        "SET_EPOS_TPE(${1:open_id},${2:position_no},${3:posn},${4:status},${5:group_no})"
+      ],
+      "description": "SET_EPOS_TPE Built-In Procedure\nInput/Output Parameters:\n[in] open_id : INTEGER\n[in] position_no : INTEGER\n[in] posn : XYZWPREXT\n[out] status : INTEGER\n[in] group_no : INTEGER\n%ENVIRONMENT Group :PBCORE\n"
+    },
+    
+    "SET_FILE_ATR Built-In Procedure": {
+      "prefix": "SET_FILE_ATR",
+      "body": [
+        "SET_FILE_ATR(${1:file_id},${2:atr_type},${3:atr_value})"
+      ],
+      "description": "SET_FILE_ATR Built-In Procedure\nInput/Output Parameters:\n[in] file_id: FILE\n[in] atr_type : INTEGER expression\n[in] atr_value : INTEGER expression\n%ENVIRONMENT Group :PBCORE\n"
+    },
+    
+    "SET_FILE_POS Built-In Procedure": {
+      "prefix": "SET_FILE_POS",
+      "body": [
+        "SET_FILE_POS(${1:file_id},${2:new_file_pos},${3:status})"
+      ],
+      "description": "SET_FILE_POS Built-In Procedure\nInput/Output Parameters:\n[in] file_id : FILE\n[in] new_file_pos : INTEGER expression\n[out] status : INTEGER variable\n%ENVIRONMENT Group :FLBT\n"
+    },
+
+    "SET_INT_REG Built-In": {
+      "prefix": "SET_INT_REG",
+      "body": [
+          "SET_INT_REG(${1:register_no}, ${2:int_value}, ${3:status})",
+          "$0"
+      ],
+      "description": "SET_INT_REG Built-In Procedure\nInput/Output Parameters:\n[in] register_no : INTEGER\n[in] int_value : INTEGER\n[out] status : INTEGER\n%ENVIRONMENT Group :REGOPE\n"
+    },
+    
+    "SET_JPOS_REG Built-In Procedure": {
+      "prefix": "SET_JPOS_REG",
+      "body": [
+        "SET_JPOS_REG(${1:register_no},${2:jpos},${3:status},${4:group_no})"
+      ],
+      "description": "SET_JPOS_REG Built-In Procedure\nInput/Output Parameters:\n[in] register_no : INTEGER\n[in] jpos : JOINTPOS\n[out] status :INTEGER\n[in] group_no :INTEGER\n%ENVIRONMENT Group :REGOPE\n"
+    },
+    
+    "SET_JPOS_TPE Built-In Procedure": {
+      "prefix": "SET_JPOS_TPE",
+      "body": [
+        "SET_JPOS_TPE(${1:open_id},${2:position_no},${3:posn},${4:status},${5:group_no})"
+      ],
+      "description": "SET_JPOS_TPE Built-In Procedure\nInput/Output Parameters:\n[in] open_id : INTEGER\n[in] position_no : INTEGER\n[in] posn : JOINTPOS\n[out] status : INTEGER\n[in] group_no :INTEGER\n%ENVIRONMENT Group :PBCORE\n"
+    },
+    
+    "SET_LANG Built-In Procedure": {
+      "prefix": "SET_LANG",
+      "body": [
+        "SET_LANG('${1:lang_name}',${2:status})"
+      ],
+      "description": "SET_LANG Built-In Procedure\nInput/Output Parameters:\n[in] lang_name :STRING\n[out] status :INTEGER\n%ENVIRONMENT Group :PBCORE\n"
+    },
+    
+    "SET_PERCH Built-In Procedure": {
+      "prefix": "SET_PERCH",
+      "body": [
+        "SET_PERCH(${1:jpos},${2:tolerance},${3:indx})"
+      ],
+      "description": "SET_PERCH Built-In Procedure\nInput/Output Parameters:\n[in] jpos : JOINTPOS\n[in] tolerance : ARRAY[6] of REAL\n[in] indx : INTEGER\n%ENVIRONMENT Group :SYSTEM\n"
+    },
+    
+    "SET_PORT_ASG Built-In Procedure": {
+      "prefix": "SET_PORT_ASG",
+      "body": [
+        "SET_PORT_ASG(${1:log_port_type},${2:log_port_no},${3:rack_no},${4:slot_no},${5:phy_port_type},${6:phy_port_no},${7:n_ports},${8:status})"
+      ],
+      "description": "SET_PORT_ASG Built-In Procedure\nInput/Output Parameters:\n[in] log_port_type : INTEGER\n[in] log_port_no : INTEGER\n[in] rack_no : INTEGER\n[in] slot_no : INTEGER\n[in] phy_port_type : INTEGER\n[in] phy_port_no : INTEGER\n[in] n_ports : INTEGER\n[out] status : INTEGER\n%ENVIRONMENT Group :IOSETUP\n"
+    },
+    
+    "SET_PORT_ATR Built-In Function": {
+      "prefix": "SET_PORT_ATR",
+      "body": [
+        "SET_PORT_ATR(${1:port_id},${2:atr_type},${3:atr_value})"
+      ],
+      "description": "SET_PORT_ATR Built-In Function\nFunction Return Type :INTEGER\nInput/Output Parameters:\n[in] port_id : INTEGER\n[in] atr_type : INTEGER\n[in] atr_value : INTEGER\n%ENVIRONMENT Group :FLBT\n"
+    },
+
+    "SET_PORT_CMT Built-In": {
+      "prefix": "SET_PORT_CMT",
+      "body": [
+          "SET_PORT_CMT(${1|port_type,io_din,io_dout,io_anin,io_anout,io_tpin,io_tpout,io_gpin,io_gpout,io_uopin,io_uopout,io_iopin,io_iopout,io_flag,io_marker|}, ${2:port_no}, ${3:comment_str}, ${4:status})"
+      ],
+      "description": "SET_PORT_CMT Built-In Procedure\nInput/Output Parameters:\n[in] port_type : INTEGER\n[in] port_no : INTEGER\n[in] comment_str : STRING\n[out] status : INTEGER\n%ENVIRONMENT Group :IOSETUP"
+    },
+    
+    "SET_PORT_MOD Built-In Procedure": {
+      "prefix": "SET_PORT_MOD",
+      "body": [
+        "SET_PORT_MOD(${1:port_type},${2:port_no},${3:mode_mask},${4:status})"
+      ],
+      "description": "SET_PORT_MOD Built-In Procedure\nInput/Output Parameters:\n[in] port_type : INTEGER\n[in] port_no : INTEGER\n[in] mode_mask : INTEGER\n[out] status : INTEGER\n%ENVIRONMENT Group :IOSETUP\n"
+    },
+    
+    "SET_PORT_SIM Built-In Procedure": {
+      "prefix": "SET_PORT_SIM",
+      "body": [
+        "SET_PORT_SIM(${1:port_type},${2:port_no},${3:value},${4:status})"
+      ],
+      "description": "SET_PORT_SIM Built-In Procedure\nInput/Output Parameters:\n[in] port_type : INTEGER\n[in] port_no : INTEGER\n[in] value : INTEGER\n[out] status : INTEGER\n%ENVIRONMENT Group :IOSETUP\n"
+    },
+    
+    "SET_PORT_VAL Built-In Procedure": {
+      "prefix": "SET_PORT_VAL",
+      "body": [
+        "SET_PORT_VAL(${1:port_type},${2:port_no},${3:value},${4:status})"
+      ],
+      "description": "SET_PORT_VAL Built-In Procedure\nInput/Output Parameters:\n[in] port_type : INTEGER\n[in] port_no : INTEGER\n[in] value : INTEGER\n[out] status : INTEGER\n%ENVIRONMENT Group :IOSETUP\n"
+    },
+    
+    "SET_POS_REG Built-In Procedure": {
+      "prefix": "SET_POS_REG",
+      "body": [
+        "SET_POS_REG(${1:register_no},${2:posn},${3:status},${4:group_no})"
+      ],
+      "description": "SET_POS_REG Built-In Procedure\nInput/Output Parameters:\n[in] register_no : INTEGER\n[in] posn : XYZWPR\n[out] status : INTEGER\n[in] group_no : INTEGER\n%ENVIRONMENT Group :REGOPE\n"
+    },
+    
+    "SET_POS_TPE Built-In Procedure": {
+      "prefix": "SET_POS_TPE",
+      "body": [
+        "SET_POS_TPE(${1:open_id},${2:position_no},${3:posn},${4:status},${5:group_no})"
+      ],
+      "description": "SET_POS_TPE Built-In Procedure\nInput/Output Parameters:\n[in] open_id : INTEGER\n[in] position_no : INTEGER\n[in] posn : XYZWPR\n[out] status : INTEGER\n[in] group_no :INTEGER\n%ENVIRONMENT Group :PBCORE\n"
+    },
+    
+    "SET_PREG_CMT Built-In-Procedure": {
+      "prefix": "SET_PREG_CMT",
+      "body": [
+        "SET_PREG_CMT(${1:register_no},'${2:comment_str}',${3:status})"
+      ],
+      "description": "SET_PREG_CMT Built-In-Procedure\nInput/Output Parameters:\n[in] register_no: INTEGER\n[in] comment_str: STRING\n[out] status: INTEGER\n%ENVIRONMENT group: REGOPE\n"
+    },
+    
+    "SET_REAL_REG Built-In Procedure": {
+      "prefix": "SET_REAL_REG",
+      "body": [
+        "SET_REAL_REG(${1:register_no},${2:real_value},${3:status})"
+      ],
+      "description": "SET_REAL_REG Built-In Procedure\nInput/Output Parameters:\n[in] register_no: INTEGER\n[in] real_value: REAL\n[out] status: INTEGER\n%ENVIRONMENT group: REGOPE\n"
+    },
+    
+    "SET_REG_CMT Built-In-Procedure": {
+      "prefix": "SET_REG_CMT",
+      "body": [
+        "SET_REG_CMT(${1:register_no},'${2:comment_str}',${3:status})"
+      ],
+      "description": "SET_REG_CMT Built-In-Procedure\nInput/Output Parameters:\n[in] register_no: INTEGER\n[in] comment_str: STRING\n[out] status: INTEGER\n%ENVIRONMENT group: REGOPE\n"
+    },
+    
+    "SET_SREG_CMT Built-in Procedure": {
+      "prefix": "SET_SREG_CMT",
+      "body": [
+        "SET_SREG_CMT(${1:register_no},'${2:comment}',${3:status})"
+      ],
+      "description": "SET_SREG_CMT Built-in Procedure\nInput/Output Parameters:\n[in] register_no: INTEGER\n[in] comment: STRING[254]\n[out] status: INTEGER\n%ENVIRONMENT group: REGOPE\n"
+    },
+    
+    "SET_STR_REG Built-in Procedure": {
+      "prefix": "SET_STR_REG",
+      "body": [
+        "SET_STR_REG(${1:register_no},'${2:value}',${3:status})"
+      ],
+      "description": "SET_STR_REG Built-in Procedure\nInput/Output Parameters:\n[in] register_no: INTEGER\n[in] value: STRING[254]\n[out] status: INTEGER\n%ENVIRONMENT group: REGOPE\n"
+    },
+    
+    "SET_TIME Built-In Procedure": {
+      "prefix": "SET_TIME",
+      "body": [
+        "SET_TIME(${1:i})"
+      ],
+      "description": "SET_TIME Built-In Procedure\nInput/Output Parameters:\n[in] i : INTEGER\n%ENVIRONMENT Group :TIM\n"
+    },
+    
+    "SET_TPE_CMT Built-In Procedure": {
+      "prefix": "SET_TPE_CMT",
+      "body": [
+        "SET_TPE_CMT(${1:open_id},${2:pos_no},'${3:comment}',${4:status})"
+      ],
+      "description": "SET_TPE_CMT Built-In Procedure\nInput/Output Parameters:\n[in] open_id :INTEGER\n[in] pos_no :INTEGER\n[in] comment :STRING\n[out] status :INTEGER\n%ENVIRONMENT Group :TPE\n"
+    },
+    
+    "SET_TRNS_TPE Built-In Procedure": {
+      "prefix": "SET_TRNS_TPE",
+      "body": [
+        "SET_TRNS_TPE(${1:open_id},${2:position_no},${3:posn},${4:status})"
+      ],
+      "description": "SET_TRNS_TPE Built-In Procedure\nInput/Output Parameters:\n[in] open_id : INTEGER\n[in] position_no : INTEGER\n[in] posn : POSITION\n[out] status : INTEGER\n%ENVIRONMENT Group :PBCORE\n"
+    },
+    
+    "SET_TSK_ATTR Built-In Procedure": {
+      "prefix": "SET_TSK_ATTR",
+      "body": [
+        "SET_TSK_ATTR('${1:task_name}',${2:attribute},${3:value},${4:status})"
+      ],
+      "description": "SET_TSK_ATTR Built-In Procedure\nInput/Output Parameters:\n[in] task_name : STRING\n[in] attribute : INTEGER\n[in] value : INTEGER\n[out] status : INTEGER\n%ENVIRONMENT Group :PBCORE\n"
+    },
+    
+    "SET_TSK_NAME Built-In Procedure": {
+      "prefix": "SET_TSK_NAME",
+      "body": [
+        "SET_TSK_NAME('${1:old_name}','${2:new_name}',${3:status})"
+      ],
+      "description": "SET_TSK_NAME Built-In Procedure\nInput/Output Parameters:\n[in] old_name : STRING\n[in] new_name : STRING\n[out] status : INTEGER\n%ENVIRONMENT Group :MULTI\n"
+    },
+
+    "Set Var Routine": {
+      "prefix": "SET_VAR",
+      "body": [
+          "SET_VAR(${1:ENTRY}, '${2|*SYSTEM*,PROGRAM_NAME|}', '${3|$SYSTEM_VARIABLE,VARIABLE_NAME|}', ${4:VALUE}, ${5:STATUS})",
+          "$0"
+      ],
+      "description": "SET_VAR Built-In Procedure\nInput/Output Parameters:\n[in,out] entry : INTEGER\n[in] prog_name : STRING\n[in] var_name : STRING\n[in] value : Any valid KAREL data type except PATH\n[out] status : INTEGER\n%ENVIRONMENT Group :SYSTEM\n"
+    },
+    
+    "SIGNAL EVENT Action": {
+      "prefix": "SIGNAL EVENT",
+      "body": [
+        "SIGNAL EVENT[${1:event_no}]"
+      ],
+      "description": "SIGNAL EVENT Action\nevent_no : an INTEGER expression\n"
+    },
+    
+    "SIGNAL SEMAPHORE Action": {
+      "prefix": "SIGNAL SEMAPHORE",
+      "body": [
+        "SIGNAL SEMAPHORE[${1:semaphore_no}]"
+      ],
+      "description": "SIGNAL SEMAPHORE Action\nsemaphore_no : an INTEGER expression\n"
+    },
+    
+    "SIN Built-In Function": {
+      "prefix": "SIN",
+      "body": [
+        "SIN(${1:angle})"
+      ],
+      "description": "SIN Built-In Function\nFunction Return Type :REAL\nInput/Output Parameters:\n[in] angle : REAL\n%ENVIRONMENT Group :SYSTEM\n"
+    },
+
+    "SPRUNCMD Built-In": {
+      "prefix": "SPRUNCMD",
+      "body": [
+          "SPRUNCMD('${1:COMMAND}', ${2:status})"
+      ],
+      "description": "SPRUNCMD('COMMAND', status)"
+    },
+    
+    "SQRT Built-In Function": {
+      "prefix": "SQRT",
+      "body": [
+        "SQRT(${1:X})"
+      ],
+      "description": "SQRT Built-In Function\nFunction Return Type :REAL\nInput/Output Parameters:\n[in] x : REAL\n%ENVIRONMENT Group :SYSTEM\n"
+    },
+    
+    "STRING Data Type": {
+      "prefix": "STRING",
+      "body": [
+        "STRING[${1:length}]"
+      ],
+      "description": "STRING Data Type\nlength : an INTEGER constant or literal\n"
+    },
+    
+    "STR_LEN Built-In Function": {
+      "prefix": "STR_LEN",
+      "body": [
+        "STR_LEN(${1:str})"
+      ],
+      "description": "STR_LEN Built-In Function\nFunction Return Type :INTEGER\nInput/Output Parameters:\n[in] str : STRING\n%ENVIRONMENT Group :SYSTEM\n"
+    },
+    
+    "SUB_STR Built-In Function": {
+      "prefix": "SUB_STR",
+      "body": [
+        "SUB_STR('${1:str}',${2:strt},${3:len})"
+      ],
+      "description": "SUB_STR Built-In Function\nFunction Return Type :STRING\nInput/Output Parameters:\n[in] src : STRING\n[in] strt : INTEGER\n[in] len : INTEGER\n%ENVIRONMENT Group :SYSTEM\n"
+    },
+    
+    "TAN Built-In Function": {
+      "prefix": "TAN",
+      "body": [
+        "TAN(${1:angle})"
+      ],
+      "description": "TAN Built-In Function\nFunction Return Type :REAL\nInput/Output Parameters:\n[in] angle : REAL\n%ENVIRONMENT Group :SYSTEM\n"
+    },
+    
+    "TRANSLATE Built-In Procedure": {
+      "prefix": "TRANSLATE",
+      "body": [
+        "TRANSLATE('${1:file_spec}',${2:listing_sw},${3:status})"
+      ],
+      "description": "TRANSLATE Built-In Procedure\nInput/Output Parameters:\n[in] file_spec : STRING\n[in] listing_sw : BOOLEAN\n[out] status : INTEGER\n%ENVIRONMENT Group :trans\n"
+    },
+    
+    "TRUNC Built-In Function": {
+      "prefix": "TRUNC",
+      "body": [
+        "TRUNC(${1:X})"
+      ],
+      "description": "TRUNC Built-In Function\nFunction Return Type :INTEGER\nInput/Output Parameters:\n[in] x : REAL\n%ENVIRONMENT Group :SYStem\n"
+    },
+    
+    "UNINIT Built-In Function": {
+      "prefix": "UNINIT",
+      "body": [
+        "UNINIT(${1:variable})"
+      ],
+      "description": "UNINIT Built-In Function\nFunction Return Type :BOOLEANInput/Output Parameters:\n[in] variable :any KAREL variable\n%ENVIRONMENT Group :SYSTEM\n"
+    },
+    
+    "UNLOCK_GROUP Built-In Procedure": {
+      "prefix": "UNLOCK_GROUP",
+      "body": [
+        "UNLOCK_GROUP(${1:group_mask},${2:status})"
+      ],
+      "description": "UNLOCK_GROUP Built-In Procedure\nInput/Output Parameters:\n[in] group_mask :INTEGER\n[out] status :INTEGER\n%ENVIRONMENT Group :MULTI\n"
+    },
+    
+    "UNPOS Built-In Procedure": {
+      "prefix": "UNPOS",
+      "body": [
+        "UNPOS(${1:posn},${2:X},${3:Y},${4:Z},${5:W},${6:P},${7:R},${8:c})"
+      ],
+      "description": "UNPOS Built-In Procedure\nInput/Output Parameters:\n[in] posn :XYZWPR\n[out] x, y, z :REAL\n[out] w, p, r :REAL\n[out] c :CONFIG\n%ENVIRONMENT Group :SYSTEM\n"
+    },
+    
+    "V_ACQ_VAMAP iRVision Built-In Procedure": {
+      "prefix": "V_ACQ_VAMAP",
+      "body": [
+        "V_ACQ_VAMAP('${1:sensor_name}',${2:partial},${3:center_pos},${4:status})"
+      ],
+      "description": "V_ACQ_VAMAP iRVision Built-In Procedure\nInput/Output Parameters:\n[in] sensor_name: STRING\n[in] partial: BOOLEAN\n[in] center_pos: VECTOR\n[out] status: INTEGER\n%ENVIRONMENT GROUP: CVIS\n"
+    },
+    
+    "V_ADJ_2D iRVision Built-In Procedure": {
+      "prefix": "V_ADJ_2D",
+      "body": [
+        "V_ADJ_2D(${1:register_no},${2:X},${3:Y},${4:status})"
+      ],
+      "description": "V_ADJ_2D iRVision Built-In Procedure\nInput/Output Parameters:\n[in] register_no: INTEGER\n[in] x: REAL\n[in] y: REAL\n[out] status: INTEGER\n%ENVIRONMENT GROUP: CVIS\n"
+    },
+    
+    "V_CAM_CALIB iRVision Built-In Procedure": {
+      "prefix": "V_CAM_CALIB",
+      "body": [
+        "V_CAM_CALIB('${1:cal_name}',${2:func_code},${3:status})"
+      ],
+      "description": "V_CAM_CALIB iRVision Built-In Procedure\nInput/Output Parameters:\n[in] cal_name : STRING\n[in] func_code : INTEGER\n[out] status : INTEGER\n%ENVIRONMENT Group: CVIS\n"
+    },
+    
+    "V_CLR_VAMAP iRVision Built-In Procedure": {
+      "prefix": "V_CLR_VAMAP",
+      "body": [
+        "V_CLR_VAMAP('${1:sensor_name}',${2:status})"
+      ],
+      "description": "V_CLR_VAMAP iRVision Built-In Procedure\nInput/Output Parameters:\n[in] sensor_name: STRING\n[out] status: INTEGER\n%ENVIRONMENT GROUP: CVIS\n"
+    },
+    
+    "V_DISPLAY4D iRVision Built-In Procedure": {
+      "prefix": "V_DISPLAY4D",
+      "body": [
+        "V_DISPLAY4D('${1:vistool_name}',${2:status})"
+      ],
+      "description": "V_DISPLAY4D iRVision Built-In Procedure\nInput/Output Parameters:\n[in] vistool_name: STRING\n[out] status: INTEGER\n%ENVIRONMENT GROUP: CVIS\n"
+    },
+    
+    "V_FIND_VIEW iRVision Built-In Procedure": {
+      "prefix": "V_FIND_VIEW",
+      "body": [
+        "V_FIND_VIEW('${1:vp_name}',${2:camera_view},${3:image_reg},${4:status})"
+      ],
+      "description": "V_FIND_VIEW iRVision Built-In Procedure\nInput/Output Parameters:\n[in] vp_name: STRING\n[in] camera_view: INTEGER\n[in] image_reg: INTEGER\n[out] status: INTEGER\n%ENVIRONMENT GROUP: CVIS\n"
+    },
+    
+    "V_GET_OFFSET iRVision Built-In Procedure": {
+      "prefix": "V_GET_OFFSET",
+      "body": [
+        "V_GET_OFFSET('${1:vp_name}',${2:register_no},${3:status})"
+      ],
+      "description": "V_GET_OFFSET iRVision Built-In Procedure\nInput/Output Parameters:\n[in] vp_name: STRING\n[in] register_no: INTEGER\n[out] status: INTEGER\n% ENVIRONMENT GROUP: CVIS\n"
+    },
+    
+    "V_GET_PASSFL iRVision Built-In Procedure": {
+      "prefix": "V_GET_PASSFL",
+      "body": [
+        "V_GET_PASSFL('${1:vp_name}',${2:register_no},${3:status})"
+      ],
+      "description": "V_GET_PASSFL iRVision Built-In Procedure\nInput/Output Parameters:\n[in] vp_name: STRING\n[in] register_no: INTEGER\n[out] status: INTEGER\n% ENVIRONMENT GROUP: CVIS\n"
+    },
+    
+    "V_GET_QUEUE iRVision Built-in Procedure": {
+      "prefix": "V_GET_QUEUE",
+      "body": [
+        "V_GET_QUEUE(${1:queue_num},${2:vr_num},${3:timeout},${4:status})"
+      ],
+      "description": "V_GET_QUEUE iRVision Built-in Procedure\nInput/Output Parameters:\n[in] queue_num: INTEGER\n[in] vr_num: INTEGER\n[in] timeout: INTEGER\n[out] status: INTEGER\n%ENVIRONMENT GROUP: CVIS\n"
+    },
+    
+    "V_GET_VPARAM iRVision Built-In Procedure": {
+      "prefix": "V_GET_VPARAM",
+      "body": [
+        "V_GET_VPARAM('${1:vp_name}',${2:param_no},${3:camera_view},${4:reg_no},${5:status})"
+      ],
+      "description": "V_GET_VPARAM iRVision Built-In Procedure\nInput/Output Parameters:\n[in] vp_name: STRING\n[in] param_no: INTEGER\n[in] camera_view: INTEGER\n[in] reg_no: INTEGER\n[out] status: INTEGER\n%ENVIRONMENT GROUP: CVIS\n"
+    },
+    
+    "V_INIT_QUEUE iRVision Built-in Procedure": {
+      "prefix": "V_INIT_QUEUE",
+      "body": [
+        "V_INIT_QUEUE(${1:queue_num},${2:status})"
+      ],
+      "description": "V_INIT_QUEUE iRVision Built-in Procedure\nInput/Output Parameters:\n[in] queue_num: INTEGER\n[out] status: INTEGER\n%ENVIRONMENT GROUP: CVIS\n"
+    },
+    
+    "V_IRCONNECT iRVision Built-In Procedure": {
+      "prefix": "V_IRCONNECT",
+      "body": [
+        "V_IRCONNECT('${1:desc_string}',${2:proority},${3:vis_reg_no},${4:status})"
+      ],
+      "description": "V_IRCONNECT iRVision Built-In Procedure\nInput/Output Parameters:\n[in] desc_string: STRING\n[in] priority: INTEGER\n[in] vis_reg_no: INTEGER\n[out] status: INTEGER\n%ENVIRONMENT GROUP: CVIS\n"
+    },
+    
+    "V_LED_OFF iRVision Built-In Procedure": {
+      "prefix": "V_LED_OFF",
+      "body": [
+        "V_LED_OFF(${1:status})"
+      ],
+      "description": "V_LED_OFF iRVision Built-In Procedure\nInput/Output Parameters:\n[out] status: INTEGER\n%ENVIRONMENT GROUP: CVIS\n"
+    },
+    
+    "V_LED_ON iRVision Built-In Procedure": {
+      "prefix": "V_LED_ON",
+      "body": [
+        "V_LED_ON(${1:channel},${2:intensity},${3:status})"
+      ],
+      "description": "V_LED_ON iRVision Built-In Procedure\nInput/Output Parameters:\nV_LED_ON(channel, intensity, status)\n[in] channel: INTEGER\n[in] intensity: INTEGER\n[out] status: INTEGER\n%ENVIRONMENT GROUP: CVIS\n"
+    },
+    
+    "V_OVERRIDE iRVision Built-In Procedure": {
+      "prefix": "V_OVERRIDE",
+      "body": [
+        "V_OVERRIDE('${1:ovrd_name}',${2:value},${3:status})"
+      ],
+      "description": "V_OVERRIDE iRVision Built-In Procedure\nInput/Output Parameters:\n[in] ovrd_name: STRING\n[in] value: REAL\n[out] status: INTEGER\n%ENVIRONMENT GROUP: CVIS\n"
+    },
+    
+    "V_RALC_QUEUE iRVision Built-in Procedure": {
+      "prefix": "V_RALC_QUEUE",
+      "body": [
+        "V_RALC_QUEUE(${1:queue_num},${2:vr_num},${3:status})"
+      ],
+      "description": "V_RALC_QUEUE iRVision Built-in Procedure\nInput/Output Parameters:\n[in] queue_num: INTEGER\n[in] vr_num: INTEGER\n[out] status: INTEGER\n%ENVIRONMENT GROUP: CVIS\n"
+    },
+    
+    "V_RUN_FIND iRVision Built-In Procedure": {
+      "prefix": "V_RUN_FIND",
+      "body": [
+        "V_RUN_FIND('${1:vp_name}',${2:camera_view},${3:status})"
+      ],
+      "description": "V_RUN_FIND iRVision Built-In Procedure\nInput/Output Parameters:\n[in] vp_name: STRING\n[in] camera_view: INTEGER\n[out] status: INTEGER\n%ENVIRONMENT GROUP: CVIS\n"
+    },
+    
+    "V_SAVE_IMREG iRVision Built-In Procedure": {
+      "prefix": "V_SAVE_IMREG",
+      "body": [
+        "V_SAVE_IMREG(${1:image_reg},'${2:value}',${3:status})"
+      ],
+      "description": "V_SAVE_IMREG iRVision Built-In Procedure\nInput/Output Parameters:\n[in] image_reg: INTEGER\n[in] output_path : STRING\n[out] status: INTEGER\n%ENVIRONMENT GROUP: CVIS\n"
+    },
+    
+    "V_SET_REF iRVision Built-In Procedure": {
+      "prefix": "V_SET_REF",
+      "body": [
+        "V_SET_REF('${1:vp_name}',${2:status})"
+      ],
+      "description": "V_SET_REF iRVision Built-In Procedure\nInput/Output Parameters:\n[in] vp_name: STRING\n[out] status: INTEGER\n%ENVIRONMENT GROUP: CVIS\n"
+    },
+    
+    "V_SNAP_VIEW iRVision Built-In Procedure": {
+      "prefix": "V_SNAP_VIEW",
+      "body": [
+        "V_SNAP_VIEW('${1:vp_name}',${2:camera_view},${3:image_reg},${4:status})"
+      ],
+      "description": "V_SNAP_VIEW iRVision Built-In Procedure\nInput/Output Parameters:\n[in] vp_name: STRING\n[in] camera_view: INTEGER\n[in] image_reg: INTEGER\n[out] status: INTEGER\n%ENVIRONMENT GROUP: CVIS\n"
+    },
+    
+    "V_START_VTRK iRVision Built-in Procedure": {
+      "prefix": "V_START_VTRK",
+      "body": [
+        "V_START_VTRK('${1:vp_name}',${2:status})"
+      ],
+      "description": "V_START_VTRK iRVision Built-in Procedure\nInput/Output Parameters:\n[in] vp_name: STRING\n[out] status: INTEGER\n%ENVIRONMENT GROUP: CVIS\n"
+    },
+    
+    "V_STOP_VTRK iRVision Built-in Procedure": {
+      "prefix": "V_STOP_VTRK",
+      "body": [
+        "V_STOP_VTRK('${1:vp_name}',${2:status})"
+      ],
+      "description": "V_STOP_VTRK iRVision Built-in Procedure\nInput/Output Parameters:\n[in] vp_name: STRING\n[out] status: INTEGER\n%ENVIRONMENT GROUP: CVIS\n"
+    },
+    
+    "VAR_INFO Built-In Procedure": {
+      "prefix": "VAR_INFO",
+      "body": [
+        "VAR_INFO('${1:prog_name}','${2:var_name}',${3:uninit},'${4:type_nam}',${5:type_value},${6:dims},${7:slen},${8:status})"
+      ],
+      "description": "VAR_INFO Built-In Procedure\nInput/Output Parameters:\n[in] prog_name: STRING\n[in] var_name: STRING\n[out] uninit_b :BOOLEAN\n[out] type_nam :STRING\n[out] dims:ARRAY[3] OF INTEGER\n[out] type_value :INTEGER\n[out] slen :INTEGER\n[out] status :INTEGER\n%ENVIRONMENT Group :BYNAM\n"
+    },
+    
+    "VAR_LIST Built-In Procedure": {
+      "prefix": "VAR_LIST",
+      "body": [
+        "VAR_LIST('${1:prog_name}','${2:var_name}',${3:var_type},${4:n_skip},${5:format},${6:ary_name[*]},${7:n_vars},${8:status})"
+      ],
+      "description": "VAR_LIST Built-In Procedure\nInput/Output Parameters:\n[in] prog_name : STRING\n[in] var_name : STRING\n[in] var_type : INTEGER\n[in] n_skip : INTEGER\n[in] format : INTEGER\n[out] ary_nam : ARRAY of STRING\n[out] n_vars : INTEGER\n[out] status : INTEGER\n%ENVIRONMENT Group :BYNAM\n"
+    },
+    
+    "VOL_SPACE Built-In Procedure": {
+      "prefix": "VOL_SPACE",
+      "body": [
+        "VOL_SPACE('${1:device}',${2:total},${3:free},${4:volume})"
+      ],
+      "description": "VOL_SPACE Built-In Procedure\nInput/Output Parameters:\n[in] device :STRING\n[out] total :INTEGER\n[out] free :INTEGER\n[out] volume :STRING\n%ENVIRONMENT Group :FLBT\n"
+    },
+    
+    "VREG_FND_POS iRVision Built-in Procedure": {
+      "prefix": "VREG_FND_POS",
+      "body": [
+        "VREG_FND_POS(${1:visreg_no},${2:camera_view},${3:posreg_no},${4:status})"
+      ],
+      "description": "VREG_FND_POS iRVision Built-in Procedure\nInput/Output Parameters:\n[in] visreg_no : INTEGER\n[in] camera_view : INTEGER\n[in] posreg_no : INTEGER\n[out] status : INTEGER\n%ENVIRONMENT GROUP: CVIS\n"
+    },
+    
+    "VREG_OFFSET iRVision Built-in Procedure": {
+      "prefix": "VREG_OFFSET",
+      "body": [
+        "VREG_OFFSET(${1:visreg_no},${2:posreg_no},${3:status})"
+      ],
+      "description": "VREG_OFFSET iRVision Built-in Procedure\nInput/Output Parameters:\n[in] visreg_no : INTEGER\n[in] posreg_no : INTEGER\n[out] status : INTEGER\n%ENVIRONMENT GROUP: CVIS\n"
+    },
+    
+    "VT_ACK_QUEUE iRVision Built-In Procedure": {
+      "prefix": "VT_ACK_QUEUE",
+      "body": [
+        "VT_ACK_QUEUE(${1:area_num},${2:vreg_num},${3:ack},${4:status})"
+      ],
+      "description": "VT_ACK_QUEUE iRVision Built-In Procedure\nInput/Output Parameters:\n[in] area_num: INTEGER\n[in] vreg_num: INTEGER\n[in] ack: INTEGER\n[out] status: INTEGER\n%ENVIRONMENT Group: CVIS\n"
+    },
+    
+    "VT_CLR_QUEUE iRVision Built-In Procedure": {
+      "prefix": "VT_CLR_QUEUE",
+      "body": [
+        "VT_CLR_QUEUE(${1:area_num},${2:status})"
+      ],
+      "description": "VT_CLR_QUEUE iRVision Built-In Procedure\nInput/Output Parameters:\n[in] area_num: INTEGER\n[out] status: INTEGER\n%ENVIRONMENT Group: CVIS\n"
+    },
+    
+    "VT_DELETE_PQ iRVision Built-In Procedure": {
+      "prefix": "VT_DELETE_PQ",
+      "body": [
+        "VT_DELETE_PQ(${1:area_num},${2:work_id},${3:status})"
+      ],
+      "description": "VT_DELETE_PQ iRVision Built-In Procedure\nInput/Output Parameters:\n[in] area_num : INTEGER\n[in] work_id : INTEGER\n[out] status : INTEGER\n%ENVIRONMENT Group: CVIS\n"
+    },
+    
+    "VT_GET_AREID iRVision Built-In Procedure": {
+      "prefix": "VT_GET_AREID",
+      "body": [
+        "VT_GET_AREID('${1:area_name}')"
+      ],
+      "description": "VT_GET_AREID iRVision Built-In Procedure\nInput/Output Parameters:\nFunction Return Type: INTEGER\n[in] area_name: STRING\n%ENVIRONMENT Group: CVIS\n"
+    },
+    
+    "VT_GET_FOUND iRVision Built-In Procedure": {
+      "prefix": "VT_GET_FOUND",
+      "body": [
+        "VT_GET_FOUND('${1:vp_name}',${2:model_id},${3:enc_count},${4:offset},${5:found_pos[*]},${6:meas_val[*]},${7:status})"
+      ],
+      "description": "VT_GET_FOUND iRVision Built-In Procedure\nInput/Output Parameters:[in] vp_name: STRING\n[out] model_id: INTEGER\n[out] enc_count: INTEGER\n[out] offset: XYZWPR\n[out] found_pos: ARRAY[4] OF XYZWPR\n[out] meas_val: ARRAY[10] OF REAL\n[out] status: INTEGER\n%ENVIRONMENT Group: CVIS\n"
+    },
+    
+    "VT_GET_LINID iRVision Built-In Procedure": {
+      "prefix": "VT_GET_LINID",
+      "body": [
+        "VT_GET_LINID('${1:line_name}')"
+      ],
+      "description": "VT_GET_LINID iRVision Built-In Procedure\nInput/Output Parameters:\nFunction Return Type: INTEGER\n[in] line_name: STRING\n%ENVIRONMENT Group: CVIS\n"
+    },
+    
+    "VT_GET_PFRT iRVision Built-In Procedure": {
+      "prefix": "VT_GET_PFRT",
+      "body": [
+        "VT_GET_PFRT(${1:area_num},${2:consecutive}${3:num_consct},${4:model_id},${5:pfrt},${6:status})"
+      ],
+      "description": "VT_GET_PFRT iRVision Built-In Procedure\nInput/Output Parameters:\n[in] area_num: INTEGER\n[in] consecutive: INTEGER\n[in] num_consct: INTEGER\n[in] model_id: INTEGER\n[out] pfrt: INTEGER\n[out] status: INTEGER\n%ENVIRONMENT Group: CVIS\n"
+    },
+    
+    "VT_GET_QUEUE iRVision Built-In Procedure": {
+      "prefix": "VT_GET_QUEUE",
+      "body": [
+        "VT_GET_QUEUE(${1:area_num},${2:vreg_num}${3:timeout},${4:consecutive},${5:model_id},${6:work_id},${7:status})"
+      ],
+      "description": "VT_GET_QUEUE iRVision Built-In Procedure"
+    },
+    
+    "VT_GET_TIME iRVision Built-In Procedure": {
+      "prefix": "VT_GET_TIME",
+      "body": [
+        "VT_GET_TIME(${1:area_num},${2:consecutive},${3:model_id},${4:work_id},${5:time},${6:status})"
+      ],
+      "description": "VT_GET_TIME iRVision Built-In Procedure\nInput/Output Parameters:\n[in] area_num: INTEGER\n[in] consecutive: INTEGER\n[in] model_id: INTEGER\n[in] work_id: INTEGER\n[out] time: INTEGER\n[out] status: INTEGER\n%ENVIRONMENT Group: CVIS\n"
+    },
+    
+    "VT_GET_TRYID iRVision Built-In Procedure": {
+      "prefix": "VT_GET_TRYID",
+      "body": [
+        "VT_GET_TRYID('${1:tray_name}')"
+      ],
+      "description": "VT_GET_TRYID iRVision Built-In Procedure\nFunction Return Type: INTEGER\nInput/Output Parameters:\n[in] tray_name: STRING\n%ENVIRONMENT Group: CVIS\n"
+    },
+    
+    "VT_PUT_QUE2 iRVision Built-In Procedure": {
+      "prefix": "VT_PUT_QUE2",
+      "body": [
+        "VT_PUT_QUE2(${1:line_num},${2:work_id},${3:tray_num},${4:enc_count},${5:model_id},${6:offset},${7:found_pos[*]},${8:meas_val[*]},${9:duplicated},${10:status})"
+      ],
+      "description": "VT_PUT_QUE2 iRVision Built-In Procedure\nInput/Output Parameters:\n[in] line_num: INTEGER\n[in] work_id: INTEGER\n[in] tray_num: INTEGER\n[in] enc_count: INTEGER\n[in] model_id: INTEGER [in] offset: XYZWPR\n[in] found_pos: ARRAY[4] OF XYZWPR\n[in] meas_val: ARRAY[10] OF REAL\n[out] duplicated : BOOLEAN\n[out] status: INTEGER\n%ENVIRONMENT Group: CVIS\n"
+    },
+    
+    "VT_PUT_QUEUE iRVision Built-In Procedure": {
+      "prefix": "VT_PUT_QUEUE",
+      "body": [
+        "VT_PUT_QUEUE(${1:line_num},${2:work_id},${3:tray_num},${4:enc_count},${5:model_id},${6:offset},${7:found_pos[*]},${8:meas_val[*]},${9:status})"
+      ],
+      "description": "VT_PUT_QUEUE iRVision Built-In Procedure\nInput/Output Parameters:\n[in] line_num: INTEGER\n[in] work_id: INTEGER\n[in] tray_num: INTEGER\n[in] enc_count: INTEGER\n[in] model_id: INTEGER\n[in] offset: XYZWPR\n[in] found_pos: ARRAY[4] OF XYZWPR\n[in] meas_val: ARRAY[10] OF REAL\n[out] status: INTEGER\n%ENVIRONMENT Group:CVIS\n"      
+    },
+    
+    "VT_READ_PQ iRVision Built-In Procedure": {
+      "prefix": "VT_READ_PQ",
+      "body": [
+        "VT_READ_PQ(${1:area_num},${2:vtpartq},${3:status})"
+      ],
+      "description": "VT_READ_PQ iRVision Built-In Procedure\nInput/Output Parameters:\n[in] area_num: INTEGER\n[out] vtpartq: PATH\n[out] status: INTEGER\n%ENVIRONMENT Group: CVIS\n"
+    },
+    
+    "VT_SET_FLAG iRVision Built-In Procedure": {
+      "prefix": "VT_SET_FLAG",
+      "body": [
+        "VT_SET_FLAG(${1:line_num},${2:line_bit2enb},${3:line_bit2dad},${4:area_bit2enb},${5:area_bit2dab},${6:status})"
+      ],
+      "description": "VT_SET_FLAG iRVision Built-In Procedure\nInput/Output Parameters:\n[in] line_num: INTEGER\n[in] line_bit2enb: INTEGER\n[in] line_bit2dab: INTEGER\n[in] area_bit2enb: ARRAY[32] OF INTEGER\n[in] area_bit2dab: ARRAY[32] OF INTEGER\n[out] status: INTEGER\n%ENVIRONMENT Group: CVIS\n"
+    },
+    
+    "VT_SET_LDBAL iRVision Built-In Procedure": {
+      "prefix": "VT_SET_LDBAL",
+      "body": [
+        "VT_SET_LDBAL(${1:line_num},${2:model_id},${3:n2pick},${4:n2pass},${5:status})"
+      ],
+      "description": "VT_SET_LDBAL iRVision Built-In Proceduren\nIput/Output Parameters:\n[in] line_num: INTEGER\n[in] model_id: INTEGER\n[in] n2pick: ARRAY[32] OF INTEGER\n[in] n2pass: INTEGER\n[out] status: INTEGER\n%ENVIRONMENT Group: CVIS\n"
+    },
+    
+    "VT_WRITE_PQ iRVision Built-In Procedure": {
+      "prefix": "VT_WRITE_PQ",
+      "body": [
+        "VT_WRITE_PQ(${1:area_num},${2:work_id},${3:model_id},${3:enc_count},${4:offset},${5:found_pos},${6:meas_value},${7:status})"
+      ],
+      "description": "VT_WRITE_PQ iRVision Built-In Procedure\nIput/Output Parameters:\n[in] area_num : INTEGER [in] work_id : INTEGER\n[in] model_id : INTEGER\n[in] enc_count : INTEGER\n[in] offset : XYZWPR\n[in] found_pos : XYZWPR\n[in] meas_value : ARRAY[10] OF REAL\n[out] status : INTEGER\n%ENVIRONMENT Group: CVIS\n"
+    },
+
+    "WAIT FOR Statement": {
+      "prefix": "WAIT FOR",
+      "body": [
+        "WAIT FOR ${1:cond:list}"
+      ],
+      "description": "WAIT FOR Statement\ncond_list: one or more conditions\n"
+    },
+
+    "WHEN Clause": {
+      "prefix": "WHEN",
+      "body": [
+        "WHEN  ${1:cond_list}  DO  ${2:action_list}"
+      ],
+      "description": "WHEN Clause\ncond_list : one or more conditions\naction_list : one or more conditions\n"
+    },
+
+    "While loop": {
+      "prefix": "WHILE",
+      "body": [
+          "WHILE ${1:element} DO",
+          "\t$2",
+          "ENDWHILE"
+      ],
+      "description": "While loop"
+    },
+    
+    "WRITE_DICT Built-In Procedure": {
+      "prefix": "WRITE_DICT",
+      "body": [
+        "WRITE_DICT(${1:file_var},'${2:dict_name}',${3:element_no},${4:status})"
+      ],
+      "description": "WRITE_DICT Built-In Procedure\nInput/Output Parameters:\n[in] file_var :FILE\n[in] dict_name :STRING\n[in] element_no :INTEGER\n[out] status :INTEGER\n%ENVIRONMENT Group :PBCORE\n"
+    },
+    
+    "WRITE_DICT_V Built-In Procedure": {
+      "prefix": "WRITE_DICT_V",
+      "body": [
+        "WRITE_DICT_V(${1:file_var},'${2:dict_name}',${3:element_no},${4:value_array[*]},${5:status})"
+      ],
+      "description": "WRITE_DICT_V Built-In Procedure\nInput/Output Parameters:\n[in] file_var :FILE\n[in] dict_name :STRING\n[in] element_no :INTEGER\n[in] value_array :ARRAY OF STRING\n[out] status :INTEGER\n%ENVIRONMENT Group :UIF\n"
+    },
+    
+    "XML_ADDTAG Built-In Procedure": {
+      "prefix": "XML_ADDTAG",
+      "body": [
+        "XML_ADDTAG(${1:xml_file},'${2:tag_name}',${3:numchar},${4:caseflg},${5:tag_ident},${6:status})"
+      ],
+      "description": "XML_ADDTAG Built-In Procedure\nInput/Output Parameters:\n[in] xml_file :FILE\n[in] tag_name:STRING\n[in] numchar:INTEGER\n[in] caseflag:boolean\n[in] tag_ident:INTEGER\n[out] status :INTEGER\n%ENVIRONMENT Group :PBCORE\n"
+    },
+    
+    "XML_GETDATA Built-In Procedure": {
+      "prefix": "xml_getdata",
+      "body": [
+        "xml_getdata(${1:xml_file},${2:numattr},${3:attrnames[*]},${4:attrvalues[*]},'${5:text}',${6:textdone},${7:status})"
+      ],
+      "description": "XML_GETDATA Built-In Procedure\nInput/Output Parameters:\n[in] xml_file :FILE\n[out] numattr: INTEGER\n[out] attrnames: ARRAY OF STRING\n[out] attrvalues: ARRAY OF STRING\n[out] textdata: STRING\n[out] textdone: BOOLEAN\n[out] status: INTEGER\n"
+    },
+    
+    "XML_REMTAG Built-In Procedure": {
+      "prefix": "xml_remtag",
+      "body": [
+        "xml_remtag(${1:xml_file},'${2:tag_name}',${3:tag_ident},${4:status})"
+      ],
+      "description": "XML_REMTAG Built-In Procedure\nInput/Output Parameters:\n[in] xml_file :FILE\n[in] tag_name: STRING\n[out] tag_ident:INTEGER\n[OUT] status: INTEGER\n"
+    },
+    
+    "XML_SCAN Built-In Procedure": {
+      "prefix": "XML_SCAN",
+      "body": [
+        "XML_SCAN(${1:xml_file},'${2:tag_name}',${3:func_code},${4:status})"
+      ],
+      "description": "XML_SCAN Built-In Procedure\nInput/Output Parameters:\n[in] xml_file :FILE\n[out] tag_name:STRING\n[out] func_code::INTEGER\n[out] status :INTEGER\n"
+    },
+    
+    "XML_SETVAR Built-In Procedure": {
+      "prefix": "xml_setvar",
+      "body": [
+        "xml_setvar(${1:xml_file},'${2:prog_name}','${3:var_name}',${4:status})"
+      ],
+      "description": "XML_SETVAR Built-In Procedure\nInput/Output Parameters:\n[in] xml_file :FILE\n[in] prog_name:STRING\n[in] var_name:STRING\n[out] status:INTEGER\n"
+    }
+  
+  
 }
